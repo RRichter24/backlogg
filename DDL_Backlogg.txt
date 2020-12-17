@@ -1,0 +1,61 @@
+
+create table role(
+	id serial primary key,
+	name varchar(30)
+);
+
+create table person (
+	id serial primary key,
+	username varchar(20),
+	password text,
+	email varchar(50),
+	company varchar (30),
+	role_id integer references role
+);
+
+create table person_role (
+	person_id integer references person,
+	role_id integer references role
+);
+
+create table person_person (
+	person1_id integer references person,
+	person2_id integer references person
+);
+
+create table messages (
+	id serial primary key,
+	message_text text,
+	sender_id integer references person,
+	receiver_id integer references person,
+	message_date timestamp
+);
+
+create table comment (
+	id serial primary key,
+	content text,
+	person_id integer references person,
+	post_id integer references post,
+	comment_date timestamp
+);
+
+
+create table post (
+	id serial primary key,
+	post_text text,
+	post_date timestamp,
+	person_id integer references person
+);
+
+
+create table reaction(
+	id serial primary key,
+	reaction_type_id integer references reaction_type,
+	person_id integer references person,
+	post_id integer references post
+);
+
+create table reaction_type(
+	id integer primary key,
+	name varchar(50)
+);
