@@ -1,105 +1,128 @@
 package dev.iceb.beans;
 
+import java.util.Set;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table
 public class Person {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
 	private String username;
-	private String password;
-	private String name;
-	private String bio;
+	private String email;
 	private String company;
-	//private BioPicture picture;
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "role_id")
 	private Role role;
+	private String passwd;
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name = "person_person",
+		joinColumns = @JoinColumn(name = "person1_id"),
+		inverseJoinColumns = @JoinColumn(name="person2_id"))
+	private Set<Person> friends;
 	
-	public Person() {
-		username = "";
-		password = "";
-		name = "";
-		bio = "";
-		company = "";
-		//picture = null;
-		role = null;
+	
+	public Set<Person> getFriends() {
+		return friends;
 	}
+
+
+	public void setFriends(Set<Person> friends) {
+		this.friends = friends;
+	}
+
+
+	public Person() {	
+	}
+
+
+	public Integer getId() {
+		return id;
+	}
+
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
 
 	public String getUsername() {
 		return username;
 	}
 
+
 	public void setUsername(String username) {
 		this.username = username;
 	}
 
-	public String getPassword() {
-		return password;
+
+	public String getEmail() {
+		return email;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getBio() {
-		return bio;
-	}
-
-	public void setBio(String bio) {
-		this.bio = bio;
-	}
 
 	public String getCompany() {
 		return company;
 	}
 
+
 	public void setCompany(String company) {
 		this.company = company;
 	}
+
 
 	public Role getRole() {
 		return role;
 	}
 
+
 	public void setRole(Role role) {
 		this.role = role;
 	}
-	
-	/*
-	public BioPicture getBioPicture() {
-		return picture;
+
+
+	public String getPasswd() {
+		return passwd;
 	}
 
-	public void setPicture(BioPicture picture) {
-		this.picture = role;
+
+	public void setPasswd(String passwd) {
+		this.passwd = passwd;
 	}
-	*/
-	
-	@Override
-	public String toString() {
-		if (role.getName().equals("admin")) {
-			return name + " has the username: " + username + "\nBio: " + bio 
-					+ "\nWorks for: " + company ;
-		}
-		else {
-			return "The admin " + name + " has the username " + username;
-		}
-	}
+
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((bio == null) ? 0 : bio.hashCode());
 		result = prime * result + ((company == null) ? 0 : company.hashCode());
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result + ((password == null) ? 0 : password.hashCode());
+		result = prime * result + ((email == null) ? 0 : email.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((passwd == null) ? 0 : passwd.hashCode());
 		result = prime * result + ((role == null) ? 0 : role.hashCode());
 		result = prime * result + ((username == null) ? 0 : username.hashCode());
 		return result;
 	}
+
 
 	@Override
 	public boolean equals(Object obj) {
@@ -110,25 +133,25 @@ public class Person {
 		if (getClass() != obj.getClass())
 			return false;
 		Person other = (Person) obj;
-		if (bio == null) {
-			if (other.bio != null)
-				return false;
-		} else if (!bio.equals(other.bio))
-			return false;
 		if (company == null) {
 			if (other.company != null)
 				return false;
 		} else if (!company.equals(other.company))
 			return false;
-		if (name == null) {
-			if (other.name != null)
+		if (email == null) {
+			if (other.email != null)
 				return false;
-		} else if (!name.equals(other.name))
+		} else if (!email.equals(other.email))
 			return false;
-		if (password == null) {
-			if (other.password != null)
+		if (id == null) {
+			if (other.id != null)
 				return false;
-		} else if (!password.equals(other.password))
+		} else if (!id.equals(other.id))
+			return false;
+		if (passwd == null) {
+			if (other.passwd != null)
+				return false;
+		} else if (!passwd.equals(other.passwd))
 			return false;
 		if (role == null) {
 			if (other.role != null)
@@ -142,6 +165,12 @@ public class Person {
 			return false;
 		return true;
 	}
-	
+
+
+	@Override
+	public String toString() {
+		return "Person [id=" + id + ", username=" + username + ", email=" + email + ", company=" + company + ", role="
+				+ role + ", passwd=" + passwd + "]";
+	}
 	
 }
