@@ -1,4 +1,4 @@
-package com.revature.beans;
+package dev.iceb.beans;
 
 public class Role {
 	private int id;

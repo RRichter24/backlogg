@@ -15,7 +15,11 @@
 		<property name="use_sql_comments">true</property>
 		
 		<!-- tell hibernate where to find our mappings -->
-		<mapping class="com.cross.beans.Comment"></mapping>
-		<mapping class="com.cross.beans.Person"></mapping>
+		<mapping class="dev.iceb.beans.Comment"></mapping>
+		<mapping class="dev.iceb.beans.Person"></mapping>
+		<mapping class="dev.iceb.beans.Message"></mapping>
+		<mapping class="dev.iceb.beans.Post"></mapping>
+		<mapping class="dev.iceb.beans.Reaction"></mapping>
+		<mapping class="dev.iceb.beans.Role"></mapping>
 	</session-factory>
 </hibernate-configuration>
