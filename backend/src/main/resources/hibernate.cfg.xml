@@ -4,9 +4,9 @@
 	<session-factory>
 		<!-- set up connection info -->
 		<property name="hibernate.connection.driver.class">org.postgresql.Driver</property>
-		<property name="hibernate.connection.url">jdbc:postgresql://rev-training-db.c9plo044rlqk.us-east-2.rds.amazonaws.com:5432/postgres?currentSchema=spms</property>
+		<property name="hibernate.connection.url">jdbc:postgresql://usf2011.cjzzundlfqwz.us-east-2.rds.amazonaws.com:5432/postgres?currentSchema=backlogg</property>
 		<property name="hibernate.connection.username">postgres</property>
-		<property name="hibernate.connection.password">revdbpassword</property>
+		<property name="hibernate.connection.password">100%myPassworD</property>
 		
 		<!-- hibernate setup -->
 		<property name="hibernate.dialect">org.hibernate.dialect.PostgreSQL10Dialect</property>
