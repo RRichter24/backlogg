@@ -29,8 +29,10 @@ public class PostHibernate implements PostDAO {
 	}
 
 	public Post getById(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		Session s = hu.getSession();
+		Post post = s.get(Post.class, id);
+		s.close();
+		return post;
 	}
 
 	public Set<Post> getAll() {
