@@ -3,20 +3,25 @@ package dev.iceb.services;
 import java.util.Set;
 
 import dev.iceb.beans.Comment;
-<<<<<<< HEAD
 import dev.iceb.beans.Post;
+
 import dev.iceb.data.CommentDAO;
 import dev.iceb.data.CommentDAOFactory;
 import dev.iceb.data.PostDAO;
 import dev.iceb.data.PostDAOFactory;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+
+@Service
 public class CommentServiceImpl implements CommentService {
 	
 	private CommentDAO commentDAO;
 	
-	public CommentServiceImpl() {
-		CommentDAOFactory commentDAOFactory = new CommentDAOFactory();
-		commentDAO = commentDAOFactory.getCommentDAO();
+	@Autowired
+	public CommentServiceImpl(CommentDAO cDAO) {
+		commentDAO = cDAO;
 	}
 
 	public Comment addComment(Comment c) {
@@ -53,42 +58,5 @@ public class CommentServiceImpl implements CommentService {
 
 	public void deleteComment(Comment c) {
 		commentDAO.delete(c);
-		
-=======
-import dev.iceb.data.CommentDAO;
-import dev.iceb.data.CommentDAOFactory;
-
-public class CommentServiceImpl implements CommentService {
-private CommentDAO CommentDao;
-	
-	public CommentServiceImpl() {
-		CommentDAOFactory rdf = new CommentDAOFactory();
-		CommentDao = rdf.getCommentDAO();
 	}
-	@Override
-	public Comment addComment(Comment p) {
-		return CommentDao.add(p);
-	}
-
-	@Override
-	public Comment getCommentById(Integer id) {
-		return CommentDao.getById(id);
-	}
-
-	@Override
-	public Set<Comment> getComments() {
-		return CommentDao.getAll();
-	}
-
-	@Override
-	public void updateComment(Comment p) {
-		CommentDao.update(p);
-	}
-
-	@Override
-	public void removeComment(Comment p) {
-		CommentDao.delete(p);
->>>>>>> fd101b8b12ffd27753be6c7afe04463862ca87c5
-	}
-
 }

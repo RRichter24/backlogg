@@ -4,39 +4,42 @@ import java.util.Set;
 
 import dev.iceb.beans.Reaction;
 import dev.iceb.data.ReactionDAO;
-import dev.iceb.data.ReactionDAOFactory;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
 public class ReactionServiceImpl implements ReactionService {
 
-	private ReactionDAO ReactionDao;
+	private ReactionDAO reactionDAO;
 	
-	public ReactionServiceImpl() {
-		ReactionDAOFactory rdf = new ReactionDAOFactory();
-		ReactionDao = rdf.getReactionDAO();
+	@Autowired
+	public ReactionServiceImpl(ReactionDAO rDAO) {
+		reactionDAO = rDAO;
 	}
 	@Override
 	public Reaction addReaction(Reaction p) {
-		return ReactionDao.add(p);
+		return reactionDAO.add(p);
 	}
 
 	@Override
 	public Reaction getReactionById(Integer id) {
-		return ReactionDao.getById(id);
+		return reactionDAO.getById(id);
 	}
 
 	@Override
 	public Set<Reaction> getReactions() {
-		return ReactionDao.getAll();
+		return reactionDAO.getAll();
 	}
 
 	@Override
 	public void updateReaction(Reaction p) {
-		ReactionDao.update(p);
+		reactionDAO.update(p);
 	}
 
 	@Override
 	public void removeReaction(Reaction p) {
-		ReactionDao.delete(p);
+		reactionDAO.delete(p);
 	}
 
 

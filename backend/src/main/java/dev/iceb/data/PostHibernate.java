@@ -7,12 +7,14 @@ import java.util.Set;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
+import org.springframework.stereotype.Repository;
 
 import dev.iceb.utils.HibernateUtil;
 
 import dev.iceb.beans.Post;
 import dev.iceb.beans.Role;
 
+@Repository
 public class PostHibernate implements PostDAO {
 	private HibernateUtil hu = HibernateUtil.getHibernateUtil();
 
@@ -34,15 +36,10 @@ public class PostHibernate implements PostDAO {
 
 	public Post getById(Integer id) {
 		Session s = hu.getSession();
-<<<<<<< HEAD
+
 		Post post = s.get(Post.class, id);
 		s.close();
 		return post;
-=======
-		Post c = s.get(Post.class,  id);
-		s.close();
-		return c;
->>>>>>> c411c5c2bce21caa3f67d31cb7a8b17aeb4cd238
 	}
 
 	public Set<Post> getAll() {

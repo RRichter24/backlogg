@@ -7,13 +7,17 @@ import dev.iceb.beans.Post;
 import dev.iceb.data.PostDAO;
 import dev.iceb.data.PostDAOFactory;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
 public class PostServiceImpl implements PostService {
 
 	private PostDAO postDao;
 	
-	public PostServiceImpl() {
-		PostDAOFactory postDaoFactory = new PostDAOFactory();
-		postDao = postDaoFactory.getPostDAO();
+	@Autowired
+	public PostServiceImpl(PostDAO pDAO) {
+		postDao = pDAO;
 	}
 	
 	public Post addPost(Post p) {

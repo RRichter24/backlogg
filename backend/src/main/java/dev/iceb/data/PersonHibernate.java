@@ -7,10 +7,12 @@ import java.util.Set;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
+import org.springframework.stereotype.Repository;
 
 import dev.iceb.beans.Person;
 import dev.iceb.utils.HibernateUtil;
 
+@Repository
 public class PersonHibernate implements PersonDAO {
 	private HibernateUtil hu = HibernateUtil.getHibernateUtil();
 	
