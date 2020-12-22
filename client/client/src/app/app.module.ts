@@ -4,14 +4,16 @@ import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AuthComponent } from './components/auth/auth.component';
-import { HomeScreenComponent } from './components/home-screen/home-screen.component';
+import { AuthComponent } from './auth/auth.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { RegisterUserComponent } from './register-user/register-user.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AuthComponent,
-    HomeScreenComponent
+    NavbarComponent,
+    RegisterUserComponent
   ],
   imports: [
     BrowserModule,

@@ -14,6 +14,7 @@ import dev.iceb.utils.HibernateUtil;
 public class MessageHibernate implements MessageDAO {
 
 	private HibernateUtil hu = HibernateUtil.getHibernateUtil();
+	
 	@Override
 	public Message add(Message t) {
 		Session s = hu.getSession();
@@ -30,6 +31,7 @@ public class MessageHibernate implements MessageDAO {
 		}
 		return t;
 	}
+	
 	@Override
 	public Message getById(Integer id) {
 		Session s = hu.getSession();
@@ -37,6 +39,7 @@ public class MessageHibernate implements MessageDAO {
 		s.close();
 		return c;
 	}
+	
 	@Override
 	public Set<Message> getAll() {
 		Session s = hu.getSession();
@@ -50,6 +53,7 @@ public class MessageHibernate implements MessageDAO {
 		
 		return pSet;
 	}
+	
 	@Override
 	public void update(Message t) {
 		Session s = hu.getSession();
@@ -66,7 +70,8 @@ public class MessageHibernate implements MessageDAO {
 			s.close();
 		}//end finally 		
 	}
-@Override
+	
+	@Override
 	public void delete(Message t) {
 		Session s = hu.getSession();
 		Transaction tx = null;

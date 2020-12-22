@@ -1,13 +1,17 @@
 package dev.iceb.data;
 
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
 import dev.iceb.utils.HibernateUtil;
 
 import dev.iceb.beans.Post;
+import dev.iceb.beans.Role;
 
 public class PostHibernate implements PostDAO {
 	private HibernateUtil hu = HibernateUtil.getHibernateUtil();
@@ -29,31 +33,79 @@ public class PostHibernate implements PostDAO {
 	}
 
 	public Post getById(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		Session s = hu.getSession();
+<<<<<<< HEAD
+		Post post = s.get(Post.class, id);
+		s.close();
+		return post;
+=======
+		Post c = s.get(Post.class,  id);
+		s.close();
+		return c;
+>>>>>>> c411c5c2bce21caa3f67d31cb7a8b17aeb4cd238
 	}
 
 	public Set<Post> getAll() {
-		// TODO Auto-generated method stub
-		return null;
+		Session s = hu.getSession();
+		String query = "FROM Post";
+		//query.Query
+		Query<Post> q = s.createQuery(query, Post.class);
+		List<Post> pList = q.getResultList();
+		Set<Post> pSet = new HashSet<>();
+		pSet.addAll(pList);
+		s.close();
+		
+		return pSet;
 	}
 
 	public void update(Post t) {
-		// TODO Auto-generated method stub
-		
+		Session s = hu.getSession();
+		Transaction tx = null;
+		try {
+			tx = s.beginTransaction();
+			s.update(t);
+			tx.commit();
+		} catch(Exception e) { //end try
+			if(tx !=null) {
+				tx.rollback();
+			} //end if
+		}finally { //end catch
+			s.close();
+		}//end finally 		
 	}
 
 	public void delete(Post t) {
-		// TODO Auto-generated method stub
+		Session s = hu.getSession();
+		Transaction tx = null;
+		try {
+			tx = s.beginTransaction();
+			s.delete(t);
+			tx.commit();
+		}catch(Exception e) { //end try
+			if(tx != null) {
+				tx.rollback();
+			}//end if
+		}finally { //end catch
+			s.close();
+		}//end finally
 		
 	}
 
-	public Post getByUserId(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+	public Set<Post> getByUserId(Integer id) {
+		Session s = hu.getSession();
+		String query = "FROM Post where person_id=:id";
+		//query.Query
+		Query<Post> q = s.createQuery(query, Post.class);
+		q.setParameter("id", id);
+		List<Post> pList = q.getResultList();
+		Set<Post> pSet = new HashSet<>();
+		pSet.addAll(pList);
+		s.close();
+		
+		return pSet;
 	}
 
-	public Post getByUsername(String u) {
+	public Set<Post> getByUsername(String u) {
 		// TODO Auto-generated method stub
 		return null;
 	}
