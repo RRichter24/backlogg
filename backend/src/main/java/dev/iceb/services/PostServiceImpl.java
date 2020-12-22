@@ -21,33 +21,27 @@ public class PostServiceImpl implements PostService {
 	}
 
 	public Post getPostById(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		return postDao.getById(id);
 	}
 
 	public Set<Post> getPostsByUserId(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		return postDao.getByUserId(id);
 	}
 
 	public Set<Post> getPostsByUsername(String u) {
-		// TODO Auto-generated method stub
-		return null;
+		return postDao.getByUsername(u);
 	}
 
 	public Set<Post> getPosts() {
-		// TODO Auto-generated method stub
-		return null;
+		return postDao.getAll();
 	}
 
 	public void updatePost(Post p) {
-		// TODO Auto-generated method stub
-		
+		postDao.update(p);
 	}
 
 	public void removePost(Post p) {
-		// TODO Auto-generated method stub
-		
+		postDao.delete(p);
 	}
 
 }
