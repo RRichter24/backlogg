@@ -14,6 +14,7 @@ import dev.iceb.utils.HibernateUtil;
 public class ReactionTypeHibernate implements ReactionTypeDAO {
 
 	private HibernateUtil hu = HibernateUtil.getHibernateUtil();
+	
 	@Override
 	public ReactionType add(ReactionType t) {
 		Session s = hu.getSession();
@@ -30,6 +31,7 @@ public class ReactionTypeHibernate implements ReactionTypeDAO {
 		}
 		return t;
 	}
+	
 	@Override
 	public ReactionType getById(Integer id) {
 		Session s = hu.getSession();
@@ -37,6 +39,7 @@ public class ReactionTypeHibernate implements ReactionTypeDAO {
 		s.close();
 		return c;
 	}
+	
 	@Override
 	public Set<ReactionType> getAll() {
 		Session s = hu.getSession();
@@ -50,6 +53,7 @@ public class ReactionTypeHibernate implements ReactionTypeDAO {
 		
 		return pSet;
 	}
+	
 	@Override
 	public void update(ReactionType t) {
 		Session s = hu.getSession();
@@ -66,7 +70,8 @@ public class ReactionTypeHibernate implements ReactionTypeDAO {
 			s.close();
 		}//end finally 		
 	}
-@Override
+	
+	@Override
 	public void delete(ReactionType t) {
 		Session s = hu.getSession();
 		Transaction tx = null;

@@ -15,6 +15,7 @@ public class CommentHibernate implements CommentDAO {
 
 
 	private HibernateUtil hu = HibernateUtil.getHibernateUtil();
+	
 	@Override
 	public Comment add(Comment t) {
 		Session s = hu.getSession();
@@ -31,6 +32,7 @@ public class CommentHibernate implements CommentDAO {
 		}
 		return t;
 	}
+	
 	@Override
 	public Comment getById(Integer id) {
 		Session s = hu.getSession();
@@ -38,6 +40,7 @@ public class CommentHibernate implements CommentDAO {
 		s.close();
 		return c;
 	}
+	
 	@Override
 	public Set<Comment> getAll() {
 		Session s = hu.getSession();
@@ -51,6 +54,7 @@ public class CommentHibernate implements CommentDAO {
 		
 		return pSet;
 	}
+	
 	@Override
 	public void update(Comment t) {
 		Session s = hu.getSession();
@@ -67,7 +71,8 @@ public class CommentHibernate implements CommentDAO {
 			s.close();
 		}//end finally 		
 	}
-@Override
+	
+	@Override
 	public void delete(Comment t) {
 		Session s = hu.getSession();
 		Transaction tx = null;
