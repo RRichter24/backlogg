@@ -7,8 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeScreenComponent implements OnInit {
 
-  username: String;
-  password: String;
+  username!: String;
+  password!: String;
 
   constructor() { }
 
@@ -18,7 +18,7 @@ export class HomeScreenComponent implements OnInit {
   }
 
   register(){
-    console.log(username + " and "+ password);
+    console.log(this.username + " and "+ this.password);
     
   }
 }
