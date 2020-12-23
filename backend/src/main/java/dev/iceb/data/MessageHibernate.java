@@ -90,4 +90,18 @@ public class MessageHibernate implements MessageDAO {
 		}//end finally		
 	}
 
+	@Override
+	public Set<Message> MessagesByUserId(Integer id) {
+		Session s = hu.getSession();
+		String query = "FROM Message Where (sender_id = :id OR receiver_id = :id)";
+		//query.Query
+		Query<Message> q = s.createQuery(query, Message.class);
+		List<Message> pList = q.getResultList();
+		Set<Message> pSet = new HashSet<>();
+		pSet.addAll(pList);
+		s.close();
+		
+		return pSet;
+	}
+
 }

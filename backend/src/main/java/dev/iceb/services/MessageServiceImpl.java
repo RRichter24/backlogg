@@ -41,5 +41,9 @@ public class MessageServiceImpl implements MessageService {
 	public void removeMessage(Message p) {
 		MessageDao.delete(p);
 	}
+	@Override
+	public Set<Message> getMessagesByUserId(Integer id) {
+		return MessageDao.MessagesByUserId(id);
+	}
 
 }
