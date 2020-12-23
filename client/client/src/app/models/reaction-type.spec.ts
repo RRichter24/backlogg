@@ -1,4 +1,4 @@
-import { ReactionType } from './reaction-type';
+import  ReactionType  from './reaction-type';
 
 describe('ReactionType', () => {
   it('should create an instance', () => {
