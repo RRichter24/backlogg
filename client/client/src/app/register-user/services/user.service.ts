@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { CookieService } from 'ngx-cookie-service';
+//import { CookieService } from 'ngx-cookie-service';
 
-import { UrlService } from 'url.service';
+import { UrlService } from './url.service';
 
 
 @Injectable({
@@ -12,7 +12,7 @@ import { UrlService } from 'url.service';
 })
 export class UserService {
 
-  baseUrl: String = UrlService.getUrl();
+  //baseUrl: String = UrlService.getUrl();
 
   /*
   private formHeaders = new HttpHeaders({'Cookie':this.cookieService.get('JSESSIONID'),
