@@ -8,6 +8,8 @@ import { AuthComponent } from './components/auth/auth.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
 
+import { CookieService } from 'ngx-cookie-service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +22,7 @@ import { HomeComponent } from './components/home/home.component';
     AppRoutingModule,
     FormsModule,
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
