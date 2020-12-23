@@ -2,7 +2,7 @@ package dev.iceb.services;
 
 import java.util.Set;
 
-
+import dev.iceb.beans.Comment;
 import dev.iceb.beans.Post;
 import dev.iceb.data.PostDAO;
 import dev.iceb.data.PostDAOFactory;
@@ -46,6 +46,12 @@ public class PostServiceImpl implements PostService {
 
 	public void removePost(Post p) {
 		postDao.delete(p);
+	}
+
+	@Override
+	public Set<Comment> getCommentsByPostId(Integer id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

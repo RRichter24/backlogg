@@ -41,7 +41,7 @@ public class CommentController {
 		return ResponseEntity.notFound().build();
 	}
 	
-	@PutMapping(path="comment")
+	@PostMapping(path="comment")
 	public ResponseEntity<Comment> addComment(HttpSession session, @RequestBody Comment comment){
 		Comment returnedComment = commentServ.addComment(comment);
 		
@@ -52,7 +52,7 @@ public class CommentController {
 		return ResponseEntity.badRequest().build();
 	}
 	
-	@PostMapping(path="comment/{id}")
+	@PutMapping(path="comment/{id}")
 	public ResponseEntity<Void> updateComment(HttpSession session, @RequestBody Comment comment){
 		commentServ.updateComment(comment);
 		return ResponseEntity.ok().build();

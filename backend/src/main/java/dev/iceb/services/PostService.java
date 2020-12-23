@@ -2,6 +2,7 @@ package dev.iceb.services;
 
 import java.util.Set;
 
+import dev.iceb.beans.Comment;
 import dev.iceb.beans.Post;
 
 public interface PostService {
@@ -9,6 +10,7 @@ public interface PostService {
 		public Post addPost(Post p);
 		// "read" methods
 		public Post getPostById(Integer id);
+		public Set<Comment> getCommentsByPostId(Integer id);
 		public Set<Post> getPostsByUserId(Integer id);
 		public Set<Post> getPostsByUsername(String u);
 		public Set<Post> getPosts();
