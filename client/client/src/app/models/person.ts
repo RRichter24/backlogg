@@ -1,4 +1,10 @@
+import Role from './role';
+
 export class Person {
-    username!: String;
-    password!: String;
+    id!: number;
+    username!: string;
+    password!: string;
+    email!: string;
+    company!: string;
+    role!: Role;
 }
