@@ -8,13 +8,19 @@ import { AuthComponent } from './components/auth/auth.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
 import { HttpClientModule } from '@angular/common/http';
+import { NewPostComponent } from './components/new-post/new-post.component';
+import { ProfileComponent } from './components/profile/profile.component';
+
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
     AppComponent,
     AuthComponent,
     NavbarComponent,
-    HomeComponent
+    HomeComponent,
+    NewPostComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -22,7 +28,7 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
