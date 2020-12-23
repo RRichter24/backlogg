@@ -12,8 +12,8 @@ export class SiginService {
   constructor(private http: HttpClient) {}
 
   // TODO: review url/endpoints 
-  getPersonByUsername(username: String): Observable<Person> {
-    return this.http.get(`https://backlogg/api/getPersonByUsername${username}`).pipe(
+  getPersonByUsername(username: string, password: string): Observable<Person> {
+    return this.http.put(`http://localhost:8080/users/${username}/${password}`, {}).pipe(
       map(resp => resp as Person)
     )
   }
