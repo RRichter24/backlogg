@@ -14,4 +14,5 @@ public interface MessageService {
 	public void updateMessage(Message p);
 	// "delete" methods
 	public void removeMessage(Message p);
+	public Set<Message> getMessagesByUserId(Integer id);
 }
