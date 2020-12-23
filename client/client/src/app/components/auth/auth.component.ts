@@ -1,6 +1,7 @@
 import { Component, OnInit} from '@angular/core';
-import { Person } from '../models/person';
-import { SiginService } from '../services/sigin.service';
+import { browser } from 'protractor';
+import { Person } from '../../models/person';
+import { SiginService } from '../../services/sigin.service';
 
 @Component({
   selector: 'app-auth',
@@ -33,12 +34,15 @@ export class AuthComponent implements OnInit {
     if (canSignIn) {
       console.log('here');
       this.btnStyle = "btn btn-lg btn-primary btn-block";
+    } else {
+      this.btnStyle = "btn btn-lg btn-primary btn-block disabled";
     }
   }
 
   onSignIn() {
     console.log(this.username, this.password);
     // let person = Sigin.getPersonByUsername(); 
+
   }
 
   ngOnInit(): void {
