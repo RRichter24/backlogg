@@ -6,5 +6,5 @@ export default class Person {
     password!: string;
     email!: string;
     company!: string;
-    role!: Role;
+    role_id!: number;
 }
