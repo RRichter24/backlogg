@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { AuthComponent } from './components/auth/auth.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
-import { NewPostComponent } from './new-post/new-post.component';
+import { NewPostComponent } from './components/new-post/new-post.component';
 import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
