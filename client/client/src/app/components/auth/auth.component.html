@@ -24,5 +24,10 @@
     required
   />
   <button class="{{ btnStyle }}" (click)="onSignIn()">Sign in</button>
+  <p>
+    Don't have an account?
+    <a routerLink="/register" routerLinkActive="active"> Register </a>today!
+  </p>
+
   <p class="mt-5 mb-3 text-muted">&copy; 2020</p>
 </form>
