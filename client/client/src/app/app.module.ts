@@ -8,6 +8,7 @@ import { AuthComponent } from './components/auth/auth.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
 import { NewPostComponent } from './new-post/new-post.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { NewPostComponent } from './new-post/new-post.component';
     AuthComponent,
     NavbarComponent,
     HomeComponent,
-    NewPostComponent
+    NewPostComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
