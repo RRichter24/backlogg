@@ -2,7 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+<<<<<<< HEAD:client/client/src/app/register-user/services/user.service.ts
+//import { CookieService } from 'ngx-cookie-service';
+
+import { UrlService } from './url.service';
+=======
 // import { CookieService } from 'ngx-cookie-service';
+>>>>>>> 057b3d728f039d2ee9a041e6a6474eef7409677b:client/client/src/app/components/register-user/services/user.service.ts
 
 
 @Injectable({
@@ -10,7 +16,11 @@ import { map } from 'rxjs/operators';
 })
 export class UserService {
 
+<<<<<<< HEAD:client/client/src/app/register-user/services/user.service.ts
+  //baseUrl: String = UrlService.getUrl();
+=======
   // baseUrl: String = UrlService.getUrl();
+>>>>>>> 057b3d728f039d2ee9a041e6a6474eef7409677b:client/client/src/app/components/register-user/services/user.service.ts
 
   /*
   private formHeaders = new HttpHeaders({'Cookie':this.cookieService.get('JSESSIONID'),
