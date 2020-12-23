@@ -7,10 +7,12 @@ import java.util.Set;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
+import org.springframework.stereotype.Repository;
 
 import dev.iceb.beans.Message;
 import dev.iceb.utils.HibernateUtil;
 
+@Repository
 public class MessageHibernate implements MessageDAO {
 
 	private HibernateUtil hu = HibernateUtil.getHibernateUtil();
@@ -86,6 +88,20 @@ public class MessageHibernate implements MessageDAO {
 		}finally { //end catch
 			s.close();
 		}//end finally		
+	}
+
+	@Override
+	public Set<Message> MessagesByUserId(Integer id) {
+		Session s = hu.getSession();
+		String query = "FROM Message Where (sender_id = :id OR receiver_id = :id)";
+		//query.Query
+		Query<Message> q = s.createQuery(query, Message.class);
+		List<Message> pList = q.getResultList();
+		Set<Message> pSet = new HashSet<>();
+		pSet.addAll(pList);
+		s.close();
+		
+		return pSet;
 	}
 
 }

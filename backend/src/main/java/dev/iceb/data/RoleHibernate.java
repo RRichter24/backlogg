@@ -7,10 +7,12 @@ import java.util.Set;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
+import org.springframework.stereotype.Repository;
 
 import dev.iceb.beans.Role;
 import dev.iceb.utils.HibernateUtil;
 
+@Repository
 public class RoleHibernate implements RoleDAO {
 	private HibernateUtil hu = HibernateUtil.getHibernateUtil();
 	@Override

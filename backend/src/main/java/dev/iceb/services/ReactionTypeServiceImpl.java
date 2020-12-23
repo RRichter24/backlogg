@@ -6,12 +6,16 @@ import dev.iceb.beans.ReactionType;
 import dev.iceb.data.ReactionTypeDAO;
 import dev.iceb.data.ReactionTypeDAOFactory;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
 public class ReactionTypeServiceImpl implements ReactionTypeService {
 	private ReactionTypeDAO ReactionTypeDao;
 	
-	public ReactionTypeServiceImpl() {
-		ReactionTypeDAOFactory rdf = new ReactionTypeDAOFactory();
-		ReactionTypeDao = rdf.getReactionTypeDAO();
+	@Autowired
+	public ReactionTypeServiceImpl(ReactionTypeDAO rtDAO) {
+		ReactionTypeDao = rtDAO;
 	}
 	@Override
 	public ReactionType addReactionType(ReactionType p) {

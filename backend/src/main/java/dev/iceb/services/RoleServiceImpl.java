@@ -6,12 +6,16 @@ import dev.iceb.beans.Role;
 import dev.iceb.data.RoleDAO;
 import dev.iceb.data.RoleDAOFactory;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
 public class RoleServiceImpl implements RoleService {
 	private RoleDAO roleDao;
 	
-	public RoleServiceImpl() {
-		RoleDAOFactory rdf = new RoleDAOFactory();
-		roleDao = rdf.getRoleDAO();
+	@Autowired
+	public RoleServiceImpl(RoleDAO rDAO) {
+		roleDao = rDAO;
 	}
 	@Override
 	public Role addRole(Role p) {
