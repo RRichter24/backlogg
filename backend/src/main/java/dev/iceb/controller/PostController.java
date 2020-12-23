@@ -34,12 +34,12 @@ public class PostController {
 	
 	@GetMapping(path="/post/{postId}/comments/")
 	public ResponseEntity<Set<Comment>> getCommentsByPostId(HttpSession session, @PathVariable("postId") Integer postId){
-		Set<Comment> commentsOfAPost = postServ.getCommentsOfPost(postId);
-		if(commentsOfAPost != null) {
-			ResponseEntity.ok(commentsOfAPost);
+		Set<Comment> commentsOfPost = postServ.getCommentsByPostId(postId);
+		if(commentsOfPost != null) {
+			return ResponseEntity.ok(commentsOfPost);
 		}
 		
-		ResponseEntity.notFound().build();
+		return ResponseEntity.notFound().build();
 	}
 	
 	@GetMapping(path="/post/{id}")
