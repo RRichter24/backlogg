@@ -7,13 +7,18 @@ import { AppComponent } from './app.component';
 import { AuthComponent } from './components/auth/auth.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { NewPostComponent } from './components/new-post/new-post.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     AuthComponent,
     NavbarComponent,
-    HomeComponent
+    HomeComponent,
+    NewPostComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
