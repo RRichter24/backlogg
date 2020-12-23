@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, Injector, OnInit} from '@angular/core';
 import { browser } from 'protractor';
 import { Person } from '../../models/person';
 import { SiginService } from '../../services/sigin.service';
@@ -10,14 +10,14 @@ import { SiginService } from '../../services/sigin.service';
 })
 export class AuthComponent implements OnInit {
 
-  username: String = '';
-  password: String = '';
+  username: string = '';
+  password: string = '';
   private isValidUsername: boolean = false; 
   private isValidPassword: boolean = false; 
 
   btnStyle: String = "btn btn-lg btn-primary btn-block disabled"; 
 
-  constructor() { }
+  constructor(private injector: Injector) { }
 
   validateInput() {
     console.log("validating..."); 
@@ -39,10 +39,11 @@ export class AuthComponent implements OnInit {
     }
   }
 
-  onSignIn() {
+  async onSignIn() {
     console.log(this.username, this.password);
-    // let person = Sigin.getPersonByUsername(); 
-
+    const signinServ = this.injector.get(SiginService);
+    let person = await signinServ.getPersonByUsername(this.username, this.password); 
+    console.log(person);
   }
 
   ngOnInit(): void {
