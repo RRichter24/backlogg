@@ -4,7 +4,7 @@ import ReactionType from "./reaction-type";
 
 export default class Reaction {
     id!: number;
-    reaction_type!: ReactionType;
-    person!: Person;
-    post!: Post;
+    reaction_type_id!: number;
+    person_id!: number;
+    post_id!: number;
 }
