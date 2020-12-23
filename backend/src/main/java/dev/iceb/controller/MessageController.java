@@ -55,7 +55,7 @@ public class MessageController {
 	}//end getMessagesByUserId
 	
 	
-	@PutMapping(path="message")
+	@PostMapping(path="message")
 	public ResponseEntity<Message> addMessage(
 			HttpSession session, @RequestBody Message Message){
 		Message m = messageServ.addMessage(Message);
@@ -67,7 +67,7 @@ public class MessageController {
 		return ResponseEntity.badRequest().build();
 	}//end add
 	
-	@PostMapping(path="message/{id}")
+	@PutMapping(path="message/{id}")
 	public ResponseEntity<Void> updateMessage(
 			HttpSession session, @RequestBody Message Message){
 		messageServ.updateMessage(Message);
