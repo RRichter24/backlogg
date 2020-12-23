@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from './services/user.service';
 
 @Component({
-  selector: 'app-home-screen',
-  templateUrl: './home-screen.component.html',
-  styleUrls: ['./home-screen.component.css']
+  selector: 'register-user',
+  templateUrl: './register-user.component.html',
+  styleUrls: ['./register-user.component.css']
 })
 export class RegisterUserComponent implements OnInit {
 
