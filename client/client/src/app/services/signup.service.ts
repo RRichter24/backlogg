@@ -5,6 +5,7 @@ import { map } from 'rxjs/operators';
 // import { CookieService } from 'ngx-cookie-service';
 
 import { UrlService } from './url.service';
+import Person from '../models/person';
 
 
 @Injectable({
@@ -18,8 +19,16 @@ export class SignUpService {
     this.baseUrl = this.urlService.getUrl() + "/users"; 
   }
   
-  registerAUser(username: String, password: String): Observable<object>{
-    return this.http.post(this.baseUrl, {withCredentials: true}).pipe();
+  registerAUser(username: string, password: string): Observable<object>{
+    let newPerson: Person = {
+      id: 0,
+      username: username,
+      password: password,
+      email: "Not entered",
+      company: "Not entered",
+      role_id: 1
+    }
+    return this.http.post(this.baseUrl, newPerson, {withCredentials: true}).pipe();
   }
   
 }

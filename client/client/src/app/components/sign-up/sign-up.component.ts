@@ -8,9 +8,9 @@ import { SignUpService } from '../../services/signup.service';
 })
 export class SignUpComponent implements OnInit {
 
-  newlyRegisteredUsername: String;
-  newlyRegisteredPassword: String;
-  passwordCheck: String;
+  newlyRegisteredUsername: string;
+  newlyRegisteredPassword: string;
+  passwordCheck: string;
 
   constructor(private signUpService: SignUpService) { 
     this.newlyRegisteredUsername = '';
