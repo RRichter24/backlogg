@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SignUpService } from '../../services/signup.service';
+import Person from '../../models/person';
 
 @Component({
   selector: 'app-sign-up',
@@ -8,14 +9,18 @@ import { SignUpService } from '../../services/signup.service';
 })
 export class SignUpComponent implements OnInit {
 
-  newlyRegisteredUsername: string;
-  newlyRegisteredPassword: string;
+  username: string;
+  password: string;
   passwordCheck: string;
+  company: string;
+  email: string;
 
   constructor(private signUpService: SignUpService) { 
-    this.newlyRegisteredUsername = '';
-    this.newlyRegisteredPassword = '';
+    this.username = '';
+    this.password = '';
     this.passwordCheck = '';
+    this.company = '';
+    this.email = '';
   }
 
   ngOnInit(): void {
@@ -23,14 +28,28 @@ export class SignUpComponent implements OnInit {
   }
 
   ngOnChange(): void {
-    console.log(this.newlyRegisteredUsername + " and " + this.newlyRegisteredPassword);
+    console.log(this.username + " and " + this.password);
   }
 
   register(){
-    console.log(this.newlyRegisteredUsername + " and "+ this.newlyRegisteredPassword);
+    console.log(this.username + " and "+ this.password + " work at " + this.company + " with e-mail " + this.email);
 
-    if (this.newlyRegisteredPassword === this.passwordCheck){
-      this.signUpService.registerAUser(this.newlyRegisteredUsername, this.newlyRegisteredPassword);
+    let newPerson: Person = {
+      id: 0,
+      username: this.username,
+      email: this.email,
+      company: this.company,
+      passwd: this.password,
+      role: {
+        id: 1,
+        name: "user"
+      }
+    }
+
+    if (this.password === this.passwordCheck){
+      this.signUpService.registerAUser(newPerson).subscribe(resp => {
+        console.log(resp);
+      });
     }
   }
 }

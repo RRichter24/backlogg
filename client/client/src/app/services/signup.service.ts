@@ -19,16 +19,10 @@ export class SignUpService {
     this.baseUrl = this.urlService.getUrl() + "/users"; 
   }
   
-  registerAUser(username: string, password: string): Observable<object>{
-    let newPerson: Person = {
-      id: 0,
-      username: username,
-      password: password,
-      email: "Not entered",
-      company: "Not entered",
-      role_id: 1
-    }
-    return this.http.post(this.baseUrl, newPerson, {withCredentials: true}).pipe();
+  registerAUser(newPerson: Person): Observable<object>{
+    return this.http.post(this.baseUrl, newPerson, {withCredentials: true}).pipe(
+      map(resp => resp as Person)
+    );
   }
   
 }
