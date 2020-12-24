@@ -80,6 +80,7 @@ public class PersonController {
 	
 	@GetMapping(path = "/{id}")
 	public ResponseEntity<Person> getUserById(HttpSession session, @PathVariable("id") Integer id, @RequestBody Person person){
+		System.out.println("This is here now");
 		Person p = personServ.getById(id);
 		if(p != null) {
 			return ResponseEntity.ok(p);
