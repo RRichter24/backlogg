@@ -12,6 +12,7 @@ public class ServletConfig implements WebApplicationInitializer {
 
 	@Override
 	public void onStartup(ServletContext servletContext) throws ServletException {
+//		System.out.println("Tell me when this happens");
 		AnnotationConfigWebApplicationContext appContext = new AnnotationConfigWebApplicationContext();
 		appContext.register(SpringConfig.class);
 
