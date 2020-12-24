@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import  Person  from 'src/app/models/person';
 import { PersonService } from 'src/app/services/person.service';
 
@@ -8,15 +8,15 @@ import { PersonService } from 'src/app/services/person.service';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  loggedUser: Person;
+
+  loggedInUser: Person; 
   constructor(private personService: PersonService) { }
 
-  ngOnInit(): void {
-    this.personService.loginUser(null, null).subscribe(
-      resp => {
-        this.loggedUser = resp;
-      }
-    );
+  ngOnInit(): void { 
+
+    this.loggedInUser = JSON.parse( sessionStorage.getItem("loggedInUser") ); 
+    console.log("in [ProfileComponent]");
+    console.log(this.loggedInUser);
 
   }
 
