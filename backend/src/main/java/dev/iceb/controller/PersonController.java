@@ -41,6 +41,7 @@ public class PersonController {
 	
 	@PutMapping
 	public ResponseEntity<Person> logIn(HttpSession session, @RequestParam("user") String username, @RequestParam("pass") String password){
+		System.out.println("hitting the login endpoint");
 		Person person = personServ.getByUsername(username);
 		if (person != null) {
 			if (person.getPasswd().equals(password)) {
