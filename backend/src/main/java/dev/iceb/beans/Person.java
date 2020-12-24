@@ -29,7 +29,7 @@ public class Person {
 	@JoinColumn(name = "role_id")
 	private Role role;
 	private String passwd;
-	@ManyToMany(fetch = FetchType.LAZY)
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "person_person",
 		joinColumns = @JoinColumn(name = "person1_id"),
 		inverseJoinColumns = @JoinColumn(name="person2_id"))

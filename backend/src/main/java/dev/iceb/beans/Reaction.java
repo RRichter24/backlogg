@@ -15,9 +15,9 @@ public class Reaction {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "reaction_type_id")
-	private ReactionType reaction_type;
+//	@ManyToOne(fetch = FetchType.EAGER)
+//	@JoinColumn(name = "reaction_type_id")
+	private Integer reaction_type_id;
 	private Integer person_id;
 	private Integer post_id;
 	
@@ -33,12 +33,12 @@ public class Reaction {
 		this.id = id;
 	}
 
-	public ReactionType getReaction_type() {
-		return reaction_type;
+	public Integer getReaction_type() {
+		return reaction_type_id;
 	}
 
-	public void setReaction_type(ReactionType reaction_type) {
-		this.reaction_type = reaction_type;
+	public void setReaction_type(Integer reaction_type_id) {
+		this.reaction_type_id = reaction_type_id;
 	}
 
 	public Integer getPerson_id() {
@@ -64,7 +64,7 @@ public class Reaction {
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((person_id == null) ? 0 : person_id.hashCode());
 		result = prime * result + ((post_id == null) ? 0 : post_id.hashCode());
-		result = prime * result + ((reaction_type == null) ? 0 : reaction_type.hashCode());
+		result = prime * result + ((reaction_type_id == null) ? 0 : reaction_type_id.hashCode());
 		return result;
 	}
 
@@ -92,17 +92,17 @@ public class Reaction {
 				return false;
 		} else if (!post_id.equals(other.post_id))
 			return false;
-		if (reaction_type == null) {
-			if (other.reaction_type != null)
+		if (reaction_type_id == null) {
+			if (other.reaction_type_id != null)
 				return false;
-		} else if (!reaction_type.equals(other.reaction_type))
+		} else if (!reaction_type_id.equals(other.reaction_type_id))
 			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Reaction [id=" + id + ", reaction_type=" + reaction_type + ", person_id=" + person_id + ", post_id="
+		return "Reaction [id=" + id + ", reaction_type=" + reaction_type_id + ", person_id=" + person_id + ", post_id="
 				+ post_id + "]";
 	}
 	
