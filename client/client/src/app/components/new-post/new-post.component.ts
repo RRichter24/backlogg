@@ -9,20 +9,23 @@ import { PostService } from 'src/app/services/post.service';
   styleUrls: ['./new-post.component.css']
 })
 export class NewPostComponent implements OnInit {
-  personService: PersonService;
-  postService: PostService;
-  loggedUser: Person;
-  text: String;
+  loggedInUser: Person;
+  text: string;
 
-  constructor() { }
+  constructor(private personService: PersonService, private postService: PostService) { }
 
   ngOnInit(): void {
-    this.loggedUser = this.personService.getLoggedUser();
+    this.loggedInUser = JSON.parse( sessionStorage.getItem("loggedInUser") );
     this.text = '';
   }
 
   submitPost() {
-    this.postService.submitNewPost(this.text, this.loggedUser.id);
+    console.log(this.text);
+    console.log(this.loggedInUser.id);
+    this.postService.submitNewPost(this.text, this.loggedInUser.id).subscribe(
+      resp => {
+        console.log(resp);
+      });
   }
 
 }

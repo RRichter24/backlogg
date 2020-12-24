@@ -1,4 +1,4 @@
-<form *ngIf="loggedUser">
-  <textarea [(ngModel)]="text" placeholder="Type your post here"></textarea>
+<form>
+  <textarea name="newPost" [(ngModel)]="text" placeholder="Type your post here"></textarea>
   <button type="button" (click)="submitPost()">Submit</button>
 </form>

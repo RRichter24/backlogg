@@ -54,8 +54,10 @@ public class PostController {
 	}
 	
 	@PostMapping(path="/post")
-	public ResponseEntity<Post> addPost(HttpSession session, @PathVariable("id") Integer id, @RequestBody Post post){
+	public ResponseEntity<Post> addPost(HttpSession session, @RequestBody Post post){
 		Post p = postServ.addPost(post);
+		System.out.println(post.getPerson_id());
+		System.out.println(post.getPost_text());
 		
 		if (p != null) {
 			return ResponseEntity.ok(p);
@@ -64,15 +66,15 @@ public class PostController {
 		return ResponseEntity.badRequest().build();
 	}
 	
-	@PutMapping(path="/post")
-	public ResponseEntity<Void> updatePost(HttpSession session, @PathVariable("id") Integer id, @RequestBody Post post){
-		Post loggedPost = (Post) session.getAttribute("user");
-		if (loggedPost != null && loggedPost.getId().equals(id)) {
-			postServ.updatePost(post);
-			return ResponseEntity.ok().build();
-		}
-		return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-	}
+//	@PutMapping(path="/post")
+//	public ResponseEntity<Void> updatePost(HttpSession session, @RequestBody Post post){
+//		Post loggedPost = (Post) session.getAttribute("user");
+//		if (loggedPost != null && loggedPost.getId().equals(id)) {
+//			postServ.updatePost(post);
+//			return ResponseEntity.ok().build();
+//		}
+//		return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+//	}
 	
 	
 }
