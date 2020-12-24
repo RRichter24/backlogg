@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Person } from 'src/app/models/person';
+import  Person  from 'src/app/models/person';
 
 @Component({
   selector: 'app-profile',
@@ -7,15 +7,15 @@ import { Person } from 'src/app/models/person';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  loggedUser: Person;
+  loggedUser: Person | undefined;
   constructor() { }
 
   ngOnInit(): void {
-    this.personService.loginUser(null,null).subscribe(
-      resp => {
-        this.loggedUser = resp;
-      }
-    );
+    // this.personService.loginUser(null,null).subscribe(
+    //   resp => {
+    //     this.loggedUser = resp;
+    //   }
+    // );
 
   }
 

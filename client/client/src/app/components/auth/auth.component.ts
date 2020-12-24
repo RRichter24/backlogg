@@ -1,7 +1,7 @@
-import { Component, Injector, OnInit} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { browser } from 'protractor';
-import { Person } from '../../models/person';
-import { SiginService } from '../../services/sigin.service';
+import Person from '../../models/person';
+import { PersonServiceService } from '../../services/person.service';
 
 @Component({
   selector: 'app-auth',
@@ -17,7 +17,7 @@ export class AuthComponent implements OnInit {
 
   btnStyle: String = "btn btn-lg btn-primary btn-block disabled"; 
 
-  constructor(private injector: Injector) { }
+  constructor(private personServiceService: PersonServiceService) { }
 
   validateInput() {
     console.log("validating..."); 
@@ -41,8 +41,7 @@ export class AuthComponent implements OnInit {
 
   async onSignIn() {
     console.log(this.username, this.password);
-    const signinServ = this.injector.get(SiginService);
-    let person = await signinServ.getPersonByUsername(this.username, this.password); 
+    let person = this.personServiceService.loginUser(this.username, this.password);
     console.log(person);
   }
 
