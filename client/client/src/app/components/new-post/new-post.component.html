@@ -1,1 +1,4 @@
-<p>new-post works!</p>
+<form *ngIf="loggedUser">
+    <textarea [(ngModel)]="posttext" placeholder="Type your post here"></textarea>
+    <button type="button" (click)="submitPost()">Submit</button>
+</form>

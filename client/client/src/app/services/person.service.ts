@@ -10,9 +10,9 @@ import { CookieService } from 'ngx-cookie-service';
 @Injectable({
   providedIn: 'root'
 })
-export class PersonServiceService {
+export class PersonService {
 
-  private loggedUser!: Person; //I don't think I like the loggedUser to be !: assined to Person since it is possible that no one is logged in
+  private loggedUser: Person; 
   private usersUrl: string;
   private formHeaders = new HttpHeaders({'Cookie':this.cookieService.get('JSESSIONID'),
     'Content-Type': 'application/x-www-form-urlencoded'});
@@ -48,7 +48,8 @@ export class PersonServiceService {
       {headers:this.regHeaders, withCredentials:true}).pipe();
   }
 
-  getLoggedUser(): Person {
+  getLoggedUser(): Person
+  {
     return this.loggedUser;
   }
 
