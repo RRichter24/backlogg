@@ -3,6 +3,7 @@ import { browser } from 'protractor';
 import { Observable } from 'rxjs/internal/Observable';
 import Person from '../../models/person';
 import { PersonService } from '../../services/person.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-auth',
@@ -18,7 +19,7 @@ export class AuthComponent implements OnInit {
 
   btnStyle: String = "btn btn-lg btn-primary btn-block disabled"; 
 
-  constructor(private personService: PersonService) { }
+  constructor(private personService: PersonService, private router: Router) { }
 
   validateInput() {
     console.log("validating..."); 
@@ -49,9 +50,13 @@ export class AuthComponent implements OnInit {
          * The current user is stored in sessionStorage as a stringified JSON 
          * object. This 
          */
-        // let loggedInUser: Person = resp; 
-        // sessionStorage.setItem("loggedInUser", JSON.stringify(loggedInUser) ); 
+        let loggedInUser: Person = resp; 
+        sessionStorage.setItem("loggedInUser", JSON.stringify(loggedInUser) ); 
 
+        this.router.navigate(['/profile']);
+      },
+      err => {
+        alert("Internal System Error. Unable to log in.")
       });
   }
 
