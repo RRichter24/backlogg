@@ -17,7 +17,10 @@ export class PostService {
   constructor(private http: HttpClient, private urlService: UrlService) { 
     this.postsUrl = this.urlService.getUrl() + 'posts';
   }
+
+  /*
   submitNewPost(posttext: String, posterId: Number): Observable<Post> {
     return this.http.post(this.postsUrl, {withCredentials: true}).pipe();
   }
+  */
 }
