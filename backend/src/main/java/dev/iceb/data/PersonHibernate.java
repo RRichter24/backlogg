@@ -18,12 +18,14 @@ public class PersonHibernate implements PersonDAO {
 	
 	@Override
 	public Person add(Person t) throws NullPointerException {
+		System.out.println("give me ice bombs");
 		Session s = hu.getSession();
 		Transaction tx = null;
 		try {
 			tx = s.beginTransaction();
 			s.save(t);
 			tx.commit();
+			System.out.println("give me fright bombs");
 		}catch(Exception e) { //end try
 			if(tx != null)
 				tx.rollback();

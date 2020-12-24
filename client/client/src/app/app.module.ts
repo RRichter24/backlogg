@@ -10,6 +10,7 @@ import { HomeComponent } from './components/home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NewPostComponent } from './components/new-post/new-post.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { SignUpComponent } from './components/sign-up/sign-up.component';
 
 import { CookieService } from 'ngx-cookie-service';
 
@@ -20,7 +21,8 @@ import { CookieService } from 'ngx-cookie-service';
     NavbarComponent,
     HomeComponent,
     NewPostComponent,
-    ProfileComponent
+    ProfileComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,
