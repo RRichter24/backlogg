@@ -18,6 +18,8 @@ export class PostService {
     this.postsUrl = this.urlService.getUrl() + 'posts';
   }
   submitNewPost(posttext: String, posterId: Number): Observable<Post> {
-    return this.http.post(this.postsUrl, {withCredentials: true}).pipe();
+    return this.http.post(this.postsUrl, {withCredentials: true}).pipe(
+      map(resp => resp as Post)
+    );
   }
 }

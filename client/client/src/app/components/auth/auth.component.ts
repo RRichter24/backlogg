@@ -1,7 +1,8 @@
 import { Component, OnInit} from '@angular/core';
 import { browser } from 'protractor';
+import { Observable } from 'rxjs/internal/Observable';
 import Person from '../../models/person';
-import { PersonServiceService } from '../../services/person.service';
+import { PersonService } from '../../services/person.service';
 
 @Component({
   selector: 'app-auth',
@@ -17,7 +18,7 @@ export class AuthComponent implements OnInit {
 
   btnStyle: String = "btn btn-lg btn-primary btn-block disabled"; 
 
-  constructor(private personServiceService: PersonServiceService) { }
+  constructor(private personService: PersonService) { }
 
   validateInput() {
     console.log("validating..."); 
@@ -39,10 +40,19 @@ export class AuthComponent implements OnInit {
     }
   }
 
-  async onSignIn() {
+  onSignIn() {
     console.log(this.username, this.password);
-    let person = this.personServiceService.loginUser(this.username, this.password);
-    console.log(person);
+    this.personService.loginUser(this.username, this.password).subscribe(
+      resp => {
+        console.log(resp);
+        /**
+         * The current user is stored in sessionStorage as a stringified JSON 
+         * object. This 
+         */
+        // let loggedInUser: Person = resp; 
+        // sessionStorage.setItem("loggedInUser", JSON.stringify(loggedInUser) ); 
+
+      });
   }
 
   ngOnInit(): void {
