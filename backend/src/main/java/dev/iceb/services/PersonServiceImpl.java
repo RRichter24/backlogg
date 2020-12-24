@@ -18,7 +18,6 @@ public class PersonServiceImpl implements PersonService {
 	}
 	
 	public Person add(Person p) {
-		System.out.println("when i play the game i get lost in a phase");
 		return personDAO.add(p); 
 	}
 

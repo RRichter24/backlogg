@@ -55,9 +55,7 @@ public class PersonController {
 	
 	@PostMapping
 	public ResponseEntity<Void> registerPerson(HttpSession session, @RequestBody Person person) {
-		System.out.println("super mario rpg " + person);
 		personServ.add(person);
-		System.out.println("it is the only game just for me");
 		return ResponseEntity.ok().build();
 	}
 	
