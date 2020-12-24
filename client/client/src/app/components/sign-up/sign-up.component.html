@@ -1,0 +1,17 @@
+<div id="register-div">
+  <h2>Register yourself</h2>
+  <form id="register-form">
+    <label>Username: </label>
+    <input id="username" name="newlyRegisteredUsername" type="text" [(ngModel)]="newlyRegisteredUsername"/>
+    <br />
+    <label>Password: </label>
+    <input id="password" name="newlyRegisteredPassword" type="password" [(ngModel)]="newlyRegisteredPassword" />
+    <br />
+    <label>Please confirm your password: </label>
+    <input id="password" name="passwordCheck" type="password" [(ngModel)]="passwordCheck" />
+    <br />
+    <button id="register-action" type="button" (click)="register()">
+      Register A New User
+    </button>
+  </form>
+</div>
