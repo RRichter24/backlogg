@@ -13,6 +13,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 
 import { CookieService } from 'ngx-cookie-service';
+import { MessageComponent } from './components/message/message.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { CookieService } from 'ngx-cookie-service';
     HomeComponent,
     NewPostComponent,
     ProfileComponent,
-    SignUpComponent
+    SignUpComponent,
+    MessageComponent
   ],
   imports: [
     BrowserModule,
