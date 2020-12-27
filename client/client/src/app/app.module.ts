@@ -13,6 +13,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 
 import { CookieService } from 'ngx-cookie-service';
+import { ImageUploadComponent } from './components/image-upload/image-upload.component';
 
 @NgModule({
   declarations: [
@@ -22,15 +23,11 @@ import { CookieService } from 'ngx-cookie-service';
     HomeComponent,
     NewPostComponent,
     ProfileComponent,
-    SignUpComponent
+    SignUpComponent,
+    ImageUploadComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    HttpClientModule
-  ],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [CookieService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

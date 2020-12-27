@@ -6,26 +6,67 @@ import { PostService } from 'src/app/services/post.service';
 @Component({
   selector: 'app-new-post',
   templateUrl: './new-post.component.html',
-  styleUrls: ['./new-post.component.css']
+  styleUrls: ['./new-post.component.css'],
 })
 export class NewPostComponent implements OnInit {
   loggedInUser: Person;
   text: string;
 
-  constructor(private personService: PersonService, private postService: PostService) { }
+  // These are field associated with image uploads
+  public selectedFile;
+  public event1;
+  imgURL: any;
+  receivedImageData: any;
+  base64Data: any;
+  convertedImage: any;
+
+  constructor(
+    private personService: PersonService,
+    private postService: PostService
+  ) {}
 
   ngOnInit(): void {
-    this.loggedInUser = JSON.parse( sessionStorage.getItem("loggedInUser") );
+    this.loggedInUser = JSON.parse(sessionStorage.getItem('loggedInUser'));
     this.text = '';
+  }
+
+  public onFileChanged(event) {
+    console.log(event);
+    this.selectedFile = event.target.files[0];
+
+    // Below part is used to display the selected image
+    let reader = new FileReader();
+    reader.readAsDataURL(event.target.files[0]);
+    reader.onload = (event2) => {
+      this.imgURL = reader.result;
+    };
   }
 
   submitPost() {
     console.log(this.text);
     console.log(this.loggedInUser.id);
-    this.postService.submitNewPost(this.text, this.loggedInUser.id).subscribe(
-      resp => {
+    this.postService
+      .submitNewPost(this.text, this.loggedInUser.id)
+      .subscribe((resp) => {
         console.log(resp);
       });
   }
 
+  // This part is for uploading
+  // onUpload() {
+  //   const uploadData = new FormData();
+  //   uploadData.append('myFile', this.selectedFile, this.selectedFile.name);
+
+  //   this.httpClient
+  //     .post('http://localhost:8080/check/upload', uploadData)
+  //     .subscribe(
+  //       (res) => {
+  //         console.log(res);
+  //         this.receivedImageData = res;
+  //         this.base64Data = this.receivedImageData.pic;
+  //         this.convertedImage = 'data:image/jpeg;base64,' + this.base64Data;
+  //       },
+  //       (err) => console.log('Error Occured duringng saving: ' + err)
+  //     );
+  // }
 }
