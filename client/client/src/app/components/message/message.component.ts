@@ -22,7 +22,6 @@ export class MessageComponent implements OnInit {
     this.text = '';
     this.username = '';
   }
-
   getReceiverByUsername(){
     this.personService.getPersonByUsername(this.username).subscribe();
   }
