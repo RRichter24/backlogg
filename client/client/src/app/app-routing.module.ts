@@ -4,11 +4,13 @@ import { AuthComponent } from './components/auth/auth.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { HomeComponent } from './components/home/home.component';
 import { MessageComponent } from './components/message/message.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'login', component: AuthComponent},
   {path: 'register', component: SignUpComponent},
+  {path: 'profile', component: ProfileComponent},
   {path: 'message', component: MessageComponent}
 ];
 
