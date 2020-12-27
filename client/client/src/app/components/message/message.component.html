@@ -1,11 +1,30 @@
-<div>
+<div *ngIf="loggedInUser; else elseBlock" >
     <input name="receiver" type="text" [(ngModel)] = "username" placeholder="enter recipient username">
     <button type="button" (click)="getReceiverByUsername()">Search</button>
-</div>
-<div>
+
     <form>
         <input name="receiver_id" type="number" [(ngModel)] = "recid" placeholder="Enter recipient Id">
         <textarea name = "newMessage" [(ngModel)] = "text" placeholder="Enter direct message"></textarea>
         <button type = "button" (click) ="sendMessage()">Send</button>
     </form>
+
+    <section>
+        <table>
+            <tr>
+                <th>Message ID</th>
+                <th>Sender</th>
+                <th>Recipient</th>
+                <th>Messages</th>
+                <th>Date Sent</th>
+            </tr>
+            <tr *ngFor="let message of userMessages">
+                <td>{{ message.id }}</td>
+                <td>{{ message.sender_id }}</td>
+                <td>{{ message.receiver_id }}</td>
+                <td>{{ message.message_text }}</td>
+                <td> {{ message.date }}  </td>
+            </tr>
+        </table>
+    </section>
 </div>
+<ng-template #elseBlock>Please log in to access this feature.</ng-template>

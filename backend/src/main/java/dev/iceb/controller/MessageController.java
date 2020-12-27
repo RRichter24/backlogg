@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import dev.iceb.beans.Message;
@@ -21,6 +22,7 @@ import dev.iceb.services.PostService;
 
 @RestController
 @CrossOrigin(origins="http://localhost:4200", allowCredentials="true")
+@RequestMapping(path="/message")
 public class MessageController {
 	private MessageService messageServ;
 	private PersonService perServ;
@@ -31,7 +33,7 @@ public class MessageController {
 		perServ = p;
 	}
 	
-	@GetMapping(path="message/{id}")
+	@GetMapping(path="/{id}")
 	public ResponseEntity<Message> getMessageById(
 			HttpSession session, @PathVariable("id") Integer id){
 		Message m = messageServ.getMessageById(id);
@@ -43,7 +45,7 @@ public class MessageController {
 		return ResponseEntity.notFound().build();
 	}//end getMessageById
 	
-	@GetMapping(path = "message/user/{id}")
+	@GetMapping(path = "/user/{id}")
 	public ResponseEntity<Set<Message>> getMessagesByUserId(
 			HttpSession session, @PathVariable("id") Integer id){
 		Set<Message> personMessages = messageServ.getMessagesByUserId(id);
@@ -55,7 +57,7 @@ public class MessageController {
 	}//end getMessagesByUserId
 	
 	
-	@PostMapping(path="message")
+	@PostMapping
 	public ResponseEntity<Message> addMessage(
 			HttpSession session, @RequestBody Message Message){
 		Message m = messageServ.addMessage(Message);
@@ -67,7 +69,7 @@ public class MessageController {
 		return ResponseEntity.badRequest().build();
 	}//end add
 	
-	@PutMapping(path="message/{id}")
+	@PutMapping(path="/{id}")
 	public ResponseEntity<Void> updateMessage(
 			HttpSession session, @RequestBody Message Message){
 		messageServ.updateMessage(Message);
