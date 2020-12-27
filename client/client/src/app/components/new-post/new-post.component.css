@@ -1,0 +1,17 @@
+#new-post-card {
+  margin: auto;
+  width: 40%;
+}
+#new-post-card:hover {
+  transform: scale(1.1);
+}
+textarea {
+  border-style: none;
+  resize: none;
+  width: 100%;
+}
+
+textarea:hover {
+  border-style: solid;
+  border-color: blue;
+}

@@ -1,4 +1,15 @@
-<form>
-  <textarea name="newPost" [(ngModel)]="text" placeholder="Type your post here"></textarea>
-  <button type="button" (click)="submitPost()">Submit</button>
-</form>
+<div id="new-post-card" class="card">
+  <div class="card-body">
+    <form>
+      <textarea
+        name="newPost"
+        [(ngModel)]="text"
+        rows="4"
+        placeholder="Type your post here"
+      ></textarea>
+      <button type="button" class="btn btn-primary" (click)="submitPost()">
+        Submit
+      </button>
+    </form>
+  </div>
+</div>
