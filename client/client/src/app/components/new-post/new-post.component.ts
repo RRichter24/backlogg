@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import Person from 'src/app/models/person';
+import { ImageService } from 'src/app/services/image.service';
 import { PersonService } from 'src/app/services/person.service';
 import { PostService } from 'src/app/services/post.service';
 
@@ -22,7 +23,8 @@ export class NewPostComponent implements OnInit {
 
   constructor(
     private personService: PersonService,
-    private postService: PostService
+    private postService: PostService,
+    private imageService: ImageService
   ) {}
 
   ngOnInit(): void {
@@ -50,23 +52,25 @@ export class NewPostComponent implements OnInit {
       .subscribe((resp) => {
         console.log(resp);
       });
+
+    if (this.imgURL !== '') {
+      this.uploadImage();
+    }
   }
 
   // This part is for uploading
-  // onUpload() {
-  //   const uploadData = new FormData();
-  //   uploadData.append('myFile', this.selectedFile, this.selectedFile.name);
+  uploadImage() {
+    const uploadData = new FormData();
+    uploadData.append('myFile', this.selectedFile, this.selectedFile.name);
 
-  //   this.httpClient
-  //     .post('http://localhost:8080/check/upload', uploadData)
-  //     .subscribe(
-  //       (res) => {
-  //         console.log(res);
-  //         this.receivedImageData = res;
-  //         this.base64Data = this.receivedImageData.pic;
-  //         this.convertedImage = 'data:image/jpeg;base64,' + this.base64Data;
-  //       },
-  //       (err) => console.log('Error Occured duringng saving: ' + err)
-  //     );
-  // }
+    this.imageService.upload(uploadData).subscribe(
+      (res) => {
+        console.log(res);
+        this.receivedImageData = res;
+        this.base64Data = this.receivedImageData.pic;
+        this.convertedImage = 'data:image/jpeg;base64,' + this.base64Data;
+      },
+      (err) => console.log('Error Occured duringng saving: ' + err)
+    );
+  }
 }
