@@ -1,4 +1,4 @@
-import  Person  from "./person";
+
 
 export default class Message {
     id: number;
