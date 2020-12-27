@@ -56,7 +56,7 @@ export class AuthComponent implements OnInit {
         this.router.navigate(['/profile']);
       },
       err => {
-        alert("Internal System Error. Unable to log in.")
+        alert("Internal System Error. Unable to log in.\n" + err ); 
       });
   }
 

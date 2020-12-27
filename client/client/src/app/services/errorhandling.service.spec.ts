@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { SiginService } from './sigin.service';
+import { ErrorhandlingService } from './errorhandling.service';
 
-describe('SiginService', () => {
-  let service: SiginService;
+describe('ErrorhandlingService', () => {
+  let service: ErrorhandlingService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(SiginService);
+    service = TestBed.inject(ErrorhandlingService);
   });
 
   it('should be created', () => {
