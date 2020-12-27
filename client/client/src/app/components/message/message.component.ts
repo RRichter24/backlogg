@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import Message from 'src/app/models/message';
 import Person from 'src/app/models/person';
 import { MessageService } from 'src/app/services/message.service';
 import { PersonService } from 'src/app/services/person.service';
@@ -14,6 +15,7 @@ export class MessageComponent implements OnInit {
   receiver: Person;
   username: string;
   recid: number;
+  userMessages: Set<Message>;
 
   constructor(private personService: PersonService, private messageService: MessageService) { }
 
@@ -21,7 +23,13 @@ export class MessageComponent implements OnInit {
     this.loggedInUser = JSON.parse( sessionStorage.getItem("loggedInUser") );
     this.text = '';
     this.username = '';
+    this.messageService.messagesByPersonId(this.loggedInUser.id).subscribe(
+      resp=> {
+        this.userMessages = resp;
+      }
+    );
   }
+
   getReceiverByUsername(){
     this.personService.getPersonByUsername(this.username).subscribe();
   }

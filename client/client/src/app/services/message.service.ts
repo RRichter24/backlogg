@@ -27,6 +27,12 @@ export class MessageService {
     );
    }
 
+   messagesByPersonId(id:number):Observable<Set<Message>>{
+
+    return this.http.get(this.messageUrl+"/user/"+id, {withCredentials:true}).pipe(
+      map(resp=> resp as Set<Message>)
+    );
+   }
    /**
     * So the idea is that a reply will just create a new message rather
     * than to create a message chain. We may need to add a status feature
