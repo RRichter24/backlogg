@@ -26,4 +26,10 @@ export class MessageService {
       map(resp => resp as Message)
     );
    }
+
+   /**
+    * So the idea is that a reply will just create a new message rather
+    * than to create a message chain. We may need to add a status feature
+    * to the messages so that we can toggle their visibility
+    */
 }

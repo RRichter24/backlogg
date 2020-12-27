@@ -71,5 +71,12 @@ export class PersonService {
     return this.loggedUser;
   }
 
+  getPersonByUsername(username: string): Observable<Person>{
+    return this.http.get(this.usersUrl + username,
+      {withCredentials:true}).pipe(
+        map(resp => resp as Person)
+    );
+  }
+
 }
 
