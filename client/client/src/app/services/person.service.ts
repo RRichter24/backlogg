@@ -78,5 +78,11 @@ export class PersonService {
     );
   }
 
+  getPersonById(id: number): Observable<Person>{
+    return this.http.get(this.usersUrl+"/"+id, {withCredentials:true}).pipe(
+      map(resp => resp as Person)
+    );
+  }
+
 }
 
