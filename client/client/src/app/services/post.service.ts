@@ -3,7 +3,10 @@ import { HttpClient } from '@angular/common/http';
 import { UrlService } from './url.service';
 import Post from '../models/post';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
+import { CookieService } from 'ngx-cookie-service';
+import { NewPostComponent } from '../components/new-post/new-post.component';
+import { ErrorhandlingService } from './errorhandling.service';
 
 @Injectable({
   providedIn: 'root',

@@ -71,17 +71,15 @@ export class PersonService {
     return this.loggedUser;
   }
 
-  getPersonByUsername(username: string): Observable<Person>{
-    return this.http.get(this.usersUrl +"/username/" + username,
-      {withCredentials:true}).pipe(
-        map(resp => resp as Person)
-    );
+  getPersonByUsername(username: string): Observable<Person> {
+    return this.http
+      .get(this.usersUrl + '/username/' + username, { withCredentials: true })
+      .pipe(map((resp) => resp as Person));
   }
 
-  getPersonById(id: number): Observable<Person>{
-    return this.http.get(this.usersUrl+"/"+id, {withCredentials:true}).pipe(
-      map(resp => resp as Person)
-    );
+  getPersonById(id: number): Observable<Person> {
+    return this.http
+      .get(this.usersUrl + '/' + id, { withCredentials: true })
+      .pipe(map((resp) => resp as Person));
   }
-
 }

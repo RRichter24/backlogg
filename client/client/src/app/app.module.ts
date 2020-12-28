@@ -24,13 +24,7 @@ import { MessageComponent } from './components/message/message.component';
     NewPostComponent,
     ProfileComponent,
     SignUpComponent,
-    MessageComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    HttpClientModule
+    MessageComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [CookieService],
