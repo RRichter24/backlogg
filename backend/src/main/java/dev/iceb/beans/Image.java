@@ -5,6 +5,8 @@ import java.util.Arrays;
 
 import javax.persistence.*;
 
+import org.hibernate.annotations.Type;
+
 @Entity
 @Table
 public class Image {
@@ -20,7 +22,7 @@ public class Image {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "name")
+    @Column(name = "image_name")
     private String name;
 
     @Column(name = "type")
@@ -28,8 +30,9 @@ public class Image {
     
     @Column(name = "post_id")
     private Integer postId; 
-
+    
     @Lob
+    @Type(type = "org.hibernate.type.BinaryType")
     @Column(name = "pic")
     private byte[] pic;
 

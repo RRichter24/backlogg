@@ -70,7 +70,6 @@ public class ImageHibernate implements ImageDAO {
 	@Override
 	public Image getByPostId(Integer pid) {
 		Image img = null;
-
 		try (Session s = hu.getSession()) {
 			s.beginTransaction();
 			String hql = "FROM Image WHERE post_id = :post_id";

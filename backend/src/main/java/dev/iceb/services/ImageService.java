@@ -7,5 +7,5 @@ public interface ImageService {
 	public Image add(Image p); 
 	public Image getById(Integer id); 
 	public Image getByPostId(Integer pid);
-	public Image update(Image p);
+	public void update(Image p);
 }

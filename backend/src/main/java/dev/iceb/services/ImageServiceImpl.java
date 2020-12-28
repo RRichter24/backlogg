@@ -17,26 +17,22 @@ public class ImageServiceImpl implements ImageService {
 	
 	@Override
 	public Image add(Image p) {
-		// TODO Auto-generated method stub
-		return null;
+		return imageDAO.add(p); 
 	}
 
 	@Override
 	public Image getById(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		return imageDAO.getById(id);
 	}
 
 	@Override
 	public Image getByPostId(Integer pid) {
-		// TODO Auto-generated method stub
-		return null;
+		return imageDAO.getByPostId(pid);
 	}
 
 	@Override
-	public Image update(Image p) {
-		// TODO Auto-generated method stub
-		return null;
+	public void update(Image p) {
+		imageDAO.update(p);
 	}
 
 }

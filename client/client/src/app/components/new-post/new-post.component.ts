@@ -46,12 +46,9 @@ export class NewPostComponent implements OnInit {
 
   submitPost() {
     console.log(this.text);
-    console.log(this.loggedInUser.id);
-    this.postService
-      .submitNewPost(this.text, this.loggedInUser.id)
-      .subscribe((resp) => {
-        console.log(resp);
-      });
+    this.postService.submitNewPost(this.text, 1).subscribe((resp) => {
+      console.log(resp);
+    });
 
     if (this.imgURL !== '') {
       this.uploadImage();

@@ -54,7 +54,7 @@ export class PersonService {
         headers: this.regHeaders,
         withCredentials: true,
       })
-      .pipe();
+      .pipe(catchError(this.errorhandlingService.handleError));
   }
 
   updateUser(updatedUser: Person): Observable<object> {
@@ -64,7 +64,7 @@ export class PersonService {
         headers: this.regHeaders,
         withCredentials: true,
       })
-      .pipe();
+      .pipe(catchError(this.errorhandlingService.handleError));
   }
 
   getLoggedUser(): Person {
