@@ -80,12 +80,20 @@ public class PersonController {
 	}
 	
 	@GetMapping(path = "/{id}")
-	public ResponseEntity<Person> getUserById(HttpSession session, @PathVariable("id") Integer id, @RequestBody Person person){
-		System.out.println("This is here now");
+	public ResponseEntity<Person> getUserById(HttpSession session, @PathVariable("id") Integer id){
 		Person p = personServ.getById(id);
 		if(p != null) {
 			return ResponseEntity.ok(p);
 		}
 		return ResponseEntity.notFound().build();
-	}	
+	}
+	//path extended with username to avoid ambiguous call
+	@GetMapping(path = "username/{username}")
+	public ResponseEntity<Person> getUserByUsername(HttpSession session, @PathVariable("username") String username){
+		Person p = personServ.getByUsername(username);
+		if(p != null) {
+			return ResponseEntity.ok(p);
+		}
+		return ResponseEntity.notFound().build();
+	}
 }

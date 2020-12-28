@@ -7,7 +7,7 @@ create table role(
 create table person (
 	id serial primary key,
 	username varchar(20),
-	password text,
+	passwd text,
 	email varchar(50),
 	company varchar (30),
 	role_id integer references role

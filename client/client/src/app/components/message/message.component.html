@@ -1,0 +1,36 @@
+<div *ngIf="loggedInUser; else elseBlock" >
+
+    <form class="form-group">
+        <input name="receiver" type="text" [(ngModel)] = "username" placeholder="enter recipient username">
+        <button type="button" (click)="getReceiverByUsername()">Search</button>
+    
+        <input name="receiver_id" type="number" [(ngModel)] = "recid" placeholder="Enter recipient Id">        
+        <textarea name = "newMessage" [(ngModel)] = "text" placeholder="Enter direct message"></textarea>
+        <button type = "button" (click) ="sendMessage()">Send</button>
+    </form>
+
+    <section>
+        <table class="table table-striped table-dark">
+            <thead>
+                <tr>
+                    <th scope="col">Message ID</th>
+                    <th scope="col">Sender</th>
+                    <th scope="col">Recipient</th>
+                    <th scope="col">Messages</th>
+                    <th scope="col">Date Sent</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let message of userMessages">
+                    <th scope='row'>{{ message.id }}</th>
+                    <td>{{ message.sender_id }}</td>
+                    <td>{{ message.receiver_id }}</td>
+                    <td>{{ message.message_text }}</td>
+                    <td> {{ message.message_date.monthValue + "/" + message.message_date.dayOfMonth
+                        + " " +message.message_date.hour+":"+message.message_date.minute }}  </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</div>
+<ng-template #elseBlock>Please log in to access this feature.</ng-template>
