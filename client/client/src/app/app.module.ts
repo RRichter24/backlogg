@@ -14,6 +14,7 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
 
 import { CookieService } from 'ngx-cookie-service';
 import { MessageComponent } from './components/message/message.component';
+import { NewsfeedComponent } from './components/newsfeed/newsfeed.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { MessageComponent } from './components/message/message.component';
     NewPostComponent,
     ProfileComponent,
     SignUpComponent,
-    MessageComponent
+    MessageComponent,
+    NewsfeedComponent
   ],
   imports: [
     BrowserModule,
