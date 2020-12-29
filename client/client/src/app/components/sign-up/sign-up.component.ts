@@ -53,9 +53,14 @@ export class SignUpComponent implements OnInit {
       this.signUpService.registerAUser(newPerson).subscribe(resp => {
         console.log(resp);
 
-        let loggedInUser: Person = resp;
-        sessionStorage.setItem("loggedInUser", JSON.stringify(loggedInUser));
-        this.router.navigate(['/profile']);
+        if (resp instanceof Person){
+          let loggedInUser: Person = resp as Person;
+          sessionStorage.setItem("loggedInUser", JSON.stringify(loggedInUser));
+          this.router.navigate(['/profile']);
+        }
+        else{
+          alert("Something went wrong and your account was not registered");
+        }
       });
     }
   }
