@@ -20,6 +20,7 @@ import { PostComponent } from './components/post/post.component';
 import { NewCommentComponent } from './components/new-comment/new-comment.component';
 import { CommentComponent } from './components/comment/comment.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,

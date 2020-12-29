@@ -75,12 +75,12 @@ public class FriendRequestController {
 		fr.setRequest_status(rs);
 //		personServ.friendAccept(fr.getPerson1_id(), fr.getPerson2_id());
 		frServ.updateFriendRequest(fr);
-		Person p = personServ.getById(fr.getPerson1_id());
-		Person p2 = personServ.getById(fr.getPerson2_id());
-		p.getFriends().add(p2);
-		p2.getFriends().add(p);
-		personServ.update(p);
-		personServ.update(p2);
+//		Person p = personServ.getById(fr.getPerson1_id());
+//		Person p2 = personServ.getById(fr.getPerson2_id());
+//		p.getFriends().add(p2);
+//		p2.getFriends().add(p);
+//		personServ.update(p);
+//		personServ.update(p2);
 		return ResponseEntity.ok().build();
 	}//end update
 	
@@ -111,4 +111,15 @@ public class FriendRequestController {
 		}//end if
 		return ResponseEntity.notFound().build();
 	}
+	
+	@GetMapping(path = "/list/{id}")
+	public ResponseEntity<Set<Person>> getFriendsList(
+			HttpSession session, @PathVariable("id")Integer id){
+		Set<Person> friendList = frServ.getFriendsList(id);
+		if(friendList != null) {
+			return ResponseEntity.ok(friendList);
+		}
+		return ResponseEntity.notFound().build();
+	}
+	
 }

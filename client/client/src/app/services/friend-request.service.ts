@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { FriendRequest } from '../models/friend-request';
 import { UrlService } from './url.service';
 import { map } from 'rxjs/operators';
+import Person from '../models/person';
 
 @Injectable({
   providedIn: 'root'
@@ -52,6 +53,12 @@ export class FriendRequestService {
     return this.http.get(this.friendRequestUrl+"/received/"+id, {withCredentials:true}).pipe(
       map(resp=> resp as Set<FriendRequest>)
     );
+   }
+
+   getPersonFriendList(id: number):Observable<Set<Person>>{
+     return this.http.get(this.friendRequestUrl+"/list/"+id, {withCredentials:true}).pipe(
+       map(resp=> resp as Set<Person>)
+     );
    }
 
 }
