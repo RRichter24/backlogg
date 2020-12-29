@@ -3,6 +3,7 @@ import { SignUpService } from '../../services/signup.service';
 import Person from '../../models/person';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
@@ -15,6 +16,7 @@ export class SignUpComponent implements OnInit {
   passwordCheck: string;
   company: string;
   email: string;
+
 
   constructor(private signUpService: SignUpService, private router: Router) { 
     this.username = '';
