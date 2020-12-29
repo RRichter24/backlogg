@@ -16,7 +16,7 @@ import java.io.IOException;
 import javax.servlet.http.HttpSession;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "http://localhost:4200",  allowCredentials="true")
 @RequestMapping(path="/images")
 public class ImageController {
 	private ImageService imgServ;
@@ -26,18 +26,19 @@ public class ImageController {
 		imgServ = p;
 	}
 
-    @PostMapping("/upload/postid/{id}")
+    @SuppressWarnings("unused")
+	@PostMapping("/upload/postid/{postid}")
     public ResponseEntity<Image> uplaodImage(@RequestParam("myFile") MultipartFile file, @PathVariable("postid") Integer postId) throws IOException {
 
         Image img = new Image( file.getOriginalFilename(),file.getContentType(),file.getBytes() );
         img.setPostId(postId);
         System.out.println(img.toString());
         
-        img = imgServ.add(img); 
+        Image newImg = imgServ.add(img); 
         
-        if (img != null) {
+        if (newImg != null) {
             System.out.println("Image saved");
-        	return ResponseEntity.ok(img); 
+        	return ResponseEntity.ok(newImg); 
         } else {
         	return ResponseEntity.badRequest().build(); 
         }

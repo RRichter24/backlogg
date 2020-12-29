@@ -5,10 +5,12 @@ import java.util.Set;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
+import org.springframework.stereotype.Repository;
 
 import dev.iceb.beans.Image;
 import dev.iceb.utils.HibernateUtil;
 
+@Repository
 public class ImageHibernate implements ImageDAO {
 	private HibernateUtil hu = HibernateUtil.getHibernateUtil();
 
@@ -21,8 +23,10 @@ public class ImageHibernate implements ImageDAO {
 			s.save(t);
 			tx.commit();
 		} catch (Exception e) {
-			if (tx != null)
+			if (tx != null) {
 				tx.rollback();
+				throw e; 
+			}
 		} finally {
 			s.close();
 		}
