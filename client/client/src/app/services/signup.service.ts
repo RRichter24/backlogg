@@ -14,9 +14,10 @@ import Person from '../models/person';
 export class SignUpService {
 
   baseUrl: string;
+  private allowOriginsHeaders = new HttpHeaders({'Access-Control-Allow-Origin': '*'});
 
   constructor(private http: HttpClient, private urlService: UrlService) {
-    this.baseUrl = this.urlService.getUrl() + "/users"; 
+    this.baseUrl = this.urlService.getUrl() + "users"; 
   }
   
   registerAUser(newPerson: Person): Observable<Person>{

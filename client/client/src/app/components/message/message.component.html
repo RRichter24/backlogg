@@ -26,8 +26,8 @@
                     <td>{{ message.sender_id }}</td>
                     <td>{{ message.receiver_id }}</td>
                     <td>{{ message.message_text }}</td>
-                    <td> {{ message.message_date.monthValue + "/" + message.message_date.dayOfMonth
-                        + " " +message.message_date.hour+":"+message.message_date.minute }}  </td>
+                    <td> {{ message.message_date.getDate + "/" + message.message_date.getMonth
+                        + " " +message.message_date.getDay +":"+message.message_date.getMinutes }}  </td>
                 </tr>
             </tbody>
         </table>

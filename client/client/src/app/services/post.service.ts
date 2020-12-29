@@ -11,9 +11,11 @@ import { map } from 'rxjs/operators';
 export class PostService {
 
   private postsUrl: string;
+  private multiplePostsUrl: string;
 
   constructor(private http: HttpClient, private urlService: UrlService) { 
     this.postsUrl = this.urlService.getUrl() + 'post';
+    this.multiplePostsUrl = this.urlService.getUrl() + 'posts';
   }
 
   submitNewPost(posttext: string, posterId: number): Observable<Post> {
@@ -25,6 +27,12 @@ export class PostService {
     return this.http.post(this.postsUrl, postToSubmit, {withCredentials: true}).pipe(
 
       map(resp => resp as Post)
+    );
+  }
+
+  retrieveUsersPosts(userId: number): Observable<Set<Post>> {
+    return this.http.get(this.multiplePostsUrl + "/user/" + userId, {withCredentials: true}).pipe(
+      map(resp => resp as Set<Post>)
     );
   }
   
