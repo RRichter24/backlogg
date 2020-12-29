@@ -30,6 +30,8 @@ public class Person {
 	private Role role;
 	private String passwd;
 
+
+
 	public Person() {	
 	}
 

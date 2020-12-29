@@ -116,6 +116,20 @@ public class FriendRequestHibernate implements FriendRequestDAO {
 		
 		return pSet;
 	}
+	@Override
+	public Set<FriendRequest> getUserFriendsList(Integer id){
+		Session s = hu.getSession();
+		String query = "FROM FriendRequest Where (person1_id= :person_id OR person2_id = :person_id AND request_status_id = 2)";
+		//query.Query
+		Query<FriendRequest> q = s.createQuery(query, FriendRequest.class).setParameter("person_id", id);
+		List<FriendRequest> pList = q.getResultList();
+		Set<FriendRequest> pSet = new HashSet<>();
+		pSet.addAll(pList);
+		s.close();
+		
+		return pSet;
+	}
+
 
 	
 }

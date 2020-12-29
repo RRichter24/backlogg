@@ -65,7 +65,11 @@
         </table>
       </section>
 
-
+      <section>
+        <ul *ngFor = "let friend of friendsList">
+            <li>{{ friend.username }}</li>
+        </ul>
+      </section>
 
 
 </div>
