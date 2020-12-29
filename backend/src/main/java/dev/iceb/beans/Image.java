@@ -11,6 +11,9 @@ import org.hibernate.annotations.Type;
 @Table
 public class Image {
 	
+	// Default Constructor 
+	public Image() {}
+	
 	//Custom Constructor
     public Image(String name, String type, byte[] pic) {
         this.name = name;
@@ -67,6 +70,15 @@ public class Image {
 
 	public void setPostId(Integer postId) {
 		this.postId = postId;
+	}
+
+	
+	public byte[] getPic() {
+		return pic;
+	}
+
+	public void setPic(byte[] pic) {
+		this.pic = pic;
 	}
 
 	@Override

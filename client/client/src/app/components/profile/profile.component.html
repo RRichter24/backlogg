@@ -5,22 +5,8 @@
 />
 <h2>Welcome back {{ loggedInUser.username }}</h2>
 <h4>You currently work for {{ loggedInUser.company }}</h4>
-<h4>
-  Your email is {{ loggedInUser.email }} - great information to submit to an
-  anonymous site
-</h4>
+<h4>Your email is {{ loggedInUser.email }}</h4>
 <hr />
 <app-new-post></app-new-post>
-<ul>
-  <li *ngFor="let post of posts">
-    {{ post.post_text }}
-    <br>
-    <h6>Composed on {{ 
-                        post.post_date.monthValue 
-                        + "/" + post.post_date.dayOfMonth
-                        + "/" + post.post_date.year
-                        + ", " + post.post_date.hour 
-                        + ":" + (post.post_date.minute < 10 ? "0" + post.post_date.minute : post.post_date.minute)
-                        + ":" + (post.post_date.second < 10 ? "0" + post.post_date.second : post.post_date.second) }}</h6>
-  </li>
-</ul>
+
+<app-post *ngFor="let post of posts" [post]="post"> </app-post>
