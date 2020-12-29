@@ -15,6 +15,7 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { CookieService } from 'ngx-cookie-service';
 import { MessageComponent } from './components/message/message.component';
 import { NewsfeedComponent } from './components/newsfeed/newsfeed.component';
+import { FriendRequestComponent } from './components/friend-request/friend-request.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { NewsfeedComponent } from './components/newsfeed/newsfeed.component';
     SignUpComponent,
     MessageComponent,
     NewsfeedComponent,
+    FriendRequestComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [CookieService],
