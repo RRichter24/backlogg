@@ -26,6 +26,8 @@
       {{ post.post_text }}
     </p>
     <hr />
-    <p>[comment container]</p>
+    <app-comment *ngFor="let comment of comments" [comment]="comment">
+    </app-comment>
+    <app-new-comment [post]="post"></app-new-comment>
   </div>
 </div>

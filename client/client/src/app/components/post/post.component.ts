@@ -3,6 +3,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import comment from 'src/app/models/comment';
 import Post from 'src/app/models/post';
 import reaction from 'src/app/models/reaction';
+import { CommentService } from 'src/app/services/comment.service';
 import { ImageService } from 'src/app/services/image.service';
 
 @Component({
@@ -21,11 +22,15 @@ export class PostComponent implements OnInit {
   base64Data: any;
   convertedImage: any;
 
-  constructor(private imageService: ImageService) {}
+  constructor(
+    private imageService: ImageService,
+    private commentService: CommentService
+  ) {}
 
   // Should fetch image, comments, and reactions
   // on init
   ngOnInit(): void {
+    // Fetch image associated with post
     this.imageService.download(this.post.id).subscribe(
       (res) => {
         console.log(res);
@@ -39,5 +44,11 @@ export class PostComponent implements OnInit {
       },
       (err) => console.log('Error Occured duringng saving: ' + err)
     );
+
+    // Fetch comments associated with post
+    this.commentService.getCommentsByPostId(this.post.id).subscribe((res) => {
+      console.log(res);
+      this.comments = res;
+    });
   }
 }

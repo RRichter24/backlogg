@@ -17,6 +17,8 @@ import { MessageComponent } from './components/message/message.component';
 import { NewsfeedComponent } from './components/newsfeed/newsfeed.component';
 import { FriendRequestComponent } from './components/friend-request/friend-request.component';
 import { PostComponent } from './components/post/post.component';
+import { NewCommentComponent } from './components/new-comment/new-comment.component';
+import { CommentComponent } from './components/comment/comment.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,8 @@ import { PostComponent } from './components/post/post.component';
     NewsfeedComponent,
     FriendRequestComponent,
     PostComponent,
+    NewCommentComponent,
+    CommentComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [CookieService],
