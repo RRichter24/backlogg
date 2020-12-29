@@ -13,9 +13,11 @@ import Post from 'src/app/models/post';
 })
 export class ProfileComponent implements OnInit {
 
-  loggedInUser: Person;
+  loggedInUser: Person
   posts: Set<Post>
-  
+  adminPosts: Set<Post>
+  adminList: Boolean = false;
+
   constructor(private personService: PersonService, private postService: PostService, private recentDateService: RecentDateService) { }
 
   ngOnInit(): void { 
@@ -30,6 +32,20 @@ export class ProfileComponent implements OnInit {
           console.log(post);
         }
     });
+
+    if (this.loggedInUser.role.name == "admin") {
+      this.postService.retrieveAllPosts().subscribe(resp => {
+      this.adminPosts = resp;
+      });
+    }
+  }
+
+  showAdminList() {
+    this.adminList = true;
+  }
+
+  hideAdminList() {
+    this.adminList = false;
   }
 
   

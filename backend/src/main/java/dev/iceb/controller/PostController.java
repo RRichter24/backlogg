@@ -86,4 +86,13 @@ public class PostController {
 		return ResponseEntity.ok(usersPosts);
 	}
 	
+	@GetMapping(path="/posts")
+	public ResponseEntity<Set<Post>> getAllPosts(HttpSession session){
+		Set<Post> allPosts = postServ.getPosts();
+		for(Post post: allPosts) {
+			post.getPost_date();
+		}
+		
+		return ResponseEntity.ok(allPosts);
+	}
 }
