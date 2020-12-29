@@ -16,6 +16,7 @@
 		
 		<!-- tell hibernate where to find our mappings -->
 		<mapping class="dev.iceb.beans.Comment"></mapping>
+		<mapping class="dev.iceb.beans.Image"></mapping>
 		<mapping class="dev.iceb.beans.Person"></mapping>
 		<mapping class="dev.iceb.beans.Message"></mapping>
 		<mapping class="dev.iceb.beans.Post"></mapping>

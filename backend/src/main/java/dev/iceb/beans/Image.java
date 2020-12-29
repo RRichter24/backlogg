@@ -111,7 +111,12 @@ public class Image {
 
 	@Override
 	public String toString() {
-		return "Image [id=" + id + ", name=" + name + ", type=" + type + "]";
+		return "Image [id=" + id + ", name=" + name + ", type=" + type + ", postId=" + postId + ", size="
+				+ pic.length + "]";
 	}
+	
+	
+	
+	
 
 }

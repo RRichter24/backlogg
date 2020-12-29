@@ -22,8 +22,10 @@ public class ImageHibernate implements ImageDAO {
 			s.save(t);
 			tx.commit();
 		} catch (Exception e) {
-			if (tx != null)
+			if (tx != null) {
 				tx.rollback();
+				throw e; 
+			}
 		} finally {
 			s.close();
 		}
