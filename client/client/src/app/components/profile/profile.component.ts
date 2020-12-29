@@ -1,8 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
-import Person from 'src/app/models/person';
 import { PersonService } from 'src/app/services/person.service';
-import Post from 'src/app/models/post';
 import { PostService } from 'src/app/services/post.service';
+import { RecentDateService } from 'src/app/services/recent-date.service';
+
+import Person from 'src/app/models/person';
+import Post from 'src/app/models/post';
 
 @Component({
   selector: 'app-profile',
