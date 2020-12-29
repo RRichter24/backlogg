@@ -54,9 +54,10 @@ public class PersonController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<Void> registerPerson(HttpSession session, @RequestBody Person person) {
+	public ResponseEntity<Person> registerPerson(HttpSession session, @RequestBody Person person) {
+		System.out.println("The Deadly Six: Zazz, Zomom, Zavik, Zor, etc, etc");
 		personServ.add(person);
-		return ResponseEntity.ok().build();
+		return ResponseEntity.ok(person);
 	}
 	
 	

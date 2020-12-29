@@ -11,6 +11,7 @@ import { ErrorhandlingService } from './errorhandling.service';
 })
 export class PostService {
   private postsUrl: string;
+  private multiplePostsUrl: string;
 
   constructor(
     private http: HttpClient,
@@ -18,6 +19,7 @@ export class PostService {
     private errorhandlingService: ErrorhandlingService
   ) {
     this.postsUrl = this.urlService.getUrl() + 'post';
+    this.multiplePostsUrl = this.urlService.getUrl() + 'posts';
   }
 
   submitNewPost(posttext: string, posterId: number): Observable<Post> {
@@ -33,4 +35,11 @@ export class PostService {
         catchError(this.errorhandlingService.handleError)
       );
   }
+
+  retrieveUsersPosts(userId: number): Observable<Set<Post>> {
+    return this.http.get(this.multiplePostsUrl + "/user/" + userId, {withCredentials: true}).pipe(
+      map(resp => resp as Set<Post>)
+    );
+  }
+  
 }

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { SignUpService } from '../../services/signup.service';
 import Person from '../../models/person';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-sign-up',
@@ -15,7 +17,8 @@ export class SignUpComponent implements OnInit {
   company: string;
   email: string;
 
-  constructor(private signUpService: SignUpService) { 
+
+  constructor(private signUpService: SignUpService, private router: Router) { 
     this.username = '';
     this.password = '';
     this.passwordCheck = '';
@@ -43,12 +46,21 @@ export class SignUpComponent implements OnInit {
       role: {
         id: 1,
         name: "user"
-      }
+      }  
     }
 
     if (this.password === this.passwordCheck){
       this.signUpService.registerAUser(newPerson).subscribe(resp => {
         console.log(resp);
+
+        if (resp instanceof Person){
+          let loggedInUser: Person = resp as Person;
+          sessionStorage.setItem("loggedInUser", JSON.stringify(loggedInUser));
+          this.router.navigate(['/profile']);
+        }
+        else{
+          alert("Something went wrong and your account was not registered");
+        }
       });
     }
   }

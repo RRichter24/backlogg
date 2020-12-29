@@ -13,6 +13,7 @@ import { ErrorhandlingService } from './errorhandling.service';
 })
 export class SignUpService {
   baseUrl: string;
+  private allowOriginsHeaders = new HttpHeaders({'Access-Control-Allow-Origin': '*'});
 
   constructor(
     private http: HttpClient,
