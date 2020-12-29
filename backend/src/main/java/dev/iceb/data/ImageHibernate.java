@@ -78,7 +78,10 @@ public class ImageHibernate implements ImageDAO {
 			String hql = "FROM Image WHERE post_id = :post_id";
 			Query<Image> q = s.createQuery(hql, Image.class);
 			q.setParameter("post_id", pid);
-			img = q.getResultList().get(0); 
+			if (q.list().size() != 0) {
+				img = q.getResultList().get(0); 
+			}
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw e; 
