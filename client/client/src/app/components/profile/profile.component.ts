@@ -22,9 +22,14 @@ export class ProfileComponent implements OnInit {
     console.log("in [ProfileComponent]");
     console.log(this.loggedInUser);
     
-    this.postService.retrieveUsersPosts(this.loggedInUser.id).subscribe(
-      
-    );
+    this.postService.retrieveUsersPosts(this.loggedInUser.id).subscribe(resp =>{
+        this.posts = resp;
+        
+
+        for (let post of this.posts){
+          console.log(post);
+        }
+    });
   }
 
 }

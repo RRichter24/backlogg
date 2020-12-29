@@ -79,6 +79,9 @@ public class PostController {
 	@GetMapping(path="/posts/user/{userId}")
 	public ResponseEntity<Set<Post>> retrieveUsersPosts(HttpSession session, @PathVariable("userId") Integer userId){
 		Set<Post> usersPosts = postServ.getPostsByUserId(userId);
+		for(Post post: usersPosts) {
+			post.getPost_date();
+		}
 		
 		return ResponseEntity.ok(usersPosts);
 	}
