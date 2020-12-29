@@ -33,4 +33,15 @@ export class ImageService {
         catchError(this.errorhandlingService.handleError)
       );
   }
+
+  download(postid: number): Observable<any> {
+    return this.http
+      .get(`http://localhost:8080/backend/images/postid/${postid}`, {
+        withCredentials: true,
+      })
+      .pipe(
+        map((resp) => resp as any),
+        catchError(this.errorhandlingService.handleError)
+      );
+  }
 }
