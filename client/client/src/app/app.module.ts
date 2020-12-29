@@ -26,15 +26,10 @@ import { NewsfeedComponent } from './components/newsfeed/newsfeed.component';
     ProfileComponent,
     SignUpComponent,
     MessageComponent,
-    NewsfeedComponent
+    NewsfeedComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    HttpClientModule
-  ],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [CookieService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

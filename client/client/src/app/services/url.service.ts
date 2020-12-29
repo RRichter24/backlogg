@@ -1,14 +1,12 @@
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UrlService {
-
-  constructor() { }
+  constructor() {}
 
   getUrl(): string {
     return 'http://localhost:8080/backend/';
   }
-
 }
