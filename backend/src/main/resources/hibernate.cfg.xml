@@ -22,5 +22,7 @@
 		<mapping class="dev.iceb.beans.Post"></mapping>
 		<mapping class="dev.iceb.beans.Reaction"></mapping>
 		<mapping class="dev.iceb.beans.Role"></mapping>
+		<mapping class="dev.iceb.beans.FriendRequest"></mapping>
+		<mapping class="dev.iceb.beans.RequestStatus"></mapping>
 	</session-factory>
 </hibernate-configuration>

@@ -1,1 +1,49 @@
-<p>friend-request works!</p>
+<div *ngIf = "loggedInUser; else elseBlock">
+    <section>
+        <table class="table table-striped table-dark">
+          <thead>
+            <tr>
+              <th scope="col">Message ID</th>
+              <th scope="col">Sender</th>
+              <th scope="col">Recipient</th>
+              <th scope="col">Messages</th>
+              <th scope="col">Date Sent</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let request of pendingRequests">
+              <th scope="row" [ {{ request.id }} ] = "friendRequest">{{ request.id }}</th>
+              <td>{{ request.person1_id }}</td>
+              <td>{{ request.person2_id }}</td>
+              <td>{{ request.request_status.name }}</td>
+              <td>
+                <button type="button" class="btn btn-success" (click)="acceptRequest()">Accept</button>
+              </td>
+              <td>
+                <button type="button" class="btn btn-danger"(click)= "rejectRequest()">Reject</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+          <label for="friendSearch">User Search</label>
+          <input name="friendSearch" type="text" placeholder="Enter Username" [(ngModel)]="username">
+          <button type="button" class="btn btn-primary" (click)="getPersonByUsername()">
+            Search
+          </button>
+      </section>
+      <div *ngIf="searchedPerson">
+        
+        <button type="button" class="btn btn-primary" (click)="sendRequest()">
+            Send Friend Request 
+        </button>
+
+      </div>
+
+
+
+
+</div>
+<ng-template #elseBlock> You are Not logged in.</ng-template>
