@@ -59,8 +59,8 @@ public class MessageController {
 	
 	@PostMapping
 	public ResponseEntity<Message> addMessage(
-			HttpSession session, @RequestBody Message Message){
-		Message m = messageServ.addMessage(Message);
+			HttpSession session, @RequestBody Message message){
+		Message m = messageServ.addMessage(message);
 		
 		if (m != null) {
 			return ResponseEntity.ok(m);
@@ -71,8 +71,8 @@ public class MessageController {
 	
 	@PutMapping(path="/{id}")
 	public ResponseEntity<Void> updateMessage(
-			HttpSession session, @RequestBody Message Message){
-		messageServ.updateMessage(Message);
+			HttpSession session, @RequestBody Message message){
+		messageServ.updateMessage(message);
 		return ResponseEntity.ok().build();
 	}//end update
 }//end class

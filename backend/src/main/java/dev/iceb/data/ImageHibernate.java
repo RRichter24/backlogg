@@ -9,7 +9,6 @@ import org.springframework.stereotype.Repository;
 
 import dev.iceb.beans.Image;
 import dev.iceb.utils.HibernateUtil;
-
 @Repository
 public class ImageHibernate implements ImageDAO {
 	private HibernateUtil hu = HibernateUtil.getHibernateUtil();

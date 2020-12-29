@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 
 import dev.iceb.beans.Image;
 import dev.iceb.data.ImageDAO;
-
 @Service
 public class ImageServiceImpl implements ImageService {
 	
