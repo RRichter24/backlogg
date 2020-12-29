@@ -41,5 +41,11 @@ export class PostService {
       map(resp => resp as Set<Post>)
     );
   }
+
+  retrieveAllPosts(): Observable<Set<Post>> {
+    return this.http.get(this.multiplePostsUrl, {withCredentials: true}).pipe(
+      map(resp => resp as Set<Post>)
+    );
+  }
   
 }
