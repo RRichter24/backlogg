@@ -110,4 +110,10 @@ public class PersonHibernate implements PersonDAO {
 			return p;
 			
 	}//end getbyusername
+
+//	@Override
+//	public void addFriend(Integer person1_id, Integer person2_id) {
+//		// TODO Auto-generated method stub
+//		
+//	}
 }

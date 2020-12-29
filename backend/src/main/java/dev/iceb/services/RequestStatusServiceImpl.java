@@ -2,6 +2,7 @@ package dev.iceb.services;
 
 import java.util.Set;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import dev.iceb.beans.RequestStatus;
@@ -12,6 +13,12 @@ import dev.iceb.data.RequestStatusDAO;
 public class RequestStatusServiceImpl implements RequestStatusService {
 	
 	private RequestStatusDAO rsDao;
+	
+	@Autowired
+	public RequestStatusServiceImpl(RequestStatusDAO rs) {
+		rsDao = rs;
+	}
+	
 	
 	@Override
 	public RequestStatus addRequestStatus(RequestStatus f) {

@@ -36,7 +36,13 @@ public class PersonServiceImpl implements PersonService {
 		personDAO.update(p);
 		return p;
 	}
-	
+
+//	@Override
+//	public void friendAccept(Integer person1_id, Integer person2_id) {
+//		personDAO.addFriend(person1_id, person2_id);
+//		
+//	}
+//	
 	
 	
 	

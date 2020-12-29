@@ -106,9 +106,9 @@ public class FriendRequestHibernate implements FriendRequestDAO {
 	@Override
 	public Set<FriendRequest> getReceivedRequests(Integer id) {
 		Session s = hu.getSession();
-		String query = "FROM FriendRequest Where (person2_id = :person2_id AND request_status_id = 1)";
+		String query = "FROM FriendRequest Where person2_id = :person2_id and request_status_id = 1";
 		//query.Query
-		Query<FriendRequest> q = s.createQuery(query, FriendRequest.class).setParameter("person1_id", id);
+		Query<FriendRequest> q = s.createQuery(query, FriendRequest.class).setParameter("person2_id", id);
 		List<FriendRequest> pList = q.getResultList();
 		Set<FriendRequest> pSet = new HashSet<>();
 		pSet.addAll(pList);
