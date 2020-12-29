@@ -9,29 +9,29 @@ import Post from 'src/app/models/post';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css']
+  styleUrls: ['./profile.component.css'],
 })
 export class ProfileComponent implements OnInit {
-
   loggedInUser: Person;
-  posts: Set<Post>
-  
-  constructor(private personService: PersonService, private postService: PostService, private recentDateService: RecentDateService) { }
+  posts: Set<Post>;
 
-  ngOnInit(): void { 
+  constructor(
+    private personService: PersonService,
+    private postService: PostService
+  ) {}
 
-    this.loggedInUser = JSON.parse( sessionStorage.getItem("loggedInUser") ); 
-    console.log("in [ProfileComponent]");
+  ngOnInit(): void {
+    this.loggedInUser = JSON.parse(sessionStorage.getItem('loggedInUser'));
+    console.log('in [ProfileComponent]');
     console.log(this.loggedInUser);
-    
-    this.postService.retrieveUsersPosts(this.loggedInUser.id).subscribe(resp =>{
-        this.posts = this.recentDateService.sortDatesByMostRecentToLeastRecent(resp);
-        for (let post of this.posts){
+
+    this.postService
+      .retrieveUsersPosts(this.loggedInUser.id)
+      .subscribe((resp) => {
+        this.posts = resp;
+        for (let post of this.posts) {
           console.log(post);
         }
-    });
+      });
   }
-
-  
-
 }

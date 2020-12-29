@@ -49,6 +49,7 @@ public class ImageController {
 		Image img = imgServ.getByPostId(postId);
 		
 		if (img != null) {
+			System.out.println(img.toString()); 
 			return ResponseEntity.ok(img);
 		} else {
 			return ResponseEntity.notFound().build();
