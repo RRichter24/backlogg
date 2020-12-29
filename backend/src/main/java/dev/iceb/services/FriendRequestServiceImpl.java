@@ -2,6 +2,7 @@ package dev.iceb.services;
 
 import java.util.Set;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import dev.iceb.beans.FriendRequest;
@@ -11,6 +12,12 @@ import dev.iceb.data.FriendRequestDAO;
 public class FriendRequestServiceImpl implements FriendRequestService {
 	
 	private FriendRequestDAO frDao;
+	
+	@Autowired
+	public FriendRequestServiceImpl(FriendRequestDAO fr) {
+		frDao = fr;
+	}
+	
 	
 	@Override
 	public FriendRequest addFriendRequest(FriendRequest f) {

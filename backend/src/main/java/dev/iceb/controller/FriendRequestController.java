@@ -18,7 +18,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import dev.iceb.beans.FriendRequest;
 import dev.iceb.beans.Message;
+import dev.iceb.beans.Person;
+import dev.iceb.beans.RequestStatus;
 import dev.iceb.services.FriendRequestService;
+import dev.iceb.services.PersonService;
 import dev.iceb.services.RequestStatusService;
 
 @RestController
@@ -28,11 +31,13 @@ public class FriendRequestController {
 	
 	private FriendRequestService frServ;
 	private RequestStatusService rsServ;
+	private PersonService personServ;
 	
 	@Autowired
-	public FriendRequestController(FriendRequestService fr, RequestStatusService rs) {
+	public FriendRequestController(FriendRequestService fr, RequestStatusService rs, PersonService p) {
 		frServ = fr;
 		rsServ = rs;
+		personServ = p;
 	}
 	
 	@GetMapping(path="/{id}")
@@ -62,15 +67,28 @@ public class FriendRequestController {
 	
 	@PutMapping(path = "/{id}")
 	public ResponseEntity<Void> updateFriendRequest(
-			HttpSession session, @RequestBody FriendRequest friendRequest){
-		frServ.updateFriendRequest(friendRequest);
+			HttpSession session, @PathVariable("id")Integer id){
+		FriendRequest fr = frServ.getFriendRequestById(id);
+		RequestStatus rs = new RequestStatus();
+		rs.setId(2);
+		rs.setName(rsServ.getRequestStatusById(2).getName());
+		fr.setRequest_status(rs);
+//		personServ.friendAccept(fr.getPerson1_id(), fr.getPerson2_id());
+		frServ.updateFriendRequest(fr);
+		Person p = personServ.getById(fr.getPerson1_id());
+		Person p2 = personServ.getById(fr.getPerson2_id());
+		p.getFriends().add(p2);
+		p2.getFriends().add(p);
+		personServ.update(p);
+		personServ.update(p2);
 		return ResponseEntity.ok().build();
 	}//end update
 	
 	@DeleteMapping(path = "/{id}")
 	public ResponseEntity<Void> deleteFriendRequest(
-			HttpSession session, @RequestBody FriendRequest friendRequest){
-		frServ.deleteFriendRequest(friendRequest);
+			HttpSession session, @PathVariable("id")Integer id){
+		FriendRequest fr = frServ.getFriendRequestById(id);
+		frServ.deleteFriendRequest(fr);
 		return ResponseEntity.ok().build();
 	}
 	
