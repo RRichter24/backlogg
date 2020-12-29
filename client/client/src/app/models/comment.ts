@@ -1,10 +1,14 @@
-import  Person  from "./person";
-import  Post  from "./post";
-
 export default class Comment {
     id : number;
     content: string;
     person_id: number;
     post_id: number;
-    date: Date | object;
+    date: {
+        year: number,
+        monthValue: number,
+        dayOfMonth: number,
+        hour: number,
+        minute: number,
+        second: number
+    };
 }

@@ -33,6 +33,7 @@ export class FriendRequestComponent implements OnInit {
     this.frientRequestService.getReceivedRequestsByPersonId(this.loggedInUser.id).subscribe(
       resp=> {this.userFriendRequests = resp;
         for(let request of this.userFriendRequests){
+          console.log(request);
           if(request.request_status.id == 1){
             this.pendingRequests.add(request
             
