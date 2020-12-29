@@ -29,56 +29,33 @@ public class Person {
 	@JoinColumn(name = "role_id")
 	private Role role;
 	private String passwd;
-	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(name = "person_person",
-		joinColumns = @JoinColumn(name = "person1_id"),
-		inverseJoinColumns = @JoinColumn(name="person2_id"))
-	private Set<Person> friends;
-	
-	
-	public Set<Person> getFriends() {
-		return friends;
-	}
-
-
-	public void setFriends(Set<Person> friends) {
-		this.friends = friends;
-	}
-
 
 	public Person() {	
 	}
-
 
 	public Integer getId() {
 		return id;
 	}
 
-
 	public void setId(Integer id) {
 		this.id = id;
 	}
-
 
 	public String getUsername() {
 		return username;
 	}
 
-
 	public void setUsername(String username) {
 		this.username = username;
 	}
-
 
 	public String getEmail() {
 		return email;
 	}
 
-
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
 
 	public String getCompany() {
 		return company;
