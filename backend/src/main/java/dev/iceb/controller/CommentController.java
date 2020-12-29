@@ -41,6 +41,18 @@ public class CommentController {
 		return ResponseEntity.notFound().build();
 	}
 	
+	@GetMapping(path="comment/postid/{postid}")
+	public ResponseEntity<Set<Comment>> getCommentsByPostId(@PathVariable("postid") Integer pid){
+		
+		try {
+			Set<Comment> comments = commentServ.getByPostId(pid); 
+			return ResponseEntity.ok(comments); 
+		} catch (Exception e) {
+			System.out.println(e);
+			return ResponseEntity.badRequest().build(); 
+		}
+	}
+	
 	@PostMapping(path="comment")
 	public ResponseEntity<Comment> addComment(HttpSession session, @RequestBody Comment comment){
 		Comment returnedComment = commentServ.addComment(comment);

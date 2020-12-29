@@ -59,4 +59,9 @@ public class CommentServiceImpl implements CommentService {
 	public void deleteComment(Comment c) {
 		commentDAO.delete(c);
 	}
+
+	@Override
+	public Set<Comment> getByPostId(Integer pid) {
+		return commentDAO.getByPostId(pid);
+	}
 }

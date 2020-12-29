@@ -21,5 +21,7 @@ public interface CommentService {
 	
 	//delete methods
 	public void deleteComment(Comment c);
+
+	public Set<Comment> getByPostId(Integer pid);
 	
 }

@@ -10,6 +10,7 @@ import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 
 import dev.iceb.beans.Comment;
+import dev.iceb.beans.Image;
 import dev.iceb.utils.HibernateUtil;
 
 @Repository
@@ -89,6 +90,23 @@ public class CommentHibernate implements CommentDAO {
 		}finally { //end catch
 			s.close();
 		}//end finally		
+	}
+
+	@Override
+	public Set<Comment> getByPostId(Integer pid) {
+		try (Session s = hu.getSession()) {
+			s.beginTransaction();
+			String hql = "FROM Comment WHERE post_id = :post_id";
+			Query<Comment> q = s.createQuery(hql, Comment.class);
+			q.setParameter("post_id", pid);
+			List<Comment> pList = q.getResultList();
+			Set<Comment> pSet = new HashSet<>();
+			pSet.addAll(pList); 
+			return pSet; 
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e; 
+		} 
 	}
 
 
