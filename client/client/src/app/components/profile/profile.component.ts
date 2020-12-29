@@ -1,8 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
-import  Person  from 'src/app/models/person';
 import { PersonService } from 'src/app/services/person.service';
-import Post from 'src/app/models/post';
 import { PostService } from 'src/app/services/post.service';
+import { RecentDateService } from 'src/app/services/recent-date.service';
+
+import Person from 'src/app/models/person';
+import Post from 'src/app/models/post';
 
 @Component({
   selector: 'app-profile',
@@ -14,7 +16,7 @@ export class ProfileComponent implements OnInit {
   loggedInUser: Person;
   posts: Set<Post>
   
-  constructor(private personService: PersonService, private postService: PostService) { }
+  constructor(private personService: PersonService, private postService: PostService, private recentDateService: RecentDateService) { }
 
   ngOnInit(): void { 
 
@@ -23,13 +25,13 @@ export class ProfileComponent implements OnInit {
     console.log(this.loggedInUser);
     
     this.postService.retrieveUsersPosts(this.loggedInUser.id).subscribe(resp =>{
-        this.posts = resp;
-        
-
+        this.posts = this.recentDateService.sortDatesByMostRecentToLeastRecent(resp);
         for (let post of this.posts){
           console.log(post);
         }
     });
   }
+
+  
 
 }
