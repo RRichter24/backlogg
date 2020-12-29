@@ -6,9 +6,11 @@ export default class Message {
     sender_id: number;
     receiver_id: number;
     message_date: {
+        year: number,
         monthValue: number,
         dayOfMonth: number,
         hour: number,
-        minute: number
+        minute: number,
+        second: number
     };
 }
