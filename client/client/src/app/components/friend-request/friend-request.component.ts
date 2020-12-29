@@ -14,7 +14,7 @@ export class FriendRequestComponent implements OnInit {
   userFriendRequests: Set<FriendRequest>;
   username: string;
   searchedPerson: Person;
-  
+  friendsList: Set<Person>;
   pendingRequests: Set<FriendRequest>;
   sentRequests: Set<FriendRequest>;
   
@@ -40,7 +40,13 @@ export class FriendRequestComponent implements OnInit {
       resp => {
         this.sentRequests = resp;
       }
-    )
+    );
+
+    this.frientRequestService.getPersonFriendList(this.loggedInUser.id).subscribe(
+      resp=>{
+        this.friendsList = resp;
+      }
+    );
   }//end ngOnInit
 
   getSenderUsername(id: number){

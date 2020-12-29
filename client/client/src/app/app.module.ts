@@ -18,6 +18,7 @@ import { NewsfeedComponent } from './components/newsfeed/newsfeed.component';
 import { FriendRequestComponent } from './components/friend-request/friend-request.component';
 import { PostComponent } from './components/post/post.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,

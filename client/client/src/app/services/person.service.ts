@@ -82,4 +82,5 @@ export class PersonService {
       .get(this.usersUrl + '/' + id, { withCredentials: true })
       .pipe(map((resp) => resp as Person));
   }
+
 }
