@@ -19,11 +19,15 @@ export class ImageService {
     this.postsUrl = this.urlService.getUrl() + 'images';
   }
 
-  upload(image: FormData): Observable<any> {
+  upload(image: FormData, postid: number): Observable<any> {
     return this.http
-      .post('http://localhost:8080/backend/images/upload/postid/0', image, {
-        withCredentials: true,
-      })
+      .post(
+        `http://localhost:8080/backend/images/upload/postid/${postid}`,
+        image,
+        {
+          withCredentials: true,
+        }
+      )
       .pipe(
         map((resp) => resp as any),
         catchError(this.errorhandlingService.handleError)

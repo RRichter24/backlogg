@@ -51,19 +51,21 @@ export class NewPostComponent implements OnInit {
       .submitNewPost(this.text, this.loggedInUser.id)
       .subscribe((resp) => {
         console.log(resp);
-      });
 
-    if (this.imgURL !== '') {
-      this.uploadImage();
-    }
+        // We only upload an image associated with a post
+        // if the post itself posted successfully
+        if (this.imgURL !== '') {
+          this.uploadImage(resp.id);
+        }
+      });
   }
 
   // This part is for uploading
-  uploadImage() {
+  uploadImage(postid: number) {
     const uploadData = new FormData();
     uploadData.append('myFile', this.selectedFile, this.selectedFile.name);
 
-    this.imageService.upload(uploadData).subscribe(
+    this.imageService.upload(uploadData, postid).subscribe(
       (res) => {
         console.log(res);
         this.receivedImageData = res;
