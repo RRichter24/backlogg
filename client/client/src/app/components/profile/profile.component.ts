@@ -2,7 +2,6 @@ import { Component, Input, OnInit } from '@angular/core';
 import { PersonService } from 'src/app/services/person.service';
 import { PostService } from 'src/app/services/post.service';
 import { RecentDateService } from 'src/app/services/recent-date.service';
-import { SignoutService } from 'src/app/services/signout.service';
 
 import Person from 'src/app/models/person';
 import Post from 'src/app/models/post';
@@ -64,6 +63,6 @@ export class ProfileComponent implements OnInit {
   }
 
   logout(){
-    this.signoutService.logout();
+    this.personService.logoutUser();
   }
 }
