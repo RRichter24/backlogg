@@ -16,9 +16,6 @@ export class MessageComponent implements OnInit {
   username: string;
   recid: number;
   userMessages: Set<Message>;
-  reply = false;
-  verify = false;
-  aName: string;
 
   constructor(private personService: PersonService, private messageService: MessageService) { }
 
@@ -34,44 +31,11 @@ export class MessageComponent implements OnInit {
   }
 
   getReceiverByUsername(){
-    this.personService.getPersonByUsername(this.username).subscribe(
-      resp =>{
-          this.receiver = resp;
-          if(this.receiver.id <=0){
-            console.log("that user doesn't exist");
-            document.location.reload();
-          }else{
-            this.verify = true;
-          }
-      }
-    );
+    this.personService.getPersonByUsername(this.username).subscribe();
   }
-
-  // getPersonById(id: number){
-  //   this.personService.getPersonById(id).subscribe(
-  //     resp =>{
-  //       this.aName = resp.username
-  //     });
-      
-  // }
 
   sendMessage(){
-    this.messageService.createNewMessage(this.text, this.loggedInUser.id, this.receiver.id).subscribe();
-    this.text = '';
-    this.username = '';
-    document.location.reload();
-  }
-
-  replyMessage(id:number){
-    console.log(id);
-    // this.messageService.createNewMessage(this.text, this.loggedInUser.id, id).subscribe();
-    // this.text = '';
-    // this.username = '';
-    // document.location.reload();
-  }
-
-  displayReply(){
-    this.reply = true;
+    this.messageService.createNewMessage(this.text, this.loggedInUser.id, this.recid).subscribe();
   }
 
 }
