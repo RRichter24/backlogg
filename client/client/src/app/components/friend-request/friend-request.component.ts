@@ -17,13 +17,6 @@ export class FriendRequestComponent implements OnInit {
   friendsList: Set<Person>;
   pendingRequests: Set<FriendRequest>;
   sentRequests: Set<FriendRequest>;
-  
-  // Set<{  //   tried to build my own set for science so that I could get usernames but I havent worked it out yet
-  //   id: number;
-  //   sender: Person;
-  //   recipient: Person;
-  //   status: string;
-  // }>;
   recipient_id: number;
 
   friendRequest: number;
