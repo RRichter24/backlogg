@@ -31,7 +31,7 @@ public class PostController {
 	public PostController(PostService p) {
 		postServ = p;
 	}
-	//This method is redundant and in the CommentController.  Delete?
+	
 	@GetMapping(path="/post/{postId}/comments/")
 	public ResponseEntity<Set<Comment>> getCommentsByPostId(HttpSession session, @PathVariable("postId") Integer postId){
 		Set<Comment> commentsOfPost = postServ.getCommentsByPostId(postId);
