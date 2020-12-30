@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import Person from 'src/app/models/person';
 import { SessionStorageWrapperService } from 'src/app/services/session-storage-wrapper.service';
 
 @Component({
@@ -7,7 +8,18 @@ import { SessionStorageWrapperService } from 'src/app/services/session-storage-w
   styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent implements OnInit {
-  constructor(sessionStorageWrapperService: SessionStorageWrapperService) {}
+  isUserLoggedIn: boolean;
+  constructor(
+    private sessionStorageWrapperService: SessionStorageWrapperService
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.sessionStorageWrapperService.changeEmitted$.subscribe((person) => {
+      if (person) {
+        this.isUserLoggedIn = true;
+      } else {
+        this.isUserLoggedIn = false;
+      }
+    });
+  }
 }

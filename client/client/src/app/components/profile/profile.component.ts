@@ -5,6 +5,7 @@ import { RecentDateService } from 'src/app/services/recent-date.service';
 
 import Person from 'src/app/models/person';
 import Post from 'src/app/models/post';
+import { SessionStorageWrapperService } from 'src/app/services/session-storage-wrapper.service';
 
 @Component({
   selector: 'app-profile',
@@ -12,16 +13,20 @@ import Post from 'src/app/models/post';
   styleUrls: ['./profile.component.css'],
 })
 export class ProfileComponent implements OnInit {
-  loggedInUser: Person
-  posts: Set<Post>
-  adminPosts: Set<Post>
+  loggedInUser: Person;
+  posts: Set<Post>;
+  adminPosts: Set<Post>;
   adminList: Boolean = false;
 
-  constructor(private personService: PersonService, private postService: PostService, private recentDateService: RecentDateService) { }
-
+  constructor(
+    private personService: PersonService,
+    private postService: PostService,
+    private recentDateService: RecentDateService,
+    private sessionStorageWrapperService: SessionStorageWrapperService
+  ) {}
 
   ngOnInit(): void {
-    this.loggedInUser = JSON.parse(sessionStorage.getItem('loggedInUser'));
+    this.loggedInUser = this.sessionStorageWrapperService.getLoggedUser();
     console.log('in [ProfileComponent]');
     console.log(this.loggedInUser);
 
@@ -32,11 +37,11 @@ export class ProfileComponent implements OnInit {
         for (let post of this.posts) {
           console.log(post);
         }
-});
+      });
 
-    if (this.loggedInUser.role.name == "admin") {
-      this.postService.retrieveAllPosts().subscribe(resp => {
-      this.adminPosts = resp;
+    if (this.loggedInUser.role.name == 'admin') {
+      this.postService.retrieveAllPosts().subscribe((resp) => {
+        this.adminPosts = resp;
       });
     }
   }
