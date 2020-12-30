@@ -1,9 +1,24 @@
-<div id="post-card" class="card">
-  <div class="card-body">
-    <hr />
-    <p>
-      <!-- {{ comment.content }} -->
-    </p>
-    <hr />
-  </div>
+<div class="comment-div">
+  <h6>
+    {{
+      comment.date.monthValue +
+        " " +
+        comment.date.dayOfMonth +
+        " " +
+        comment.date.year +
+        ", " +
+        comment.date.hour +
+        ":" +
+        (comment.date.minute < 10
+          ? "0" + comment.date.minute
+          : comment.date.minute) +
+        ":" +
+        (comment.date.second < 10
+          ? "0" + comment.date.second
+          : comment.date.second)
+    }}
+  </h6>
+  <p>
+    {{ comment.content }}
+  </p>
 </div>
