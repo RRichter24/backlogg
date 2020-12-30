@@ -1,0 +1,10 @@
+#profile-pic {
+    margin: 8px;
+    border-radius: 50%;
+    height: 100px;
+    width: 100px;
+  }
+  
+#profile-pic:hover {
+  transform: scale(1.2);
+}

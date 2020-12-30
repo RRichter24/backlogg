@@ -7,6 +7,6 @@ export class UrlService {
   constructor() {}
 
   getUrl(): string {
-    return 'http://localhost:8082/backend/';
+    return 'http://localhost:8080/backend/';
   }
 }

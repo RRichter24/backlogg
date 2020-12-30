@@ -34,7 +34,7 @@
       <li class="nav-item">
         <a class="nav-link" routerLink="/request" routerLinkActive="active" id="potential-user" name="wantedUsername" [(ngModel)]="wantedUsername">
           FRIEND REQUESTS
-        </as>
+        </a>
       </li>
 
       <li class="nav-item">
@@ -60,10 +60,10 @@
     </ng-template>
 
     <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" />
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)="lookUpPerson()"> 
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" name="wantedUsername" [(ngModel)]="wantedUsername" (change)="attemptToFetchUser()"/>
+      <a [routerLink]="['/profile', wantedUserId]" class="btn btn-outline-success my-2 my-sm-0" type="submit"> 
         Search
-      </button>
+      </a>
     </form>
   </div>
 </nav>
