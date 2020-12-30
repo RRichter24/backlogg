@@ -5,6 +5,7 @@ import Post from 'src/app/models/post';
 import reaction from 'src/app/models/reaction';
 import { CommentService } from 'src/app/services/comment.service';
 import { ImageService } from 'src/app/services/image.service';
+import { ReactionService } from 'src/app/services/reaction.service';
 import { SessionStorageWrapperService } from 'src/app/services/session-storage-wrapper.service';
 
 @Component({
@@ -19,6 +20,8 @@ export class PostComponent implements OnInit {
   comments: Set<comment>;
   reactions: Set<reaction>;
 
+  spicyRxns: number = 0;
+
   receivedImageData: any;
   base64Data: any;
   convertedImage: any;
@@ -26,7 +29,8 @@ export class PostComponent implements OnInit {
   constructor(
     private imageService: ImageService,
     private commentService: CommentService,
-    private sessionStorageWrapperService: SessionStorageWrapperService
+    private sessionStorageWrapperService: SessionStorageWrapperService,
+    private reactionService: ReactionService
   ) {}
 
   // Should fetch image, comments, and reactions
@@ -65,5 +69,10 @@ export class PostComponent implements OnInit {
     spicyReact.reaction_type_id = 1; // Assuming spicy_reaction_type.id = 1
     spicyReact.post_id = this.post.id;
     spicyReact.person_id = this.sessionStorageWrapperService.getLoggedUser().id;
+
+    this.reactionService.submitReaction(spicyReact).subscribe((resp) => {
+      console.log(resp);
+      this.spicyRxns++;
+    });
   }
 }

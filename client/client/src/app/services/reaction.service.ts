@@ -17,7 +17,7 @@ export class ReactionService {
     private urlService: UrlService,
     private errorhandlingService: ErrorhandlingService
   ) {
-    this.baseUrl = this.urlService.getUrl() + '/reactions';
+    this.baseUrl = this.urlService.getUrl() + '/reaction';
   }
 
   submitReaction(reaction: Reaction): Observable<Reaction> {

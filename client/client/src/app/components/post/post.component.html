@@ -32,7 +32,7 @@
       src="../../../../spicyReactionIcon.png"
       (click)="spicyReact()"
     />
-    <p class="spicy-reaction-count">3</p>
+    <p class="spicy-reaction-count">{{ spicyRxns }}</p>
     <hr />
     <app-comment *ngFor="let comment of comments" [comment]="comment">
     </app-comment>
