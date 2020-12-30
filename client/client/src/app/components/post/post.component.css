@@ -9,8 +9,29 @@ img {
   width: 40%;
 }
 #post-card:hover {
-  transform: scale(1.1);
+  transform: scale(1.01);
 }
+
+.spicy-icon {
+  background-image: url("../../../../spicyReactionIcon.png");
+  display: inline-block;
+  height: 40px;
+  width: 40px;
+}
+
+.spicy-reaction-count {
+  color: red;
+  display: inline-block;
+  font-weight: bold;
+  font-size: larger;
+  margin-left: 4px;
+  margin-right: 4px;
+}
+
+.spicy-icon:hover {
+  transform: scale(1.2);
+}
+
 textarea {
   border-style: none;
   resize: none;

@@ -1,5 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">BACKLOGG</a>
+  <a class="navbar-brand" routerLink="/" routerLinkActive="active"
+    ><span>BACKLOGG</span></a
+  >
   <button
     class="navbar-toggler"
     type="button"
@@ -13,42 +15,50 @@
   </button>
 
   <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-      <li class="nav-item active">
-        <a class="nav-link" routerLink="/" routerLinkActive="active"
-          >Home <span class="sr-only">(current)</span></a
-        >
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/login" routerLinkActive="active">
-          LOG IN
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/register" routerLinkActive="active">
-          SIGN UP
-        </a>
-      </li>
-      
+    <ul
+      *ngIf="isUserLoggedIn; else authNav"
+      class="navbar-nav mr-auto mt-2 mt-lg-0"
+    >
       <li class="nav-item">
         <a class="nav-link" routerLink="/profile" routerLinkActive="active">
-          PROFILE
+          <span>PROFILE</span>
         </a>
       </li>
 
       <li class="nav-item">
         <a class="nav-link" routerLink="/message" routerLinkActive="active">
-          MESSAGE
+          <span>MESSAGE</span>
         </a>
       </li>
 
       <li class="nav-item">
         <a class="nav-link" routerLink="/request" routerLinkActive="active">
-          FRIEND REQUESTS
+          <span>FRIEND REQUESTS</span>
         </a>
       </li>
 
+      <li class="nav-item">
+        <a class="nav-link" (click)="logout()" routerLinkActive="active">
+          <span>LOG OUT</span>
+        </a>
+      </li>
     </ul>
+
+    <ng-template #authNav>
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/login" routerLinkActive="active">
+            <span>LOG IN</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/register" routerLinkActive="active">
+            <span>SIGN UP</span>
+          </a>
+        </li>
+      </ul>
+    </ng-template>
+
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" />
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
