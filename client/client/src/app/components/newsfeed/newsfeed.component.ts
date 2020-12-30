@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SignoutService } from 'src/app/services/signout.service';
 
 @Component({
   selector: 'app-newsfeed',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewsfeedComponent implements OnInit {
 
-  constructor() { }
+  constructor(private signoutService: SignoutService) { }
 
   ngOnInit(): void {
+  }
+
+  logout(){
+    this.signoutService.logout();
   }
 
 }

@@ -3,6 +3,7 @@ import Message from 'src/app/models/message';
 import Person from 'src/app/models/person';
 import { MessageService } from 'src/app/services/message.service';
 import { PersonService } from 'src/app/services/person.service';
+import { SignoutService } from 'src/app/services/signout.service';
 
 @Component({
   selector: 'app-message',
@@ -20,7 +21,9 @@ export class MessageComponent implements OnInit {
   verify = false;
   aName: string;
 
-  constructor(private personService: PersonService, private messageService: MessageService) { }
+  constructor(private personService: PersonService, 
+    private messageService: MessageService, 
+    private signoutService: SignoutService) { }
 
   ngOnInit(): void {
     this.loggedInUser = JSON.parse( sessionStorage.getItem("loggedInUser") );
@@ -72,6 +75,10 @@ export class MessageComponent implements OnInit {
 
   displayReply(){
     this.reply = true;
+  }
+
+  logout(){
+    this.signoutService.logout();
   }
 
 }
