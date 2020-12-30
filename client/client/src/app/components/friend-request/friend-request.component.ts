@@ -3,6 +3,7 @@ import { FriendRequest } from 'src/app/models/friend-request';
 import Person from 'src/app/models/person';
 import { FriendRequestService } from 'src/app/services/friend-request.service';
 import { PersonService } from 'src/app/services/person.service';
+import { SignoutService } from 'src/app/services/signout.service';
 
 @Component({
   selector: 'app-friend-request',
@@ -27,22 +28,25 @@ export class FriendRequestComponent implements OnInit {
   recipient_id: number;
 
   friendRequest: number;
-  constructor(private personService: PersonService, private frientRequestService: FriendRequestService) { }
+  constructor(private personService: PersonService, 
+    private friendRequestService: FriendRequestService,
+    private signoutService: SignoutService) { }
+
 //TODO get pendingRequests to display
   ngOnInit(): void {
     this.loggedInUser = JSON.parse( sessionStorage.getItem("loggedInUser") );
     
-    this.frientRequestService.getReceivedRequestsByPersonId(this.loggedInUser.id).subscribe(
+    this.friendRequestService.getReceivedRequestsByPersonId(this.loggedInUser.id).subscribe(
       resp=> {this.pendingRequests = resp; }//end resp
     );//end subscribe
     
-    this.frientRequestService.getSentRequestsByPersonId(this.loggedInUser.id).subscribe(
+    this.friendRequestService.getSentRequestsByPersonId(this.loggedInUser.id).subscribe(
       resp => {
         this.sentRequests = resp;
       }
     );
 
-    this.frientRequestService.getPersonFriendList(this.loggedInUser.id).subscribe(
+    this.friendRequestService.getPersonFriendList(this.loggedInUser.id).subscribe(
       resp=>{
         this.friendsList = resp;
       }
@@ -54,22 +58,22 @@ export class FriendRequestComponent implements OnInit {
   }
 
   sendRequest(){
-    this.frientRequestService.sendFriendRequest(this.loggedInUser.id, this.searchedPerson.id).subscribe();
+    this.friendRequestService.sendFriendRequest(this.loggedInUser.id, this.searchedPerson.id).subscribe();
     document.location.reload();
   }
 
   acceptRequest(id:number){
-    this.frientRequestService.acceptFriendRequest(id).subscribe();
+    this.friendRequestService.acceptFriendRequest(id).subscribe();
     document.location.reload();
   }
 
   rejectRequest(id:number){
-    this.frientRequestService.rejectFriendRequest(id).subscribe();
+    this.friendRequestService.rejectFriendRequest(id).subscribe();
     document.location.reload();
   }
 
   getSentRequests(){
-    this.frientRequestService.getSentRequestsByPersonId(this.loggedInUser.id).subscribe();
+    this.friendRequestService.getSentRequestsByPersonId(this.loggedInUser.id).subscribe();
     document.location.reload();
   }
 
@@ -78,6 +82,10 @@ export class FriendRequestComponent implements OnInit {
       resp=>{
         this.searchedPerson = resp;
       });
+  }
+
+  logout(){
+    this.signoutService.logout();
   }
   
 }

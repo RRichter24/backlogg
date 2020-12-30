@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { PersonService } from 'src/app/services/person.service';
 import { PostService } from 'src/app/services/post.service';
 import { RecentDateService } from 'src/app/services/recent-date.service';
+import { SignoutService } from 'src/app/services/signout.service';
 
 import Person from 'src/app/models/person';
 import Post from 'src/app/models/post';
@@ -17,7 +18,10 @@ export class ProfileComponent implements OnInit {
   adminPosts: Set<Post>
   adminList: Boolean = false;
 
-  constructor(private personService: PersonService, private postService: PostService, private recentDateService: RecentDateService) { }
+  constructor(private personService: PersonService, 
+    private postService: PostService, 
+    private recentDateService: RecentDateService,
+    private signoutService: SignoutService) { }
 
 
   ngOnInit(): void {
@@ -28,7 +32,7 @@ export class ProfileComponent implements OnInit {
     this.postService
       .retrieveUsersPosts(this.loggedInUser.id)
       .subscribe((resp) => {
-        this.posts = resp;
+        this.posts = this.recentDateService.sortDatesByMostRecentToLeastRecent(resp);
         for (let post of this.posts) {
           console.log(post);
         }
@@ -47,5 +51,9 @@ export class ProfileComponent implements OnInit {
 
   hideAdminList() {
     this.adminList = false;
+  }
+
+  logout(){
+    this.signoutService.logout();
   }
 }
