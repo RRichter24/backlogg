@@ -53,9 +53,9 @@ public class FriendRequestServiceImpl implements FriendRequestService {
 		Set<FriendRequest> fullList = frDao.getUserFriendsList(id);
 		Set<Person> friends = new HashSet<Person>();
 		for(FriendRequest req: fullList) {
-			if(req.getPerson1_id() != id) {
+			if(req.getPerson1_id() != id && req.getRequest_status().getId()==2) {
 				friends.add(pDao.getById(req.getPerson1_id()));
-			}else {
+			}else if(req.getPerson1_id() != id && req.getRequest_status().getId()==2){
 				friends.add(pDao.getById(req.getPerson2_id()));
 			}
 		}

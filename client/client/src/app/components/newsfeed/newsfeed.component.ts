@@ -12,7 +12,7 @@ import { SignoutService } from 'src/app/services/signout.service';
 @Component({
   selector: 'app-newsfeed',
   templateUrl: './newsfeed.component.html',
-  styleUrls: ['./newsfeed.component.css']
+  styleUrls: ['./newsfeed.component.css',]
 })
 export class NewsfeedComponent implements OnInit {
   
@@ -62,7 +62,7 @@ export class NewsfeedComponent implements OnInit {
 
   }//end onInit
 
-  
+
 
 
 
