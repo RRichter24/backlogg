@@ -19,6 +19,7 @@ import { FriendRequestComponent } from './components/friend-request/friend-reque
 import { PostComponent } from './components/post/post.component';
 import { NewCommentComponent } from './components/new-comment/new-comment.component';
 import { CommentComponent } from './components/comment/comment.component';
+import { OthersProfileComponent } from './components/others-profile/others-profile.component';
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import { CommentComponent } from './components/comment/comment.component';
     PostComponent,
     NewCommentComponent,
     CommentComponent,
+    OthersProfileComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [CookieService],

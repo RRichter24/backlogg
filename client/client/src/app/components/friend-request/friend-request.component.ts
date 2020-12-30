@@ -3,7 +3,6 @@ import { FriendRequest } from 'src/app/models/friend-request';
 import Person from 'src/app/models/person';
 import { FriendRequestService } from 'src/app/services/friend-request.service';
 import { PersonService } from 'src/app/services/person.service';
-import { SignoutService } from 'src/app/services/signout.service';
 
 @Component({
   selector: 'app-friend-request',
@@ -22,8 +21,7 @@ export class FriendRequestComponent implements OnInit {
 
   friendRequest: number;
   constructor(private personService: PersonService, 
-    private friendRequestService: FriendRequestService,
-    private signoutService: SignoutService) { }
+    private friendRequestService: FriendRequestService) { }
 
 //TODO get pendingRequests to display
   ngOnInit(): void {
@@ -78,7 +76,7 @@ export class FriendRequestComponent implements OnInit {
   }
 
   logout(){
-    this.signoutService.logout();
+    this.personService.logoutUser();
   }
   
 }

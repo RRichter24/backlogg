@@ -6,7 +6,9 @@ import { HomeComponent } from './components/home/home.component';
 import { MessageComponent } from './components/message/message.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { FriendRequestComponent } from './components/friend-request/friend-request.component';
+import { OthersProfileComponent } from './components/others-profile/others-profile.component';
 import { NewsfeedComponent } from './components/newsfeed/newsfeed.component';
+
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -15,6 +17,7 @@ const routes: Routes = [
   {path: 'profile', component: ProfileComponent},
   {path: 'message', component: MessageComponent},
   {path: 'request', component: FriendRequestComponent},
+  {path: 'profile/:profilenum', component: OthersProfileComponent},
   {path: 'newsfeed', component: NewsfeedComponent}
 ];
 
