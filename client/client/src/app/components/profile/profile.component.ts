@@ -6,6 +6,7 @@ import { RecentDateService } from 'src/app/services/recent-date.service';
 import Person from 'src/app/models/person';
 import Post from 'src/app/models/post';
 import { SessionStorageWrapperService } from 'src/app/services/session-storage-wrapper.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -22,7 +23,8 @@ export class ProfileComponent implements OnInit {
     private personService: PersonService,
     private postService: PostService,
     private recentDateService: RecentDateService,
-    private sessionStorageWrapperService: SessionStorageWrapperService
+    private sessionStorageWrapperService: SessionStorageWrapperService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -44,6 +46,12 @@ export class ProfileComponent implements OnInit {
         this.adminPosts = resp;
       });
     }
+
+    this.sessionStorageWrapperService.changeEmitted$.subscribe((person) => {
+      if (!person) {
+        this.router.navigate(['/']);
+      }
+    });
   }
 
   showAdminList() {
