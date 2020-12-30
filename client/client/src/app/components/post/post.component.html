@@ -20,11 +20,19 @@
             : post.post_date.second)
       }}
     </h6>
-    <img [src]="convertedImage" />
     <hr />
     <p>
       {{ post.post_text }}
     </p>
+    <hr />
+    <img [src]="convertedImage" />
+    <hr />
+    <img
+      class="spicy-icon"
+      src="../../../../spicyReactionIcon.png"
+      (click)="spicyReact()"
+    />
+    <p class="spicy-reaction-count">3</p>
     <hr />
     <app-comment *ngFor="let comment of comments" [comment]="comment">
     </app-comment>
