@@ -43,6 +43,7 @@ public class PersonController {
 	
 	@PutMapping
 	public ResponseEntity<Person> logIn(HttpSession session, @RequestParam("user") String username, @RequestParam("pass") String password){
+		System.out.println("hitting the login endpoint");
 		Person person = personServ.getByUsername(username);
 		if (person != null) {
 			if (person.getPasswd().equals(password)) {
@@ -56,6 +57,7 @@ public class PersonController {
 	
 	@PostMapping
 	public ResponseEntity<Person> registerPerson(HttpSession session, @RequestBody Person person) {
+		System.out.println("The Deadly Six: Zazz, Zomom, Zavik, Zor, etc, etc");
 		personServ.add(person);
 		return ResponseEntity.ok(person);
 	}
