@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import dev.iceb.beans.Person;
+import dev.iceb.beans.Post;
 import dev.iceb.services.PersonService;
 
 @RestController
@@ -98,6 +99,12 @@ public class PersonController {
 			return ResponseEntity.ok(p);
 		}
 		return ResponseEntity.notFound().build();
+	}
+	
+	@GetMapping(path="/all")
+	public ResponseEntity<Set<Person>> getAllPersons(HttpSession session){
+		Set<Person> allPersons = personServ.getAll();
+		return ResponseEntity.ok(allPersons);
 	}
 	
 }

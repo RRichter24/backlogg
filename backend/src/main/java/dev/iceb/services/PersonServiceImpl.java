@@ -2,7 +2,7 @@ package dev.iceb.services;
 
 import dev.iceb.beans.Person;
 import dev.iceb.data.PersonDAO;
-import dev.iceb.data.PersonDAOFactory;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -42,6 +42,11 @@ public class PersonServiceImpl implements PersonService {
 //		personDAO.addFriend(person1_id, person2_id);
 //		
 //	}
+	
+	@Override
+	public Set<Person> getAll() {
+		return personDAO.getAll();
+	}
 //	
 	
 	
