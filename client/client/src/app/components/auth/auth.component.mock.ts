@@ -7,5 +7,6 @@ export class MockAuth {
     isValidUsername = true;
     isValidPassword = true;
     btnStyle = 'btn-lg btn-primary btn-block btn-block';
+    
 
 }

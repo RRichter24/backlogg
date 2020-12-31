@@ -1,7 +1,7 @@
 <form class="form-signin">
   <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
   <label for="inputUsername" class="sr-only">Email address</label>
-  <input type="text" id="inputUsername" class="form-control" [(ngModel)]="username" (input)="validateInput()" name="username" placeholder="Username"  style="padding: 0.25rem 0; font-weight: 700; color: rgba(255, 255, 255, 0.5); background-color: transparent; border-bottom: 0.25rem solid transparent; required autofocus;"/>
+  <input type="text" id="inputUsername" class="form-control" [(ngModel)]="username" (input)="validateInput()" name="username" placeholder="Username"  style="padding: 0.25rem 0; font-weight: 700; color: rgba(255, 255, 255, 0.5); background-color: transparent; border-bottom: 0.25rem solid transparent;" required autofocus/>
   <label for="inputPassword" class="sr-only">Password</label>
   <input
     type="password"

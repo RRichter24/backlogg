@@ -4,6 +4,7 @@ import { AuthComponent } from './auth.component';
 
 import { PersonService } from '../../services/person.service';
 import { SessionStorageWrapperService } from '../../services/session-storage-wrapper.service';
+import { Router } from '@angular/router';
 import { MockAuth } from './auth.component.mock';
 
 describe('AuthComponent', () => {
@@ -17,7 +18,8 @@ describe('AuthComponent', () => {
       declarations: [ AuthComponent ],
       providers: [
         { provide: PersonService, useClass: MockAuth },
-        { provide: SessionStorageWrapperService, useClass: MockAuth }
+        { provide: SessionStorageWrapperService, useClass: MockAuth },
+        { provide: Router, useClass: MockAuth}
       ]
     })
     .compileComponents();
