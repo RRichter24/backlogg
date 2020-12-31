@@ -1,19 +1,30 @@
 <div id="new-post-card" class="card">
   <div class="card-body">
     <form>
-      <img [src]="imgURL" height="200" *ngIf="imgURL" />
-      <hr />
+      <h6>Think Before You Post...</h6>
       <textarea
         name="newPost"
         [(ngModel)]="text"
         rows="4"
         placeholder="Type your post here"
       ></textarea>
+      <img [src]="imgURL" height="200" *ngIf="imgURL" />
       <hr />
       <button type="button" class="btn btn-primary" (click)="submitPost()">
         Submit
       </button>
-      <input type="file" (change)="onFileChanged($event)" />
+      <input
+        type="file"
+        id="selectedFile"
+        (change)="onFileChanged($event)"
+        style="display: none"
+      />
+      <input
+        type="button"
+        class="btn btn-warning"
+        value="Add Photo"
+        onclick="document.getElementById('selectedFile').click();"
+      />
     </form>
   </div>
 </div>
