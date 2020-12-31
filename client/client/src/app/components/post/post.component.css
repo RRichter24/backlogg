@@ -1,3 +1,10 @@
+hr {
+  border-top: 1px solid white;
+}
+
+h6 {
+  color: turquoise;
+}
 img {
   width: 100%;
   height: auto;
@@ -7,11 +14,15 @@ img {
   margin: auto;
   margin-top: 24px;
   width: 40%;
+  background-color: black;
+  color: whitesmoke;
 }
 #post-card:hover {
   transform: scale(1.01);
 }
 
+.post-text {
+}
 .reaction-icon {
   display: inline-block;
   height: 40px;

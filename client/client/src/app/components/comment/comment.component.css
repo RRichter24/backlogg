@@ -1,3 +1,10 @@
+.comment-div {
+  padding: 8px;
+}
 .comment-div:hover {
-  background-color: lightgray;
+  background-color: #161717;
+}
+
+h6 {
+  color: turquoise;
 }
