@@ -28,11 +28,17 @@
     <img [src]="convertedImage" />
     <hr />
     <img
-      class="spicy-icon"
-      src="../../../../spicyReactionIcon.png"
-      (click)="spicyReact()"
+      class="spicy-icon reaction-icon"
+      src="./spicyReactionIcon.png"
+      (click)="react(1)"
     />
-    <p class="spicy-reaction-count">{{ spicyRxns }}</p>
+    <p class="spicy-reaction-count reaction-count">{{ spicyRxnsCnt }}</p>
+    <img
+      class="milk-icon reaction-icon"
+      src="./milkReactionIcon.png"
+      (click)="react(2)"
+    />
+    <p class="milk-reaction-count reaction-count">{{ milkRxnsCnt }}</p>
     <hr />
     <app-comment *ngFor="let comment of comments" [comment]="comment">
     </app-comment>

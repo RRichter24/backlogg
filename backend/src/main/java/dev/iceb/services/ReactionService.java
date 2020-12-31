@@ -9,6 +9,7 @@ public interface ReactionService {
 	public Reaction addReaction(Reaction p);
 	// "read" methods
 	public Reaction getReactionById(Integer id);
+	public Set<Reaction> getByPostId(Integer pid);
 	public Set<Reaction> getReactions();
 	// "update" methods
 	public void updateReaction(Reaction p);

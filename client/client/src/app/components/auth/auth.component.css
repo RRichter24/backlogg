@@ -5,3 +5,29 @@
   margin: auto;
   padding-top: 200px;
 }
+
+img {
+  width: -webkit-fill-available;
+  height: -webkit-fill-available;
+}
+
+.img-div {
+  padding-left: 0;
+}
+
+.container {
+  margin-left: 0;
+  padding-left: 0;
+}
+
+.signin-form-div {
+  margin: auto;
+}
+
+h1 {
+  color: whitesmoke;
+}
+
+p {
+  color: whitesmoke;
+}

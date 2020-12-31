@@ -12,15 +12,13 @@ img {
   transform: scale(1.01);
 }
 
-.spicy-icon {
-  background-image: url("../../../../spicyReactionIcon.png");
+.reaction-icon {
   display: inline-block;
   height: 40px;
   width: 40px;
 }
 
-.spicy-reaction-count {
-  color: red;
+.reaction-count {
   display: inline-block;
   font-weight: bold;
   font-size: larger;
@@ -28,7 +26,24 @@ img {
   margin-right: 4px;
 }
 
-.spicy-icon:hover {
+.spicy-icon {
+  background-image: url(./spicyReactionIcon.png);
+}
+
+.milk-icon {
+  background-image: url(./milkReactionIcon.png);
+  padding-top: 5px;
+}
+
+.spicy-reaction-count {
+  color: darkred;
+}
+
+.milk-reaction-count {
+  color: darkblue;
+}
+
+.reaction-icon:hover {
   transform: scale(1.2);
 }
 

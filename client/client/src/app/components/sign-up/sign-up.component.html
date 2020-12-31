@@ -1,41 +1,48 @@
-<div id="register-div" class="card">
-  <h2>Registration</h2>
-  <hr />
-  <div class="card-body">
-    <form id="register-form">
-      <label>Username: </label>
-      <input id="username" name="username" type="text" [(ngModel)]="username" />
-      <br />
-      <label>Password: </label>
-      <input
-        id="password"
-        name="password"
-        type="password"
-        [(ngModel)]="password"
-      />
-      <br />
-      <label>Please confirm your password: </label>
-      <input
-        id="password"
-        name="passwordCheck"
-        type="password"
-        [(ngModel)]="passwordCheck"
-      />
-      <br />
-      <label>Please enter your company: </label>
-      <input id="company" name="company" type="text" [(ngModel)]="company" />
-      <br />
-      <label>Please enter your e-mail: </label>
-      <input id="e-mail" name="email" type="text" [(ngModel)]="email" />
-      <br />
-      <button
-        id="register-action"
-        type="button"
-        class="btn btn-success"
-        (click)="register()"
-      >
-        Sign Up!
-      </button>
-    </form>
+<div class="container">
+  <div id="register-div" class="card">
+    <h2>Registration</h2>
+    <hr />
+    <div class="card-body">
+      <form id="register-form">
+        <label>Username: </label>
+        <input
+          id="username"
+          name="username"
+          type="text"
+          [(ngModel)]="username"
+        />
+        <br />
+        <label>Password: </label>
+        <input
+          id="password"
+          name="password"
+          type="password"
+          [(ngModel)]="password"
+        />
+        <br />
+        <label>Please confirm your password: </label>
+        <input
+          id="password"
+          name="passwordCheck"
+          type="password"
+          [(ngModel)]="passwordCheck"
+        />
+        <br />
+        <label>Please enter your company: </label>
+        <input id="company" name="company" type="text" [(ngModel)]="company" />
+        <br />
+        <label>Please enter your e-mail: </label>
+        <input id="e-mail" name="email" type="text" [(ngModel)]="email" />
+        <br />
+        <button
+          id="register-action"
+          type="button"
+          class="btn btn-success"
+          (click)="register()"
+        >
+          Sign Up!
+        </button>
+      </form>
+    </div>
   </div>
 </div>

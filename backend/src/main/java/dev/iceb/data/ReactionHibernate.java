@@ -10,6 +10,7 @@ import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 
 import dev.iceb.beans.Reaction;
+import dev.iceb.beans.Reaction;
 import dev.iceb.utils.HibernateUtil;
 
 @Repository
@@ -88,5 +89,22 @@ public class ReactionHibernate implements ReactionDAO{
 		}finally { //end catch
 			s.close();
 		}//end finally		
+	}
+	
+	@Override
+	public Set<Reaction> getByPostId(Integer pid) {
+		try (Session s = hu.getSession()) {
+			s.beginTransaction();
+			String hql = "FROM Reaction WHERE post_id = :post_id";
+			Query<Reaction> q = s.createQuery(hql, Reaction.class);
+			q.setParameter("post_id", pid);
+			List<Reaction> pList = q.getResultList();
+			Set<Reaction> pSet = new HashSet<>();
+			pSet.addAll(pList); 
+			return pSet; 
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e; 
+		} 
 	}
 }

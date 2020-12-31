@@ -1,6 +1,6 @@
-/*
- * Globals
- */
+a:hover {
+  transform: scale(1.2);
+}
 
 /* Custom default button */
 .btn-secondary,
@@ -10,6 +10,11 @@
   text-shadow: none; /* Prevent inheritance from `body` */
 }
 
+.btn:hover {
+  background-image: url(./bottonbackground.png);
+  color: red;
+  font-weight: bold;
+}
 /*
  * Base structure
  */
@@ -33,6 +38,14 @@ body {
 /*
  * Header
  */
+
+.lead {
+  margin: 8px;
+}
+
+.nav-link:hover {
+  transform: scale(1.2);
+}
 
 .nav-masthead .nav-link {
   padding: 0.25rem 0;
