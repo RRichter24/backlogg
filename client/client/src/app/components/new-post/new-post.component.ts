@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import Person from 'src/app/models/person';
+import post from 'src/app/models/post';
 import { ImageService } from 'src/app/services/image.service';
 import { PersonService } from 'src/app/services/person.service';
 import { PostService } from 'src/app/services/post.service';
@@ -10,6 +11,7 @@ import { PostService } from 'src/app/services/post.service';
   styleUrls: ['./new-post.component.css'],
 })
 export class NewPostComponent implements OnInit {
+  @Output() newPostEvent = new EventEmitter<post>();
   loggedInUser: Person;
   text: string;
 
@@ -54,9 +56,13 @@ export class NewPostComponent implements OnInit {
 
         // We only upload an image associated with a post
         // if the post itself posted successfully
-        if (this.imgURL !== '') {
+        if (this.imgURL !== undefined) {
           this.uploadImage(resp.id);
         }
+        setTimeout(() => {
+          // Send the new post to the parent
+          this.newPostEvent.emit(resp);
+        }, 3000);
       });
     // window.location.reload();
   }

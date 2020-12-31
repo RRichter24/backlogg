@@ -8,6 +8,7 @@ import Post from 'src/app/models/post';
 import { SessionStorageWrapperService } from 'src/app/services/session-storage-wrapper.service';
 import { Router } from '@angular/router';
 import { ThisReceiver } from '@angular/compiler';
+import post from 'src/app/models/post';
 
 @Component({
   selector: 'app-profile',
@@ -67,6 +68,13 @@ export class ProfileComponent implements OnInit {
         this.router.navigate(['/']);
       }
     });
+  }
+
+  addNewPost(newPost: post): void {
+    this.posts.add(newPost);
+    this.posts = this.recentDateService.sortDatesByMostRecentToLeastRecent(
+      this.posts
+    );
   }
 
   showAdminList() {
