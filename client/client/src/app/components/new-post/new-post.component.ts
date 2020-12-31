@@ -58,7 +58,7 @@ export class NewPostComponent implements OnInit {
           this.uploadImage(resp.id);
         }
       });
-      window.location.reload();
+    // window.location.reload();
   }
 
   // This part is for uploading
@@ -73,7 +73,7 @@ export class NewPostComponent implements OnInit {
         this.base64Data = this.receivedImageData.pic;
         this.convertedImage = 'data:image/jpeg;base64,' + this.base64Data;
       },
-      (err) => console.log('Error Occured duringng saving: ' + err)
+      (err) => console.log('Error Occured during image saving: ' + err)
     );
   }
 }

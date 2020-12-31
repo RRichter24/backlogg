@@ -1,20 +1,31 @@
+hr {
+  border-top: 1px solid white;
+}
+
+h6 {
+  color: turquoise;
+}
+
 img {
   width: 100%;
   height: auto;
 }
 
 #new-post-card {
+  background-color: black;
   margin: auto;
   width: 40%;
 }
 #new-post-card:hover {
-  transform: scale(1.1);
+  transform: scale(1.02);
 }
 textarea {
-  background-color: #161717;
   border-style: none;
+  background-color: #161717;
+  color: lime;
   resize: none;
   width: 100%;
+  padding: 8px;
 }
 
 textarea:hover {
