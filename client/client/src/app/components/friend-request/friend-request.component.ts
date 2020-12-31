@@ -50,22 +50,22 @@ export class FriendRequestComponent implements OnInit {
 
   sendRequest(){
     this.friendRequestService.sendFriendRequest(this.loggedInUser.id, this.searchedPerson.id).subscribe();
-    window.location.reload();
+    // window.location.reload();
   }
 
   acceptRequest(id:number){
     this.friendRequestService.acceptFriendRequest(id).subscribe();
-    window.location.reload();
+    // window.location.reload();
   }
 
   rejectRequest(id:number){
     this.friendRequestService.rejectFriendRequest(id).subscribe();
-    window.location.reload();
+    // window.location.reload();
   }
 
   getSentRequests(){
     this.friendRequestService.getSentRequestsByPersonId(this.loggedInUser.id).subscribe();
-    window.location.reload();
+    // window.location.reload();
   }
 
   getPersonByUsername(){
