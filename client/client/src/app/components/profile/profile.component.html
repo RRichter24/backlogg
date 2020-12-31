@@ -8,6 +8,21 @@
 <h4>Your email is {{ loggedInUser.email }}</h4>
 <hr />
 <app-new-post></app-new-post>
+<button *ngIf="userList == false" type="button" class="btn btn-primary" (click)="showUserList()">
+  (Admin) Show All Users
+</button>
+<button *ngIf="userList" type="button" class="btn btn-primary" (click)="hideUserList()">
+  (Admin) Hide All Users
+</button>
+<div *ngIf="userList">
+  <div *ngFor="let user of allUsers">
+    <a [routerLink]="['/profile', user.id]" class="btn btn-outline-success my-2 my-sm-0">{{user.username}}</a>
+    <br>
+    {{user.role.name}}</div>
+  <br>
+  ------------------------
+  <br>
+</div>
 <button *ngIf="adminList == false" type="button" class="btn btn-primary" (click)="showAdminList()">
   (Admin) Show All User Posts
 </button>
