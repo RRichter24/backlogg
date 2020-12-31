@@ -62,7 +62,7 @@ export class MessageComponent implements OnInit {
     this.messageService.createNewMessage(this.text, this.loggedInUser.id, this.receiver.id).subscribe();
     this.text = '';
     this.username = '';
-    window.location.reload();
+    // window.location.reload();
   }
 
   replyMessage(id:number){
