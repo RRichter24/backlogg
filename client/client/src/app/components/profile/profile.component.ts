@@ -17,7 +17,9 @@ export class ProfileComponent implements OnInit {
   loggedInUser: Person;
   posts: Set<Post>;
   adminPosts: Set<Post>;
+  allUsers: Set<Person>;
   adminList: Boolean = false;
+  userList: Boolean = false;
 
   constructor(
     private personService: PersonService,
@@ -45,6 +47,9 @@ export class ProfileComponent implements OnInit {
       this.postService.retrieveAllPosts().subscribe((resp) => {
         this.adminPosts = resp;
       });
+      this.personService.getAllPersons().subscribe((resp) => {
+        this.allUsers = resp;
+      });
     }
 
     this.sessionStorageWrapperService.changeEmitted$.subscribe((person) => {
@@ -60,6 +65,14 @@ export class ProfileComponent implements OnInit {
 
   hideAdminList() {
     this.adminList = false;
+  }
+
+  showUserList() {
+    this.userList = true;
+  }
+
+  hideUserList() {
+    this.userList = false;
   }
 
   logout(){

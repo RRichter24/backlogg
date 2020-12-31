@@ -3,31 +3,71 @@
   src="https://www.kindpng.com/picc/m/153-1535301_alien-clipart-trippy-x-transparent-png-trippy-alien.png"
   alt="Avatar"
 />
+
 <h2>Welcome back {{ loggedInUser.username }}</h2>
 <h4>You currently work for {{ loggedInUser.company }}</h4>
 <h4>Your email is {{ loggedInUser.email }}</h4>
-<button
-  *ngIf="adminList == false"
-  type="button"
-  class="btn btn-primary"
-  (click)="showAdminList()"
->
-  (Admin) Show All User Posts
-</button>
-<button
-  *ngIf="adminList"
-  type="button"
-  class="btn btn-primary"
-  (click)="hideAdminList()"
->
-  (Admin) Hide All User Posts
-</button>
 <hr />
-<app-new-post></app-new-post>
-<div *ngIf="adminList">
-  <app-post *ngFor="let post of adminPosts" [post]="post"> </app-post>
-  <br />
-  ------------------------
-  <br />
-</div>
-<app-post *ngFor="let post of posts" [post]="post"> </app-post>
+
+<section *ngIf="loggedInUser.role.id == 2; else UserView">
+  <button
+    *ngIf="userList == false"
+    type="button"
+    class="btn btn-primary"
+    (click)="showUserList()"
+  >
+    (Admin) Show All Users
+  </button>
+  <button
+    *ngIf="userList"
+    type="button"
+    class="btn btn-primary"
+    (click)="hideUserList()"
+  >
+    (Admin) Hide All Users
+  </button>
+  <div *ngIf="userList">
+    <div *ngFor="let user of allUsers">
+      <a
+        [routerLink]="['/profile', user.id]"
+        class="btn btn-outline-success my-2 my-sm-0"
+        >{{ user.username }}</a
+      >
+      <br />
+      {{ user.role.name }}
+    </div>
+    <br />
+    ------------------------
+    <br />
+  </div>
+  <button
+    *ngIf="adminList == false"
+    type="button"
+    class="btn btn-primary"
+    (click)="showAdminList()"
+  >
+    (Admin) Show All User Posts
+  </button>
+  <button
+    *ngIf="adminList"
+    type="button"
+    class="btn btn-primary"
+    (click)="hideAdminList()"
+  >
+    (Admin) Hide All User Posts
+  </button>
+  <div *ngIf="adminList">
+    <app-post *ngFor="let post of adminPosts" [post]="post"> </app-post>
+    <br />
+    ------------------------
+    <br />
+  </div>
+  <br /><br />
+  <app-new-post></app-new-post>
+  <app-post *ngFor="let post of posts" [post]="post"> </app-post>
+</section>
+
+<ng-template #UserView>
+  <app-new-post></app-new-post>
+  <app-post *ngFor="let post of posts" [post]="post"> </app-post>
+</ng-template>
