@@ -62,7 +62,7 @@ export class SignUpComponent implements OnInit {
       this.signUpService.registerAUser(newPerson).subscribe((resp) => {
         console.log(resp);
 
-        if (resp instanceof Person) {
+        if (resp !=null) {
           let loggedInUser: Person = resp as Person;
           this.sessionStorageWrapperService.setLoggedUser(loggedInUser);
           this.router.navigate(['/profile']);
