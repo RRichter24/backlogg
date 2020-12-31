@@ -7,11 +7,20 @@ img {
   margin: auto;
   margin-top: 24px;
   width: 40%;
+  background-color: dimgray;
+  color: whitesmoke;
 }
 #post-card:hover {
   transform: scale(1.01);
 }
 
+.post-text {
+  border-radius: 3%;
+  border-color: whitesmoke;
+  border-style: solid;
+  padding: 8px;
+  min-height: 60px;
+}
 .reaction-icon {
   display: inline-block;
   height: 40px;
