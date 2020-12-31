@@ -87,7 +87,8 @@
         <a
           [routerLink]="['/profile', user.id]"
           class="btn btn-outline-success my-2 my-sm-0"
-          >{{ user.username }}</a>
+          >{{ user.username }}</a
+        >
       </div>
       <br />
       ------------------------
@@ -116,7 +117,7 @@
       <br />
     </div>
     <br /><br />
-    <app-new-post></app-new-post>
+    <app-new-post (newPostEvent)="addNewPost($event)"></app-new-post>
     <app-post *ngFor="let post of posts" [post]="post"> </app-post>
   </section>
 
