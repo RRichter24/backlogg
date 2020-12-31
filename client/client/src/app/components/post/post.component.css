@@ -26,6 +26,14 @@ img {
   margin-right: 4px;
 }
 
+.spicy-icon {
+  background-image: url(./spicyReactionIcon.png);
+}
+
+.milk-icon {
+  background-image: url(./milkReactionIcon.png);
+}
+
 .spicy-reaction-count {
   color: darkred;
 }
