@@ -89,7 +89,7 @@
 
             <ul *ngFor = "let friend of friendsList"  class="list-group list-group-flush">
               <li class="list-group-item">
-                <a routerLink="profile/{{friend.id}}" routerLinkActive="active" class="card-link">{{ friend.username }}</a>
+                <a [routerLink]="['/profile', friend.id]" routerLinkActive="active" class="card-link">{{ friend.username }}</a>
                 </li>
             </ul>
           </div>
