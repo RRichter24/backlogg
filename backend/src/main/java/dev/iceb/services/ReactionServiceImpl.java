@@ -41,6 +41,10 @@ public class ReactionServiceImpl implements ReactionService {
 	public void removeReaction(Reaction p) {
 		reactionDAO.delete(p);
 	}
+	@Override
+	public Set<Reaction> getByPostId(Integer pid) {
+		return reactionDAO.getByPostId(pid); 
+	}
 
 
 }
