@@ -37,7 +37,7 @@ export class OthersProfileComponent implements OnInit {
       this.postService.retrieveUsersPosts(params.profilenum).subscribe(resp =>{
         console.log(resp);
 
-        this.posts = this.recentDateService.sortDatesByMostRecentToLeastRecent(resp);
+        this.posts = this.recentDateService.sortPostDatesByMostRecentToLeastRecent(resp);
       })
     });
 

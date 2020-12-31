@@ -36,7 +36,7 @@ export class NewsfeedComponent implements OnInit {
     this.postService
     .retrieveUsersPosts(this.loggedInUser.id)
     .subscribe((resp) => {
-      this.posts = this.recentDateService.sortDatesByMostRecentToLeastRecent(resp);
+      this.posts = this.recentDateService.sortPostDatesByMostRecentToLeastRecent(resp);
       for (let post of this.posts) {
         console.log(post);
       }
@@ -49,7 +49,7 @@ export class NewsfeedComponent implements OnInit {
             this.postService
             .retrieveUsersPosts(friend.id)
             .subscribe((resp2) => {
-                this.friendsPosts = this.recentDateService.sortDatesByMostRecentToLeastRecent(resp2);
+                this.friendsPosts = this.recentDateService.sortPostDatesByMostRecentToLeastRecent(resp2);
                 });//sub 
               }//for
           });//outersub

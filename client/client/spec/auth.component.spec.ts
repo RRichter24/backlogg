@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { HttpClient, HttpHandler } from '@angular/common/http';
 
-import { AuthComponent } from './auth.component';
+
+import { AuthComponent } from 'src/app/components/auth/auth.component';
 
 
 import Person from 'src/app/models/person';
@@ -12,7 +14,8 @@ describe('AuthComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AuthComponent ]
+      declarations: [ AuthComponent ],
+      providers: [HttpClient, HttpHandler]
     })
     .compileComponents();
 
@@ -24,7 +27,7 @@ describe('AuthComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create auth', () => {
     expect(component).toBeTruthy();
   });    
 
