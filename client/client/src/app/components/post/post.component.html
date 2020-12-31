@@ -37,8 +37,35 @@
     />
     <p class="milk-reaction-count reaction-count">{{ milkRxnsCnt }}</p>
     <hr />
-    <app-comment *ngFor="let comment of comments" [comment]="comment">
-    </app-comment>
+
+    <div class="accordion" id="commentsAccordion">
+      <div class="accordion-item">
+        <h5 id="comments-header">
+          <strong
+            data-bs-toggle="collapse"
+            attr.data-bs-target="#comment-collapse-{{ post.id }}"
+            aria-expanded="true"
+            aria-controls="collapseOne"
+          >
+            Toggle Comments
+          </strong>
+        </h5>
+        <div
+          attr.id="comment-collapse-{{ post.id }}"
+          class="accordion-collapse collapse show"
+          aria-labelledby="headingOne"
+          data-bs-parent="#accordionExample"
+        >
+          <div class="accordion-body">
+            <div>
+              <app-comment *ngFor="let comment of comments" [comment]="comment">
+              </app-comment>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <hr />
     <button
       class="btn btn-primary"
