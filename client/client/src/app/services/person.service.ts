@@ -83,4 +83,10 @@ export class PersonService {
       .pipe(map((resp) => resp as Person));
   }
 
+  getAllPersons(): Observable<Set<Person>> {
+    return this.http
+      .get(this.usersUrl + '/all', {withCredentials: true})
+      .pipe(map((resp) => resp as Set<Person>));
+  }
+
 }
