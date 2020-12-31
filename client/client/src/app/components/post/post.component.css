@@ -32,6 +32,7 @@ img {
 
 .milk-icon {
   background-image: url(./milkReactionIcon.png);
+  padding-top: 5px;
 }
 
 .spicy-reaction-count {
