@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { HttpClient } from '@angular/common/http';
+import { HttpHandler } from '@angular/common/http';
 import { AuthComponent } from './auth.component';
 
 describe('AuthComponent', () => {
@@ -8,7 +9,8 @@ describe('AuthComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AuthComponent ]
+      declarations: [ AuthComponent ],
+      providers: [HttpClient, HttpHandler]
     })
     .compileComponents();
   });
