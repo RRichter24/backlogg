@@ -1,31 +1,35 @@
-<div *ngIf = "loggedInUser; else elseBlock">
+<div>
+  <ng-container *ngIf = "loggedInUser; else elseBlock">
+
+    <div class="d-md-flex h-md-100 align-items-center">
 
 
-  <div class="d-md-flex h-md-100 align-items-center">
-    
-    <div class="col-md-6 p-0 bg-indigo h-md-100">
+      <div class="col-md-6 p-0 bg-indigo h-md-100">
         <div class="text-white d-md-flex align-items-center h-100 p-5 text-center justify-content-center">
-            <div class="logoarea pt-5 pb-5">
+          <div class="logoarea pt-5 pb-5">
               
-              <section>
-                <label for="friendSearch">User Search</label>
-                <input name="friendSearch" type="text" placeholder="Enter Username" [(ngModel)]="username">
-                <button type="button" class="btn btn-info" (click)="getPersonByUsername()">
-                  Search
-                </button>
+            <section>
+              <label for="friendSearch">User Search</label>
+              <input name="friendSearch" type="text" placeholder="Enter Username" [(ngModel)]="username">
+              <button type="button" class="btn btn-info" (click)="getPersonByUsername()">
+                Search
+              </button>
             </section>
+
             <div *ngIf="searchedPerson">
               <span>
                 {{searchedPerson.username}} exists! Friend them?
               </span>
               <button type="button" class="btn btn-info" (click)="sendRequest()">
-                  Send Friend Request? 
+                Send Friend Request? 
               </button>
-      
             </div>
-      
+          
+
+
+
             <section>
-              
+
               <section>
                 <table class="table table-striped table-dark">
                   <caption>Incoming Friend Requests</caption>
@@ -57,54 +61,53 @@
               </section>
         
 
-                <table  class="table table-striped">
-                  <caption>Outgoing Friend Requests</caption>
-                  <thead>
-                    <tr>
-                      <th scope="col">Request ID</th>
-                      <th scope="col">Sender</th>
-                      <th scope="col">Recipient</th>
-                      <th scope="col">Status</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr *ngFor="let request of sentRequests">
-                      <th scope="row">{{ request.id }}</th>
-                      <td>{{ request.person1_id }}</td>
-                      <td>{{ request.person2_id }}</td>
-                      <td>{{ request.request_status.name }}</td>
-        
-                    </tr>
-                  </tbody>
-                </table>
-              </section>
-            </div>
+              <table class="table table-striped">
+                <caption>Outgoing Friend Requests</caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Request ID</th>
+                    <th scope="col">Sender</th>
+                    <th scope="col">Recipient</th>
+                    <th scope="col">Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let request of sentRequests">
+                    <th scope="row">{{ request.id }}</th>
+                    <td>{{ request.person1_id }}</td>
+                    <td>{{ request.person2_id }}</td>
+                    <td>{{ request.request_status.name }}</td>
+                  </tr>
+                </tbody>
+              </table>
+
+            </section>
+          </div>
         </div>
-    </div>
+      </div>
     
 
-    <div class="col-md-6 p-0 h-md-100 loginarea">
-      <div class="d-md-flex align-items-center h-md-100 p-5 justify-content-center">
-        <div>
-          <div class="card text-white bg-info mb-3" style="max-width: 18rem;">
-            <div class="card-body">
-              <h5 class="card-title">Friends List</h5>
-              <p class="card-text">You wanted to know these people...</p>
-            </div>
+      <div class="col-md-6 p-0 h-md-100 loginarea">
+        <div class="d-md-flex align-items-center h-md-100 p-5 justify-content-center">
+          <div>
+            <div class="card text-white bg-info mb-3" style="max-width: 18rem;">
+              <div class="card-body">
+                <h5 class="card-title">Friends List</h5>
+                <p class="card-text">You wanted to know these people...</p>
+              </div>
 
-          <ul *ngFor = "let friend of friendsList"  class="list-group list-group-flush">
-              <li class="list-group-item">
-                <a routerLink="/{{friend.id}}" routerLinkActive="active" class="card-link">{{ friend.username }}</a>
+              <ul *ngFor = "let friend of friendsList"  class="list-group list-group-flush">
+                <li class="list-group-item">
+                  <a routerLink="/{{friend.id}}" routerLinkActive="active" class="card-link">{{ friend.username }}</a>
                 </li>
-          </ul>
-        </div>
-  
+              </ul>
+            </div>
+          </div>
       </div>
-  </div>
       
-  </div>
+      </div>
+    </div>
+  </ng-container>
 
-      
-
+  <ng-template #elseBlock> You are Not logged in.</ng-template>
 </div>
-<ng-template #elseBlock> You are Not logged in.</ng-template>

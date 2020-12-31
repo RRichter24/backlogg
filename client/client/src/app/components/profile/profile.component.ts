@@ -35,7 +35,7 @@ export class ProfileComponent implements OnInit {
     this.postService
       .retrieveUsersPosts(this.loggedInUser.id)
       .subscribe((resp) => {
-        this.posts = this.recentDateService.sortDatesByMostRecentToLeastRecent(resp);
+        this.posts = this.recentDateService.sortPostDatesByMostRecentToLeastRecent(resp);
         for (let post of this.posts) {
           console.log(post);
         }
