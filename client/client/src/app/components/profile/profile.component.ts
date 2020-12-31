@@ -7,6 +7,7 @@ import Person from 'src/app/models/person';
 import Post from 'src/app/models/post';
 import { SessionStorageWrapperService } from 'src/app/services/session-storage-wrapper.service';
 import { Router } from '@angular/router';
+import { ThisReceiver } from '@angular/compiler';
 
 @Component({
   selector: 'app-profile',
@@ -20,6 +21,14 @@ export class ProfileComponent implements OnInit {
   allUsers: Set<Person>;
   adminList: Boolean = false;
   userList: Boolean = false;
+  updateUser = false;
+  username: string;
+  password: string;
+  passwordCheck: string;
+  company: string;
+  email: string;
+  updatedPerson: Person;
+
 
   constructor(
     private personService: PersonService,
@@ -77,5 +86,59 @@ export class ProfileComponent implements OnInit {
 
   logout(){
     this.personService.logoutUser();
+  }
+
+  toggleUpdateUser(){
+    if(!this.updateUser){
+      this.updateUser = true;
+    }else{
+      this.updateUser = false;
+    }
+    this.username="";
+    this.password='';
+    this.email='';
+    this.company='';
+  }
+
+  updateUserInfo(){
+    let u = '';
+    let p = '';
+    let e = '';
+    let c = '';
+
+    if(this.username != this.loggedInUser.username && this.username.length > 0){
+      u = this.username
+    }else{
+      u = this.loggedInUser.username;
+    }
+    if(this.password != this.loggedInUser.passwd && this.password.length > 0){
+      p = this.password;
+    }else{
+      p = this.loggedInUser.passwd;
+    }
+    if(this.company != this.loggedInUser.company && this.company.length > 0){
+      c = this.company;
+    }else{
+      c = this.loggedInUser.company;
+    }
+    if(this.email != this.loggedInUser.email && this.email.length > 0){
+      e = this.email;
+    }else{
+      e = this.loggedInUser.email;
+    }
+    this.updatedPerson = {
+        id: this.loggedInUser.id,
+        username: u,
+        passwd: p,
+        company: c,
+        email: e,
+        role: this.loggedInUser.role
+    }
+    console.log(this.loggedInUser.username +"<=old new=>"+ this.updatedPerson.username);
+    console.log(this.loggedInUser.passwd +"<=old new=>"+ this.updatedPerson.passwd)
+    console.log(this.loggedInUser.email +"<=old new=>"+ this.updatedPerson.email);
+    console.log(this.loggedInUser.company +"<=old new=>"+ this.updatedPerson.company);
+    this.personService.updateUser(this.updatedPerson);
+    // window.location.reload();
   }
 }

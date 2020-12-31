@@ -58,9 +58,11 @@ export class PersonService {
   }
 
   updateUser(updatedUser: Person): Observable<object> {
+    console.log("hello and welcome to the person service.  you sent: " + updatedUser.id + " " + updatedUser.username + updatedUser.passwd + " " +  + updatedUser.company + " " +  + updatedUser.email + " " )
     this.loggedUser = updatedUser;
+    console.log("And now are about to send this: " + this.loggedUser.id+" " +this.loggedUser.username+" " +this.loggedUser.passwd+" " +this.loggedUser.company+" " +this.loggedUser.email+" ")
     return this.http
-      .put(this.usersUrl + this.loggedUser.id, updatedUser, {
+      .put(this.usersUrl +'/' +this.loggedUser.id, this.loggedUser, {
         headers: this.regHeaders,
         withCredentials: true,
       })
