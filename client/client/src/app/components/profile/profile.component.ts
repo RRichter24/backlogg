@@ -70,7 +70,7 @@ export class ProfileComponent implements OnInit {
 
   addNewPost(newPost: post): void {
     this.posts.add(newPost);
-    this.posts = this.recentDateService.sortDatesByMostRecentToLeastRecent(
+    this.posts = this.recentDateService.sortPostDatesByMostRecentToLeastRecent(
       this.posts
     );
   }
