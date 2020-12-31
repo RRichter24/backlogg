@@ -7,6 +7,49 @@
 <h2>Welcome back {{ loggedInUser.username }}</h2>
 <h4>You currently work for {{ loggedInUser.company }}</h4>
 <h4>Your email is {{ loggedInUser.email }}</h4>
+<button type="button" class="btn btn-secondary btn-sm" (click) = "toggleUpdateUser()">update info?</button>
+<div class="container" *ngIf="updateUser">
+  <div id="register-div" class="card">
+    <h2>Registration</h2>
+    <hr />
+    <div class="card-body">
+      <form id="register-form">
+        <label>New Username? </label>
+        <input
+          id="username"
+          name="username"
+          type="text"
+          [(ngModel)]="username"
+        />
+        <br />
+        <label>new Password? </label>
+        <input
+          id="password"
+          name="password"
+          type="password"
+          [(ngModel)]="password"
+        />
+        <br />
+
+        <br />
+        <label>New Company? </label>
+        <input id="company" name="company" type="text" [(ngModel)]="company" />
+        <br />
+        <label>Different email? </label>
+        <input id="email" name="email" type="text" [(ngModel)]="email" />
+        <br />
+        <button
+          id="register-action"
+          type="button"
+          class="btn btn-success"
+          (click)="updateUserInfo()"
+        >
+          Update that Info!
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
 <hr />
 
 <section *ngIf="loggedInUser.role.id == 2; else UserView">

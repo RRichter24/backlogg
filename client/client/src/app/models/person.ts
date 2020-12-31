@@ -7,5 +7,4 @@ export default class Person {
     email: string;
     company: string;
     role: Role;
-    friends: Person[];
 }
