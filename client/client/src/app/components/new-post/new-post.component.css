@@ -11,6 +11,7 @@ img {
   transform: scale(1.1);
 }
 textarea {
+  background-color: #161717;
   border-style: none;
   resize: none;
   width: 100%;

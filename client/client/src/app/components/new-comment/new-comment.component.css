@@ -1,6 +1,8 @@
 .new-comment-input {
+  background-color: #161717;
   border-block-color: black;
   border-radius: 4%;
+  color: lime;
   padding: 4%;
   resize: none;
   width: -webkit-fill-available;

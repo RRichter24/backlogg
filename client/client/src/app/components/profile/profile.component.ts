@@ -29,7 +29,6 @@ export class ProfileComponent implements OnInit {
   email: string;
   updatedPerson: Person;
 
-
   constructor(
     private personService: PersonService,
     private postService: PostService,
@@ -46,7 +45,9 @@ export class ProfileComponent implements OnInit {
     this.postService
       .retrieveUsersPosts(this.loggedInUser.id)
       .subscribe((resp) => {
-        this.posts = this.recentDateService.sortDatesByMostRecentToLeastRecent(resp);
+        this.posts = this.recentDateService.sortDatesByMostRecentToLeastRecent(
+          resp
+        );
         for (let post of this.posts) {
           console.log(post);
         }
@@ -84,60 +85,71 @@ export class ProfileComponent implements OnInit {
     this.userList = false;
   }
 
-  logout(){
+  logout() {
     this.personService.logoutUser();
   }
 
-  toggleUpdateUser(){
-    if(!this.updateUser){
+  toggleUpdateUser() {
+    if (!this.updateUser) {
       this.updateUser = true;
-    }else{
+    } else {
       this.updateUser = false;
     }
-    this.username="";
-    this.password='';
-    this.email='';
-    this.company='';
+    this.username = '';
+    this.password = '';
+    this.email = '';
+    this.company = '';
   }
 
-  updateUserInfo(){
+  updateUserInfo() {
     let u = '';
     let p = '';
     let e = '';
     let c = '';
 
-    if(this.username != this.loggedInUser.username && this.username.length > 0){
-      u = this.username
-    }else{
+    if (
+      this.username != this.loggedInUser.username &&
+      this.username.length > 0
+    ) {
+      u = this.username;
+    } else {
       u = this.loggedInUser.username;
     }
-    if(this.password != this.loggedInUser.passwd && this.password.length > 0){
+    if (this.password != this.loggedInUser.passwd && this.password.length > 0) {
       p = this.password;
-    }else{
+    } else {
       p = this.loggedInUser.passwd;
     }
-    if(this.company != this.loggedInUser.company && this.company.length > 0){
+    if (this.company != this.loggedInUser.company && this.company.length > 0) {
       c = this.company;
-    }else{
+    } else {
       c = this.loggedInUser.company;
     }
-    if(this.email != this.loggedInUser.email && this.email.length > 0){
+    if (this.email != this.loggedInUser.email && this.email.length > 0) {
       e = this.email;
-    }else{
+    } else {
       e = this.loggedInUser.email;
     }
     this.updatedPerson = {
-        id: this.loggedInUser.id,
-        username: u,
-        passwd: p,
-        company: c,
-        email: e,
-        role: this.loggedInUser.role
-    }
-    console.log(this.loggedInUser.username +"<=old new=>"+ this.updatedPerson.username);
-    console.log(this.loggedInUser.passwd +"<=old new=>"+ this.updatedPerson.passwd)
-    console.log(this.loggedInUser.email +"<=old new=>"+ this.updatedPerson.email);
-    console.log(this.loggedInUser.company +"<=old new=>"+ this.updatedPerson.company);
+      id: this.loggedInUser.id,
+      username: u,
+      passwd: p,
+      company: c,
+      email: e,
+      role: this.loggedInUser.role,
+    };
+    console.log(
+      this.loggedInUser.username + '<=old new=>' + this.updatedPerson.username
+    );
+    console.log(
+      this.loggedInUser.passwd + '<=old new=>' + this.updatedPerson.passwd
+    );
+    console.log(
+      this.loggedInUser.email + '<=old new=>' + this.updatedPerson.email
+    );
+    console.log(
+      this.loggedInUser.company + '<=old new=>' + this.updatedPerson.company
+    );
     this.personService.updateUser(this.updatedPerson);
     // window.location.reload();
   }
