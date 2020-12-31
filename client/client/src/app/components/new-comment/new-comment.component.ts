@@ -33,5 +33,7 @@ export class NewCommentComponent implements OnInit {
     this.commentService.submitNewComment(newComment).subscribe((resp) => {
       console.log(resp);
     });
+    window.location.reload();
   }
+  
 }
