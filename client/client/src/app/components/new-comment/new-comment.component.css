@@ -1,0 +1,7 @@
+.new-comment-input {
+  border-block-color: black;
+  border-radius: 4%;
+  padding: 4%;
+  resize: none;
+  width: -webkit-fill-available;
+}

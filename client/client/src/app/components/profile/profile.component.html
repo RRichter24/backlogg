@@ -6,18 +6,28 @@
 <h2>Welcome back {{ loggedInUser.username }}</h2>
 <h4>You currently work for {{ loggedInUser.company }}</h4>
 <h4>Your email is {{ loggedInUser.email }}</h4>
-<hr />
-<app-new-post></app-new-post>
-<button *ngIf="adminList == false" type="button" class="btn btn-primary" (click)="showAdminList()">
+<button
+  *ngIf="adminList == false"
+  type="button"
+  class="btn btn-primary"
+  (click)="showAdminList()"
+>
   (Admin) Show All User Posts
 </button>
-<button *ngIf="adminList" type="button" class="btn btn-primary" (click)="hideAdminList()">
+<button
+  *ngIf="adminList"
+  type="button"
+  class="btn btn-primary"
+  (click)="hideAdminList()"
+>
   (Admin) Hide All User Posts
 </button>
+<hr />
+<app-new-post></app-new-post>
 <div *ngIf="adminList">
-<app-post *ngFor="let post of adminPosts" [post]="post"> </app-post>
-<br>
-------------------------
-<br>
+  <app-post *ngFor="let post of adminPosts" [post]="post"> </app-post>
+  <br />
+  ------------------------
+  <br />
 </div>
 <app-post *ngFor="let post of posts" [post]="post"> </app-post>
