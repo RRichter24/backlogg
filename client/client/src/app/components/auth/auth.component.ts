@@ -17,7 +17,7 @@ export class AuthComponent implements OnInit {
   private isValidUsername: boolean = false;
   private isValidPassword: boolean = false;
 
-  btnStyle: String = 'btn btn-lg btn-primary btn-block disabled';
+  btnStyle: String = 'btn btn-lg btn-danger btn-block disabled';
 
   constructor(
     private personService: PersonService,
@@ -39,9 +39,9 @@ export class AuthComponent implements OnInit {
     console.log(canSignIn);
     if (canSignIn) {
       console.log('here');
-      this.btnStyle = 'btn btn-lg btn-primary btn-block';
+      this.btnStyle = 'btn btn-lg btn-danger btn-block';
     } else {
-      this.btnStyle = 'btn btn-lg btn-primary btn-block disabled';
+      this.btnStyle = 'btn btn-lg btn-danger btn-block disabled';
     }
   }
 
