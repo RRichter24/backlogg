@@ -33,20 +33,27 @@
         your memes, and let loose.
       </p>
       <p><strong>SWE's Only!</strong></p>
-      <p class="lead">
-        <a
-          href="#"
-          class="btn btn-lg btn-secondary fw-bold border-white bg-white"
-          >LOG IN</a
-        >
-      </p>
-      <p class="lead">
-        <a
-          href="#"
-          class="btn btn-lg btn-secondary fw-bold border-white bg-white"
-          >SIGN UP</a
-        >
-      </p>
+
+      <div class="btn-group" role="group" aria-label="Basic outlined example">
+        <p class="lead">
+          <a
+            href="#"
+            class="btn btn-lg btn-secondary fw-bold border-white bg-white"
+            routerLink="/login"
+            routerLinkActive="active"
+            >LOG IN</a
+          >
+        </p>
+        <p class="lead">
+          <a
+            href="#"
+            class="btn btn-lg btn-secondary fw-bold border-white bg-white"
+            routerLink="/register"
+            routerLinkActive="active"
+            >SIGN UP</a
+          >
+        </p>
+      </div>
     </main>
 
     <footer class="mt-auto text-white-50">
