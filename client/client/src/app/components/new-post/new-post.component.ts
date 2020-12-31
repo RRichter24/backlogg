@@ -58,6 +58,7 @@ export class NewPostComponent implements OnInit {
           this.uploadImage(resp.id);
         }
       });
+      document.location.reload();
   }
 
   // This part is for uploading

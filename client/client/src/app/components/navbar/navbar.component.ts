@@ -40,8 +40,9 @@ export class NavbarComponent implements OnInit {
       console.log(resp);
       let retrievedPerson: Person = resp;
 
-      alert("I have retrieved the person with the username " + retrievedPerson.username);
+      
       this.wantedUserId = retrievedPerson.id;
+      // alert("I have retrieved the person with the username " + retrievedPerson.username);
       console.log(this.wantedUserId);
     });
   }
@@ -51,8 +52,9 @@ export class NavbarComponent implements OnInit {
       console.log(resp);
       let retrievedPerson: Person = resp;
 
-      alert("I have retrieved the person with the username " + retrievedPerson.username);
+      
       this.wantedUserId = retrievedPerson.id;
+      // alert("I have retrieved the person with the username " + retrievedPerson.username);
       console.log(this.wantedUserId);
     });
   }
