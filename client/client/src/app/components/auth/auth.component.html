@@ -1,27 +1,43 @@
-<form class="form-signin">
-  <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-  <label for="inputUsername" class="sr-only">Email address</label>
-  <input type="text" id="inputUsername" class="form-control" [(ngModel)]="username" (input)="validateInput()" name="username" placeholder="Username"  style="padding: 0.25rem 0; font-weight: 700; color: rgba(255, 255, 255, 0.5); background-color: transparent; border-bottom: 0.25rem solid transparent;" required autofocus/>
-  <label for="inputPassword" class="sr-only">Password</label>
-  <input
-    type="password"
-    id="inputPassword"
-    class="form-control"
-    [(ngModel)]="password"
-    (input)="validateInput()"
-    name="password"
-    placeholder="Password"
-    required
-  />
-  <button class="{{ btnStyle }} normal-text  padding: 0.25rem 0;
-  font-weight: 700;
-  color: rgba(255, 255, 255, 0.5);
-  background-color: transparent;
-  border-bottom: 0.25rem solid transparent;" (click)="onSignIn()">Sign in</button>
-  <p>
-    Don't have an account?
-    <a routerLink="/register" routerLinkActive="active"> Register </a>today!
-  </p>
-
-  <p class="mt-5 mb-3 text-muted">&copy; 2020</p>
-</form>
+<div class="container">
+  <div class="row align-items-end">
+    <div class="col-md-6 img-div">
+      <img
+        src="https://images-na.ssl-images-amazon.com/images/I/315OmOFtI4L._SX331_BO1,204,203,200_.jpg"
+      />
+    </div>
+    <div class="col-md-6 signin-form-div">
+      <form class="form-signin">
+        <h1 class="h3 mb-3 font-weight-normal">You know the drill...</h1>
+        <label for="inputUsername" class="sr-only">Email address</label>
+        <input
+          type="text"
+          id="inputUsername"
+          class="form-control"
+          [(ngModel)]="username"
+          (input)="validateInput()"
+          name="username"
+          placeholder="Username"
+          required
+          autofocus
+        />
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input
+          type="password"
+          id="inputPassword"
+          class="form-control"
+          [(ngModel)]="password"
+          (input)="validateInput()"
+          name="password"
+          placeholder="Password"
+          required
+        />
+        <button class="{{ btnStyle }}" (click)="onSignIn()">ENTER</button>
+        <p>
+          Don't have an account?
+          <a routerLink="/register" routerLinkActive="active"> Register </a
+          >today!
+        </p>
+      </form>
+    </div>
+  </div>
+</div>

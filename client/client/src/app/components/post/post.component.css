@@ -1,3 +1,10 @@
+hr {
+  border-top: 1px solid white;
+}
+
+h6 {
+  color: turquoise;
+}
 img {
   width: 100%;
   height: auto;
@@ -7,20 +14,22 @@ img {
   margin: auto;
   margin-top: 24px;
   width: 40%;
+  background-color: black;
+  color: whitesmoke;
 }
 #post-card:hover {
   transform: scale(1.01);
 }
 
-.spicy-icon {
-  background-image: url("../../../../spicyReactionIcon.png");
+.post-text {
+}
+.reaction-icon {
   display: inline-block;
   height: 40px;
   width: 40px;
 }
 
-.spicy-reaction-count {
-  color: red;
+.reaction-count {
   display: inline-block;
   font-weight: bold;
   font-size: larger;
@@ -28,7 +37,24 @@ img {
   margin-right: 4px;
 }
 
-.spicy-icon:hover {
+.spicy-icon {
+  background-image: url(./spicyReactionIcon.png);
+}
+
+.milk-icon {
+  background-image: url(./milkReactionIcon.png);
+  padding-top: 5px;
+}
+
+.spicy-reaction-count {
+  color: darkred;
+}
+
+.milk-reaction-count {
+  color: darkblue;
+}
+
+.reaction-icon:hover {
   transform: scale(1.2);
 }
 

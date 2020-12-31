@@ -1,50 +1,164 @@
-<img
-  id="profile-pic"
-  src="https://www.kindpng.com/picc/m/153-1535301_alien-clipart-trippy-x-transparent-png-trippy-alien.png"
-  alt="Avatar"
-/>
-
-<h2>Welcome back {{ loggedInUser.username }}</h2>
-<h4>You currently work for {{ loggedInUser.company }}</h4>
-<h4>Your email is {{ loggedInUser.email }}</h4>
-<hr />
-
-<section *ngIf= "loggedInUser.role.id==2; else UserView">
-  <button *ngIf="userList == false" type="button" class="btn btn-primary" (click)="showUserList()">
-    (Admin) Show All Users
-  </button>
-  <button *ngIf="userList" type="button" class="btn btn-primary" (click)="hideUserList()">
-    (Admin) Hide All Users
-  </button>
-  <div *ngIf="userList">
-    <div *ngFor="let user of allUsers">
-      <a [routerLink]="['/profile', user.id]" class="btn btn-outline-success my-2 my-sm-0">{{user.username}}</a>
-      <br>
-      {{user.role.name}}</div>
-    <br>
-    ------------------------
-    <br>
+<div class="container">
+  <img
+    id="profile-pic"
+    src="https://www.kindpng.com/picc/m/153-1535301_alien-clipart-trippy-x-transparent-png-trippy-alien.png"
+    alt="Avatar"
+  />
+  <div class="user-info">
+    <h2>Welcome back {{ loggedInUser.username }}</h2>
+    <h4>You currently work for {{ loggedInUser.company }}</h4>
+    <h4>Your email is {{ loggedInUser.email }}</h4>
   </div>
-  <button *ngIf="adminList == false" type="button" class="btn btn-primary" (click)="showAdminList()">
-    (Admin) Show All User Posts
+  <button
+    type="button"
+    class="btn btn-secondary btn-sm"
+    (click)="toggleUpdateUser()"
+  >
+    UPDATE PROFILE
   </button>
-  <button *ngIf="adminList" type="button" class="btn btn-primary" (click)="hideAdminList()">
-    (Admin) Hide All User Posts
-  </button>
-  <div *ngIf="adminList">
-  <app-post *ngFor="let post of adminPosts" [post]="post"> </app-post>
-  <br>
-  ------------------------
-  <br>
+  <div class="container" *ngIf="updateUser">
+    <div id="register-div" class="card">
+      <h2>Registration</h2>
+      <hr />
+      <div class="card-body">
+        <form id="register-form">
+          <label>New Username? </label>
+          <input
+            id="username"
+            name="username"
+            type="text"
+            [(ngModel)]="username"
+          />
+          <br />
+          <label>new Password? </label>
+          <input
+            id="password"
+            name="password"
+            type="password"
+            [(ngModel)]="password"
+          />
+          <br />
+
+          <br />
+          <label>New Company? </label>
+          <input
+            id="company"
+            name="company"
+            type="text"
+            [(ngModel)]="company"
+          />
+          <br />
+          <label>Different email? </label>
+          <input id="email" name="email" type="text" [(ngModel)]="email" />
+          <br />
+          <button
+            id="register-action"
+            type="button"
+            class="btn btn-success"
+            (click)="updateUserInfo()"
+          >
+            Update that Info!
+          </button>
+        </form>
+      </div>
+    </div>
   </div>
-  <br><br>
-  <app-new-post></app-new-post>
-  <app-post *ngFor="let post of posts" [post]="post"> </app-post>
-</section>
+  <hr />
 
-<ng-template #UserView>
-
+  <section *ngIf="loggedInUser.role.id == 2; else UserView">
+    <button
+      *ngIf="userList == false"
+      type="button"
+      class="btn btn-primary"
+      (click)="showUserList()"
+    >
+      (Admin) Show All Users
+    </button>
+    <button
+      *ngIf="userList"
+      type="button"
+      class="btn btn-primary"
+      (click)="hideUserList()"
+    >
+      (Admin) Hide All Users
+    </button>
+    <div *ngIf="userList">
+      <div *ngFor="let user of allUsers">
+        <a
+          [routerLink]="['/profile', user.id]"
+          class="btn btn-outline-success my-2 my-sm-0"
+          >{{ user.username }}</a
+        >
+        <br />
+        {{ user.role.name }}
+      </div>
+      <br />
+      ------------------------
+      <br />
+    </div>
+    <button
+      *ngIf="adminList == false"
+      type="button"
+      class="btn btn-primary"
+      (click)="showAdminList()"
+    >
+      (Admin) Show All User Posts
+    </button>
+    <button
+      *ngIf="adminList"
+      type="button"
+      class="btn btn-primary"
+      (click)="hideAdminList()"
+    >
+      (Admin) Hide All User Posts
+    </button>
+    <div *ngIf="adminList">
+      <app-post *ngFor="let post of adminPosts" [post]="post"> </app-post>
+      <br />
+      ------------------------
+      <br />
+    </div>
+    <br /><br />
     <app-new-post></app-new-post>
     <app-post *ngFor="let post of posts" [post]="post"> </app-post>
+  </section>
 
-</ng-template>
+  <ng-template #UserView>
+    <app-new-post></app-new-post>
+    <app-post *ngFor="let post of posts" [post]="post"> </app-post>
+  </ng-template>
+</div>
+
+<div class="accordion" id="accordionExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingOne">
+      <button
+        class="accordion-button"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#collapseOne"
+        aria-expanded="true"
+        aria-controls="collapseOne"
+      >
+        Accordion Item #1
+      </button>
+    </h2>
+    <div
+      id="collapseOne"
+      class="accordion-collapse collapse show"
+      aria-labelledby="headingOne"
+      data-bs-parent="#accordionExample"
+    >
+      <div class="accordion-body">
+        <strong>This is the first item's accordion body.</strong> It is hidden
+        by default, until the collapse plugin adds the appropriate classes that
+        we use to style each element. These classes control the overall
+        appearance, as well as the showing and hiding via CSS transitions. You
+        can modify any of this with custom CSS or overriding our default
+        variables. It's also worth noting that just about any HTML can go within
+        the <code>.accordion-body</code>, though the transition does limit
+        overflow.
+      </div>
+    </div>
+  </div>
+</div>

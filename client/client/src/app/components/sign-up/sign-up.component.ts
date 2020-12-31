@@ -55,7 +55,6 @@ export class SignUpComponent implements OnInit {
         id: 1,
         name: 'user',
       },
-      friends: [],
     };
 
     if (this.password === this.passwordCheck) {

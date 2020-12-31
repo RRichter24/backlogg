@@ -20,22 +20,67 @@
             : post.post_date.second)
       }}
     </h6>
-    <hr />
-    <p>
+    <p class="post-text">
       {{ post.post_text }}
     </p>
-    <hr />
     <img [src]="convertedImage" />
-    <hr />
     <img
-      class="spicy-icon"
-      src="../../../../spicyReactionIcon.png"
-      (click)="spicyReact()"
+      class="spicy-icon reaction-icon"
+      src="./spicyReactionIcon.png"
+      (click)="react(1)"
     />
-    <p class="spicy-reaction-count">{{ spicyRxns }}</p>
+    <p class="spicy-reaction-count reaction-count">{{ spicyRxnsCnt }}</p>
+    <img
+      class="milk-icon reaction-icon"
+      src="./milkReactionIcon.png"
+      (click)="react(2)"
+    />
+    <p class="milk-reaction-count reaction-count">{{ milkRxnsCnt }}</p>
     <hr />
-    <app-comment *ngFor="let comment of comments" [comment]="comment">
-    </app-comment>
-    <app-new-comment [post]="post"></app-new-comment>
+
+    <div class="accordion" id="commentsAccordion">
+      <div class="accordion-item">
+        <h5 id="comments-header">
+          <strong
+            data-bs-toggle="collapse"
+            attr.data-bs-target="#comment-collapse-{{ post.id }}"
+            aria-expanded="true"
+            aria-controls="collapseOne"
+          >
+            Toggle Comments
+          </strong>
+        </h5>
+        <div
+          attr.id="comment-collapse-{{ post.id }}"
+          class="accordion-collapse collapse show"
+          aria-labelledby="headingOne"
+          data-bs-parent="#accordionExample"
+        >
+          <div class="accordion-body">
+            <div>
+              <app-comment *ngFor="let comment of comments" [comment]="comment">
+              </app-comment>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr />
+    <button
+      class="btn btn-primary"
+      type="button"
+      data-bs-toggle="collapse"
+      attr.data-bs-target="#new-comment{{ post.id }}"
+      aria-expanded="false"
+      aria-controls="new-comment"
+    >
+      Talk some trash
+    </button>
+    <app-new-comment
+      [post]="post"
+      class="collapse"
+      id="new-comment{{ post.id }}"
+    ></app-new-comment>
   </div>
 </div>

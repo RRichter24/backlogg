@@ -70,12 +70,11 @@ public class PersonController {
 		return ResponseEntity.ok().build();
 	}
 	
-	
-	//TODO: return new person because
-	//profile will need to be reflected thusly
+
 	@PutMapping(path="/{id}")
 	public ResponseEntity<Void> updatePerson(HttpSession session, @PathVariable("id") Integer id, @RequestBody Person person){
 		Person loggedPerson = (Person) session.getAttribute("user");
+		System.out.println("PERSON CONTROLLER" + person);
 		if (loggedPerson != null && loggedPerson.getId().equals(id)) {
 			personServ.update(person);
 			return ResponseEntity.ok().build();
